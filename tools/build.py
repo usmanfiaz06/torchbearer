@@ -14,6 +14,10 @@ site can be served as-is from any static host.
 import os
 import re
 
+# Public origin — used for canonical URLs, og:url and sitemap.xml.
+# Change this when the production domain is confirmed.
+SITE_URL = "https://torchbearer.org"
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES_DIR = os.path.join(ROOT, "tools", "pages")
 
@@ -45,9 +49,33 @@ PAGES = {
                 "How Torchbearer works with institutions, funds, corporates and government entities."),
     "credits": (None, "Credits — Torchbearer",
                 "Photography, typeface and attribution credits for torchbearer.org."),
+    "404": (None, "Page not found — Torchbearer",
+            "The page you were looking for does not exist."),
 }
 
 NAV = ["about", "capabilities", "programmes", "evidence", "alignment", "method", "insight"]
+
+def to_url(slug):
+    """Deployed path for a page slug. Vercel serves these extensionless."""
+    return "/" if slug == "index" else "/" + slug
+
+
+def absolutise(html):
+    """Rewrite fragment-relative links to root-absolute, extensionless URLs.
+
+    Fragments are authored with plain relative paths so they stay readable and
+    previewable on disk; the deployed site uses absolute paths so that a page at
+    /about resolves its assets identically to one at /.
+    """
+    html = re.sub(r'(href|src)="index\.html(#[^"]*)?"',
+                  lambda m: '%s="/%s"' % (m.group(1), m.group(2) or ""), html)
+    html = re.sub(r'(href|src)="(?!https?:|//|/|#|mailto:)([a-z0-9\-]+)\.html(#[^"]*)?"',
+                  lambda m: '%s="/%s%s"' % (m.group(1), m.group(2), m.group(3) or ""), html)
+    html = re.sub(r'(href|src)="(?!https?:|//|/|#|mailto:)(assets/)',
+                  lambda m: '%s="/%s' % (m.group(1), m.group(2)), html)
+    html = re.sub(r'data-img="(?!https?:|/)(assets/)', r'data-img="/\1', html)
+    return html
+
 
 SHELL = """<!DOCTYPE html>
 <html lang="en">
@@ -59,7 +87,9 @@ SHELL = """<!DOCTYPE html>
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
-<link rel="icon" href="assets/img/mark-dark.png">
+<link rel="canonical" href="{canonical}">
+<meta property="og:url" content="{canonical}">
+<link rel="icon" href="/assets/img/mark-dark.png">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -159,31 +189,49 @@ def build():
         navlinks, menulinks = [], []
         for n in NAV:
             cur = ' aria-current="page"' if n == slug else ""
-            navlinks.append('      <a href="%s.html"%s>%s</a>' % (n, cur, PAGES[n][0]))
-            menulinks.append('      <a href="%s.html" class="d3"%s>%s</a>' % (n, cur, PAGES[n][0]))
+            navlinks.append('      <a href="%s"%s>%s</a>' % (to_url(n), cur, PAGES[n][0]))
+            menulinks.append('      <a href="%s" class="d3"%s>%s</a>' % (to_url(n), cur, PAGES[n][0]))
 
-        html = SHELL.format(
+        html = absolutise(SHELL.format(
             title=title, desc=desc, body=body,
+            canonical=SITE_URL.rstrip("/") + to_url(slug),
             navlinks="\n".join(navlinks), menulinks="\n".join(menulinks),
-        )
+        ))
         out = os.path.join(ROOT, slug + ".html")
         open(out, "w", encoding="utf-8").write(html)
         written.append(slug + ".html")
     print("built %d pages: %s" % (len(written), ", ".join(written)))
 
-    # fail loudly on links that point at pages we never generated
+    # sitemap — every page except the 404
+    urls = [SITE_URL.rstrip("/") + to_url(s) for s in PAGES if s != "404"]
+    sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
+               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for u in urls:
+        sitemap.append("  <url><loc>%s</loc></url>" % u)
+    sitemap.append("</urlset>")
+    open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write("\n".join(sitemap) + "\n")
+    print("wrote sitemap.xml (%d urls)" % len(urls))
+
+    # fail loudly on links and assets that do not resolve
     missing = set()
     for name in written:
         html = open(os.path.join(ROOT, name), encoding="utf-8").read()
-        for href in re.findall(r'href="([^"#:]+\.html)', html):
-            if not os.path.exists(os.path.join(ROOT, href)):
+        for href in re.findall(r'(?:href|src)="(/[^"#?]*)', html):
+            target = href.rstrip("/")
+            if target == "":
+                target = "index.html"
+            elif not os.path.splitext(target)[1]:
+                target = target.lstrip("/") + ".html"
+            else:
+                target = target.lstrip("/")
+            if not os.path.exists(os.path.join(ROOT, target)):
                 missing.add("%s -> %s" % (name, href))
     if missing:
         print("BROKEN LINKS:")
         for m in sorted(missing):
             print("  ", m)
-    else:
-        print("all internal links resolve")
+        raise SystemExit(1)
+    print("all internal links and assets resolve")
 
 
 if __name__ == "__main__":

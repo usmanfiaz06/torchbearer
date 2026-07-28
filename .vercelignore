@@ -1,0 +1,5 @@
+# Build inputs and repo docs — not part of the deployed site.
+tools/
+README.md
+Torchbearers-whiteBG.png
+.gitignore

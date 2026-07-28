@@ -398,6 +398,7 @@ body{
 .foot__brand img{height:36px;margin-bottom:20px}
 .foot__brand p{font-size:.88rem;color:#ffffff8c;max-width:34ch;line-height:1.6}
 .foot h5{font-family:var(--f-display);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-2);margin-bottom:16px}
+.foot ul{list-style:none;padding:0;margin:0}
 .foot li{margin-bottom:10px}
 .foot li a{font-size:.88rem;color:#ffffffd1;transition:color .3s}
 .foot li a:hover{color:var(--amber)}

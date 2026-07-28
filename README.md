@@ -20,7 +20,41 @@ no third-party requests — fonts and photography are self-hosted.
 npx http-server -p 8000        # or: python3 -m http.server 8000
 ```
 
-Deploys as-is to GitHub Pages, Netlify, Vercel, S3 or any static host. Point the host at the repository root.
+Note that a plain file server will not reproduce the extensionless URLs used in production (`/about` rather
+than `/about.html`). For a faithful local preview use `vercel dev`.
+
+## Deploying to Vercel
+
+Import the repository and accept the defaults — there is deliberately no `package.json`, so Vercel treats it
+as a static site and serves the repository root with no build step.
+
+| Setting | Value |
+|---|---|
+| Framework preset | Other |
+| Build command | *(leave empty)* |
+| Output directory | *(leave empty — repo root)* |
+| Install command | *(leave empty)* |
+
+`vercel.json` handles the rest:
+
+- **`cleanUrls`** — pages are served at `/about`, not `/about.html`. All internal links are already written
+  that way, so there are no redirect hops.
+- **`trailingSlash: false`** — one canonical form per URL.
+- **`404.html`** — served automatically for unmatched routes.
+- **Caching** — fonts immutable for a year, images 30 days, CSS and JS one hour with
+  stale-while-revalidate. CSS and JS are not content-hashed, so they are deliberately not marked immutable.
+- **Security headers** — `nosniff`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, and a strict
+  CSP (`default-src 'self'`). The CSP is only possible because nothing is loaded off-domain; adding an
+  external script, font or analytics tag means updating it.
+
+`.vercelignore` keeps `tools/`, the README and the source logo out of the deployment, so the build fragments
+are never publicly reachable.
+
+### After the domain is confirmed
+
+Set `SITE_URL` at the top of `tools/build.py`, rerun `python3 tools/build.py` to regenerate the canonical
+tags, `og:url` values and `sitemap.xml`, then update the `Sitemap:` line in `robots.txt`. It currently
+defaults to `https://torchbearer.org`.
 
 ---
 
