@@ -129,6 +129,36 @@ gaps are the difference between a credible site and a strong one. Every location
 
 ---
 
+## Share cards and structured data
+
+Every page carries a 1200x630 Open Graph card, Twitter `summary_large_image` tags, and a schema.org
+`@graph` block.
+
+**Cards** live in `assets/img/og/<slug>.jpg` and are rendered from `tools/og/card.html` by screenshotting it
+in a headless browser, so they use the site's real typeface and colour system rather than an approximation.
+To change a card's title or backdrop, edit the `CARDS` map in `tools/og/render.mjs` and re-run:
+
+```bash
+python3 -m http.server 8901 &          # serve the repo root
+node tools/og/render.mjs http://127.0.0.1:8901
+```
+
+Use landscape source photography — a portrait source crops badly at 1200x630, and the renderer warns when
+one is narrower than 1.3:1.
+
+**Structured data** is generated per page by `graph()` in `tools/build.py`: an `Organization` node
+(description, logo, `sameAs` social profiles, `areaServed` for Pakistan and Saudi Arabia, `knowsAbout`
+topics, contact points), a `WebSite` node, a `WebPage` node, and a `BreadcrumbList` on every page except the
+homepage. Organisation-level facts live in the `ORG` dict at the top of that file — edit them once and every
+page updates.
+
+Two notes. Inline JSON-LD is not blocked by the site's `script-src 'self'` CSP; it is a data block rather
+than an executed script, and this was verified in a browser rather than assumed. And legacy `geo.region`
+meta tags are deliberately absent: search engines stopped reading them years ago, so geographic targeting is
+expressed through `areaServed` in the graph instead.
+
+---
+
 ## Design system
 
 Cloned from the supplied reference: alternating near-black / off-white full-bleed bands, oversized tight-tracked

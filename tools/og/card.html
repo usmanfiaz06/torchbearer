@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG card</title>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<style>
+  *{box-sizing:border-box;margin:0}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{
+    position:relative;background:#0d0d0d;color:#fff;
+    font-family:"Inter","Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .scrim{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(100deg,#0d0d0df2 0%,#0d0d0dee 42%,#0d0d0d99 68%,#0d0d0d4d 100%),
+      linear-gradient(0deg,#0d0d0dcc 0%,#0000 55%);
+  }
+  .in{position:relative;height:100%;padding:56px 64px;display:flex;flex-direction:column;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand img{height:46px;width:auto;display:block}
+  .brand b{font-family:"Inter Tight",sans-serif;font-weight:700;font-size:29px;letter-spacing:-.03em;line-height:1}
+  .brand small{display:block;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#a5a5a5;margin-top:5px}
+  .body{max-width:830px}
+  .eyebrow{
+    font-family:"Inter Tight",sans-serif;font-weight:600;font-size:16px;
+    letter-spacing:.19em;text-transform:uppercase;color:#f2a81d;margin-bottom:22px;
+  }
+  h1{
+    font-family:"Inter Tight",sans-serif;font-weight:700;
+    font-size:74px;line-height:.94;letter-spacing:-.037em;
+  }
+  h1.sm{font-size:60px}
+  .rule{height:3px;width:92px;background:#f2a81d;margin-top:34px}
+  .foot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+  .foot span{
+    font-family:"Inter Tight",sans-serif;font-weight:600;font-size:15px;
+    letter-spacing:.15em;text-transform:uppercase;color:#ffffffb8;
+  }
+</style>
+</head>
+<body>
+  <img class="bg" id="bg" src="" alt="">
+  <div class="scrim"></div>
+  <div class="in">
+    <div class="brand">
+      <img src="/assets/img/mark-light.png" alt="">
+      <b>Torchbearer<small>Sustainability · Inclusion · Impact</small></b>
+    </div>
+    <div class="body">
+      <p class="eyebrow" id="eyebrow"></p>
+      <h1 id="title"></h1>
+      <div class="rule"></div>
+    </div>
+    <div class="foot">
+      <span id="tag">Design · Deliver · Verify</span>
+      <span id="domain">torchbearer.org</span>
+    </div>
+  </div>
+<script>
+  var q = new URLSearchParams(location.search);
+  var t = (q.get('t') || 'Torchbearer').replace(/\|/g, '<br>');
+  document.getElementById('title').innerHTML = t;
+  if (t.replace(/<br>/g, ' ').length > 42) document.getElementById('title').classList.add('sm');
+  document.getElementById('eyebrow').textContent = q.get('e') || '';
+  if (q.get('tag')) document.getElementById('tag').textContent = q.get('tag');
+  if (q.get('domain')) document.getElementById('domain').textContent = q.get('domain');
+  var img = q.get('img');
+  if (img) document.getElementById('bg').src = '/assets/img/photos/' + img + '.jpg';
+  else document.getElementById('bg').remove();
+</script>
+</body>
+</html>

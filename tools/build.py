@@ -11,12 +11,38 @@ No dependencies, no toolchain. The generated .html files are committed, so the
 site can be served as-is from any static host.
 """
 
+import json
 import os
 import re
 
 # Public origin — used for canonical URLs, og:url and sitemap.xml.
 # Change this when the production domain is confirmed.
 SITE_URL = "https://torchbearer.org"
+
+ORG = {
+    "name": "Torchbearer",
+    "tagline": "Sustainability. Inclusion. Impact.",
+    "description": ("Torchbearer is a social enterprise that designs, delivers and verifies climate and social "
+                    "programmes in Pakistan and Saudi Arabia, and reports outcomes institutions can put their "
+                    "name to."),
+    "sameAs": [
+        "https://www.linkedin.com/company/torchbearerglobal/",
+        "https://www.instagram.com/we_torchbearer/",
+    ],
+    # Delivery geographies, expressed for search engines rather than in legacy geo meta
+    # tags, which are no longer read.
+    "areaServed": [("Pakistan", "PK"), ("Saudi Arabia", "SA")],
+    "knowsAbout": [
+        "Climate adaptation", "Menstrual health management", "Programme design",
+        "Impact measurement and verification", "Sustainable Development Goals",
+        "Saudi Vision 2030", "Saudi Green Initiative", "Circular economy",
+    ],
+    "contact": [
+        ("partnerships@torchbearer.org", "Partnerships"),
+        ("volunteer@torchbearer.org", "Volunteering"),
+        ("method@torchbearer.org", "Method and evidence"),
+    ],
+}
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES_DIR = os.path.join(ROOT, "tools", "pages")
@@ -56,6 +82,80 @@ PAGES = {
 
 NAV = ["about", "capabilities", "programmes", "evidence", "alignment", "method", "insight", "volunteer"]
 
+def esc(t):
+    """Escape for an HTML attribute."""
+    return (t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+             .replace('"', "&quot;"))
+
+
+def og_image(slug):
+    """Share card for a page; the 404 falls back to the site card."""
+    name = slug if os.path.exists(os.path.join(ROOT, "assets", "img", "og", slug + ".jpg")) else "index"
+    return SITE_URL.rstrip("/") + "/assets/img/og/" + name + ".jpg"
+
+
+def graph(slug, title, desc):
+    """schema.org @graph: the organisation, the site, and this page."""
+    base = SITE_URL.rstrip("/")
+    page = base + to_url(slug)
+    nodes = [
+        {
+            "@type": "Organization",
+            "@id": base + "/#organization",
+            "name": ORG["name"],
+            "url": base + "/",
+            "slogan": ORG["tagline"],
+            "description": ORG["description"],
+            "logo": {"@type": "ImageObject", "@id": base + "/#logo",
+                     "url": base + "/assets/img/mark-dark.png"},
+            "image": {"@id": base + "/#logo"},
+            "sameAs": ORG["sameAs"],
+            "areaServed": [{"@type": "Country", "name": n, "identifier": c}
+                           for n, c in ORG["areaServed"]],
+            "knowsAbout": ORG["knowsAbout"],
+            "contactPoint": [{"@type": "ContactPoint", "email": e, "contactType": t,
+                              "availableLanguage": ["en", "ur", "ar"]}
+                             for e, t in ORG["contact"]],
+        },
+        {
+            "@type": "WebSite",
+            "@id": base + "/#website",
+            "url": base + "/",
+            "name": ORG["name"],
+            "description": ORG["description"],
+            "publisher": {"@id": base + "/#organization"},
+            "inLanguage": "en",
+        },
+        {
+            "@type": "WebPage",
+            "@id": page + "#webpage",
+            "url": page,
+            "name": title,
+            "description": desc,
+            "isPartOf": {"@id": base + "/#website"},
+            "about": {"@id": base + "/#organization"},
+            "primaryImageOfPage": {"@type": "ImageObject", "url": og_image(slug)},
+            "inLanguage": "en",
+        },
+    ]
+    if slug != "index":
+        nodes.append({
+            "@type": "BreadcrumbList",
+            "@id": page + "#breadcrumb",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": base + "/"},
+                {"@type": "ListItem", "position": 2, "name": PAGES[slug][0] or title.split(" — ")[0],
+                 "item": page},
+            ],
+        })
+        nodes[2]["breadcrumb"] = {"@id": page + "#breadcrumb"}
+
+    blob = json.dumps({"@context": "https://schema.org", "@graph": nodes},
+                      ensure_ascii=False, indent=1)
+    # never let a "</script>" escape from page content into the data block
+    return blob.replace("<", "\\u003c")
+
+
 def to_url(slug):
     """Deployed path for a page slug. Vercel serves these extensionless."""
     return "/" if slug == "index" else "/" + slug
@@ -85,12 +185,33 @@ SHELL = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<link rel="canonical" href="{canonical}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torchbearer">
+<meta property="og:locale" content="en_GB">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:type" content="website">
-<link rel="canonical" href="{canonical}">
 <meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{ogimg}">
+<meta property="og:image:secure_url" content="{ogimg}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{ogalt}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{ogimg}">
+<meta name="twitter:image:alt" content="{ogalt}">
+
+<meta name="theme-color" content="#0d0d0d">
 <link rel="icon" href="/assets/img/mark-dark.png">
+<link rel="apple-touch-icon" href="/assets/img/mark-dark.png">
+<script type="application/ld+json">
+{graph}
+</script>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -194,8 +315,11 @@ def build():
             menulinks.append('      <a href="%s" class="d3"%s>%s</a>' % (to_url(n), cur, PAGES[n][0]))
 
         html = absolutise(SHELL.format(
-            title=title, desc=desc, body=body,
+            title=esc(title), desc=esc(desc), body=body,
             canonical=SITE_URL.rstrip("/") + to_url(slug),
+            ogimg=og_image(slug),
+            ogalt=esc("%s — %s" % (ORG["name"], title.split(" — ")[0])),
+            graph=graph(slug, title, desc),
             navlinks="\n".join(navlinks), menulinks="\n".join(menulinks),
         ))
         out = os.path.join(ROOT, slug + ".html")
