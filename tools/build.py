@@ -70,6 +70,24 @@ PAGES = {
                "each stage."),
     "insight": ("Insight", "Insight — Torchbearer",
                 "Field notes, method papers and programme data from Torchbearer."),
+    "insight/third-sector": (None, "Saudi Arabia's third sector grew ninefold. Its measurement did not. — Torchbearer",
+        "The Kingdom passed its 2030 volunteering target six years early and grew the non-profit sector from roughly "
+        "SAR 8bn to SAR 73bn. Why the regulator's shift to professionalisation is a measurement problem."),
+    "insight/disclosure-2030": (None, "The programmes you fund now get reported under tomorrow's rules — Torchbearer",
+        "Six years of Saudi regulatory sequencing, ISSB-aligned standards in development, and no confirmed mandatory "
+        "date. What a social programme designed today must carry to remain reportable under assurance."),
+    "insight/reuse-rate": (None, "Reusables only reduce waste if people keep using them — Torchbearer",
+        "Life-cycle evidence favours reusable menstrual products on nearly every impact — except when airfreighted. "
+        "Why waste displacement should be modelled on observed reuse, not rated lifespan."),
+    "insight/impact-numbers": (None, "Why most impact numbers do not survive an audit — Torchbearer",
+        "No baseline, attrition absorbed into the result, attribution without a comparison, and reach reported in "
+        "place of outcome. Four failure modes and the four questions that expose them."),
+    "insight/school-days": (None, "The school days nobody counts — Torchbearer",
+        "In 25,305 women surveyed in rural Sindh, 61.9% used old cloth and 12.6% used nothing at all. Cost was the "
+        "barrier for 48.7%. What that means for how menstrual health programmes should be designed."),
+    "insight/thirty-days": (None, "What a flood response looks like thirty days in — Torchbearer",
+        "33 million people affected by Pakistan's 2022 floods, 8.2 million of them women of reproductive age. The "
+        "fourth week decides the outcome, and it falls in the gap between response and programming."),
     "volunteer": ("Volunteer", "Volunteer with us — Torchbearer",
                   "Volunteer with Torchbearer in Pakistan, Saudi Arabia or remotely — session delivery, data "
                   "collection, translation, community liaison and professional-skills roles."),
@@ -101,7 +119,8 @@ def esc(t):
 
 def og_image(slug):
     """Share card for a page; the 404 falls back to the site card."""
-    name = slug if os.path.exists(os.path.join(ROOT, "assets", "img", "og", slug + ".jpg")) else "index"
+    flat = slug.replace("/", "-")
+    name = flat if os.path.exists(os.path.join(ROOT, "assets", "img", "og", flat + ".jpg")) else "index"
     return SITE_URL.rstrip("/") + "/assets/img/og/" + name + ".jpg"
 
 
@@ -150,14 +169,18 @@ def graph(slug, title, desc):
         },
     ]
     if slug != "index":
+        crumbs = [{"@type": "ListItem", "position": 1, "name": "Home", "item": base + "/"}]
+        if "/" in slug:
+            parent = slug.split("/")[0]
+            crumbs.append({"@type": "ListItem", "position": 2,
+                           "name": PAGES[parent][0] or parent.title(),
+                           "item": base + to_url(parent)})
+        crumbs.append({"@type": "ListItem", "position": len(crumbs) + 1,
+                       "name": PAGES[slug][0] or title.split(" — ")[0], "item": page})
         nodes.append({
             "@type": "BreadcrumbList",
             "@id": page + "#breadcrumb",
-            "itemListElement": [
-                {"@type": "ListItem", "position": 1, "name": "Home", "item": base + "/"},
-                {"@type": "ListItem", "position": 2, "name": PAGES[slug][0] or title.split(" — ")[0],
-                 "item": page},
-            ],
+            "itemListElement": crumbs,
         })
         nodes[2]["breadcrumb"] = {"@id": page + "#breadcrumb"}
 
@@ -313,7 +336,7 @@ SHELL = """<!DOCTYPE html>
 def build():
     written = []
     for slug, (label, title, desc) in PAGES.items():
-        frag = os.path.join(PAGES_DIR, slug + ".html")
+        frag = os.path.join(PAGES_DIR, *(slug.split("/"))) + ".html"
         if not os.path.exists(frag):
             print("  skip (no fragment):", slug)
             continue
@@ -336,7 +359,8 @@ def build():
             graph=graph(slug, title, desc),
             navlinks="\n".join(navlinks), menulinks="\n".join(menulinks),
         ))
-        out = os.path.join(ROOT, slug + ".html")
+        out = os.path.join(ROOT, *(slug.split("/"))) + ".html"
+        os.makedirs(os.path.dirname(out), exist_ok=True)
         open(out, "w", encoding="utf-8").write(html)
         written.append(slug + ".html")
     print("built %d pages: %s" % (len(written), ", ".join(written)))

@@ -24,6 +24,12 @@ const CARDS = {
   method:       ['Method',       'Scope. Design. Deliver.|Measure. Verify.',                'photo-1698993082050-19ca94c62fb8'],
   insight:      ['Insight',      'Field notes|&amp; method papers',                         'photo-1565456796917-ba75922b081f'],
   volunteer:    ['Volunteer',    'Volunteer|with us',                                       'photo-1778864875183-9a89ea0ac26f'],
+  'insight/third-sector':    ['Sector analysis · Saudi Arabia', "Saudi Arabia's third sector|grew ninefold", 'photo-1694018359679-49465b4c0d61'],
+  'insight/disclosure-2030': ['Outlook · Saudi Arabia', 'Reported under|tomorrow\u2019s rules',        'photo-1716571349499-0b83f5dbb7a2'],
+  'insight/reuse-rate':      ['Method paper', 'Reusables only work|if people keep using them',   'photo-1707904549943-2b97a4e8f279'],
+  'insight/impact-numbers':  ['Method paper', 'Why most impact numbers|do not survive an audit', 'photo-1606023760910-5577d0dbe7b5'],
+  'insight/school-days':     ['Women\u2019s health · Pakistan', 'The school days|nobody counts', 'photo-1664819323515-ce3fab4d4d1e'],
+  'insight/thirty-days':     ['Field note · Pakistan', 'A flood response,|thirty days in',       'photo-1565456796917-ba75922b081f'],
   partner:      ['Partner with us', 'Work|with us',                                         'photo-1694018359679-49465b4c0d61'],
 };
 
@@ -47,8 +53,8 @@ for (const [slug, [eyebrow, title, img]] of Object.entries(CARDS)) {
   if (bg.ratio < 1.3) console.warn(`  ! ${slug}: source is ${bg.ratio.toFixed(2)}:1 — portrait sources crop badly at 1200x630`);
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(250);
-  await page.screenshot({ path: `${OUT}/${slug}.jpg`, type: 'jpeg', quality: 86 });
-  console.log('  ok', `${slug}.jpg`);
+  await page.screenshot({ path: `${OUT}/${slug.replace('/', '-')}.jpg`, type: 'jpeg', quality: 86 });
+  console.log('  ok', `${slug.replace('/', '-')}.jpg`);
   n++;
 }
 
