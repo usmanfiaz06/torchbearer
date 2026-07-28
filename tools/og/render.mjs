@@ -23,7 +23,7 @@ const CARDS = {
   alignment:    ['Alignment',    'One programme,|two frameworks',                           'photo-1716571349499-0b83f5dbb7a2'],
   method:       ['Method',       'Scope. Design. Deliver.|Measure. Verify.',                'photo-1698993082050-19ca94c62fb8'],
   insight:      ['Insight',      'Field notes|&amp; method papers',                         'photo-1565456796917-ba75922b081f'],
-  volunteer:    ['Volunteer',    'Volunteer|with us',                                       'photo-1664819323515-ce3fab4d4d1e'],
+  volunteer:    ['Volunteer',    'Volunteer|with us',                                       'photo-1778864875183-9a89ea0ac26f'],
   partner:      ['Partner with us', 'Work|with us',                                         'photo-1694018359679-49465b4c0d61'],
 };
 
