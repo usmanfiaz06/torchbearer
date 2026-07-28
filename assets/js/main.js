@@ -174,10 +174,33 @@
     window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(paint, 160); });
   }
 
+  /* ---------- volunteer form ---------- */
+  /* No backend on a static site: compose a prefilled message and hand it to the
+     visitor's mail client. Swap for a real endpoint when one exists — see README. */
+  function volunteerForm() {
+    var form = $('[data-mailform]');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var to = form.getAttribute('data-mailform');
+      var lines = [];
+      $$('input, select, textarea', form).forEach(function (el) {
+        if (!el.name) return;
+        var label = el.getAttribute('data-label') || el.name;
+        var val = el.type === 'checkbox' ? (el.checked ? 'Yes' : 'No') : el.value.trim();
+        if (val) lines.push(label + ': ' + val);
+      });
+      var name = (form.querySelector('[name=name]') || {}).value || '';
+      window.location.href = 'mailto:' + to +
+        '?subject=' + encodeURIComponent('Volunteer registration' + (name ? ' — ' + name : '')) +
+        '&body=' + encodeURIComponent(lines.join('\n'));
+    });
+  }
+
   /* ---------- year + init ---------- */
   function boot() {
     $$('[data-year]').forEach(function (e) { e.textContent = new Date().getFullYear(); });
-    nav(); rails(); reveal(); dotmap();
+    nav(); rails(); reveal(); dotmap(); volunteerForm();
     $$('[data-cycler]').forEach(cycler);
   }
 

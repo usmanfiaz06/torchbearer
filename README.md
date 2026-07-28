@@ -3,9 +3,8 @@
 Website for Torchbearer — a social enterprise that designs, delivers and verifies climate and social
 programmes.
 
-**Positioning:** delivery-led advisory firm. Pakistan is the delivery geography; the Gulf, and Saudi Arabia
-in particular, is the partnership focus. The site never asks for money — it offers capability, and lets the
-evidence architecture do the persuading.
+**Positioning:** delivery-led advisory firm, delivering in Pakistan and Saudi Arabia. The site never asks for
+money — it offers capability, and lets the evidence architecture do the persuading.
 
 **Spine:** Design · Deliver · Verify. Verification is the differentiator and is treated as such throughout.
 
@@ -88,8 +87,8 @@ evidence      the evidence standard, four rules, live programme record, verifica
 alignment     SDG targets × Vision 2030 × Saudi Green Initiative — the dual mapping table
 method        the five stages in full, and what we publish for every programme
 insight       field notes and method papers
+volunteer     roles, conditions, and the registration form
 partner       who we work with, how an engagement runs, contact
-credits       photography, typeface and source attribution
 ```
 
 ---
@@ -109,19 +108,24 @@ gaps are the difference between a credible site and a strong one. Every location
 3. **Advisory board** — three or four credible names changes how the entire site reads. Same file.
 4. **Programme figures** — for each programme: district, dates, participant counts, delivery partner, funder,
    and the measured result. `tools/pages/evidence.html` and `tools/pages/programmes.html`.
-5. **Contact reality** — confirm the domain and that the three mailboxes exist.
-   `tools/pages/partner.html`. Add registered address, phone and LinkedIn URL.
+5. **Contact reality** — confirm the domain and that the four mailboxes exist:
+   `partnerships@`, `method@`, `hello@` (`tools/pages/partner.html`) and `volunteer@`
+   (`tools/pages/volunteer.html`). Add a registered address and phone.
 
 **Important:**
 
-6. **Photography.** Everything currently on the site is Unsplash stock, credited on `credits.html` and
-   labelled as representative. Real operational photography — production, training, fieldwork, faces of people
-   working rather than receiving — is the single biggest visual upgrade available. Replace files in
-   `assets/img/photos/` and update `tools/pages/credits.html`.
+6. **Photography.** Everything currently on the site is Unsplash stock, shot in Pakistan and Saudi Arabia and
+   labelled on the site as representative rather than as our own programmes. Real operational photography —
+   production, training, fieldwork, faces of people working rather than receiving — is the single biggest visual
+   upgrade available. Replace the files in `assets/img/photos/`; references live in `tools/pages/`.
 7. **Arabic.** A properly written, RTL Arabic version is one of the fastest credibility signals available in
    the Gulf market, and its absence is noticed. Not machine translation.
 8. **Capability statement PDF** — a downloadable version of the method framework, linked from `method.html`.
-9. **Social URLs** — the LinkedIn and Instagram links on the homepage currently point at `#`.
+9. **Volunteer form endpoint.** The form on `/volunteer` has no backend: it composes a prefilled message and
+   opens the visitor's mail client (`volunteerForm()` in `assets/js/main.js`). That works everywhere and needs no
+   infrastructure, but it loses anyone without a configured mail client. To take real submissions, point the
+   `<form>` at an endpoint — a Vercel serverless function, or a hosted form service — and add that origin to
+   `form-action` and `connect-src` in the `vercel.json` CSP, which currently allows `'self'` only.
 
 ---
 

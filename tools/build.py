@@ -45,15 +45,16 @@ PAGES = {
                "each stage."),
     "insight": ("Insight", "Insight — Torchbearer",
                 "Field notes, method papers and programme data from Torchbearer."),
+    "volunteer": ("Volunteer", "Volunteer with us — Torchbearer",
+                  "Volunteer with Torchbearer in Pakistan, Saudi Arabia or remotely — session delivery, data "
+                  "collection, translation, community liaison and professional-skills roles."),
     "partner": (None, "Partner with us — Torchbearer",
                 "How Torchbearer works with institutions, funds, corporates and government entities."),
-    "credits": (None, "Credits — Torchbearer",
-                "Photography, typeface and attribution credits for torchbearer.org."),
     "404": (None, "Page not found — Torchbearer",
             "The page you were looking for does not exist."),
 }
 
-NAV = ["about", "capabilities", "programmes", "evidence", "alignment", "method", "insight"]
+NAV = ["about", "capabilities", "programmes", "evidence", "alignment", "method", "insight", "volunteer"]
 
 def to_url(slug):
     """Deployed path for a page slug. Vercel serves these extensionless."""
@@ -160,7 +161,7 @@ SHELL = """<!DOCTYPE html>
           <li><a href="alignment.html">Alignment framework</a></li>
           <li><a href="insight.html">Insight</a></li>
           <li><a href="partner.html#contact">Contact</a></li>
-          <li><a href="credits.html">Credits</a></li>
+          <li><a href="volunteer.html">Volunteer</a></li>
         </ul>
       </div>
     </div>
