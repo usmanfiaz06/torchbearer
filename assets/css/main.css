@@ -540,3 +540,26 @@ body{
 .form__note{font-size:.8rem;color:#ffffff8c;max-width:44ch;line-height:1.5}
 .band--paper .form__note,.band--white .form__note{color:var(--grey)}
 @media(max-width:620px){ .form__row{grid-template-columns:1fr} }
+
+/* --- contact block -------------------------------------------------------- */
+.contact{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(32px,5vw,88px);align-items:start}
+.contact__form .form{max-width:none}
+.contact__side{
+  border-left:1px solid var(--line-dark);
+  padding-left:clamp(24px,3vw,48px);
+}
+.contact__mail{
+  display:inline-block;
+  font-family:var(--f-display);font-weight:700;
+  font-size:clamp(1.15rem,1.9vw,1.6rem);letter-spacing:-.03em;line-height:1.15;
+  color:var(--amber);word-break:break-word;
+  border-bottom:1px solid transparent;transition:border-color .3s var(--ease)
+}
+.contact__mail:hover{border-bottom-color:var(--amber)}
+.contact__meta{display:grid;gap:22px;margin-top:clamp(30px,3.4vw,44px)}
+.contact__meta .stat b{font-size:1rem;letter-spacing:-.01em}
+.contact__meta .stat span{max-width:32ch}
+@media(max-width:860px){
+  .contact{grid-template-columns:1fr;gap:44px}
+  .contact__side{border-left:0;border-top:1px solid var(--line-dark);padding-left:0;padding-top:36px}
+}

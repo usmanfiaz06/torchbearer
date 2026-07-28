@@ -49,11 +49,12 @@ as a static site and serves the repository root with no build step.
 `.vercelignore` keeps `tools/`, the README and the source logo out of the deployment, so the build fragments
 are never publicly reachable.
 
-### After the domain is confirmed
+### Domain
 
-Set `SITE_URL` at the top of `tools/build.py`, rerun `python3 tools/build.py` to regenerate the canonical
-tags, `og:url` values and `sitemap.xml`, then update the `Sitemap:` line in `robots.txt`. It currently
-defaults to `https://torchbearer.org`.
+`SITE_URL` in `tools/build.py` is set to `https://jointorchbearer.com`; it drives canonical tags, `og:url`,
+absolute `og:image` URLs and `sitemap.xml`. If it ever changes, update it there, update the `Sitemap:` line in
+`robots.txt`, then rerun **both** `python3 tools/build.py` and the OG renderer — the domain is printed on the
+share cards themselves.
 
 ---
 
@@ -88,7 +89,7 @@ alignment     SDG targets × Vision 2030 × Saudi Green Initiative — the dual 
 method        the five stages in full, and what we publish for every programme
 insight       field notes and method papers
 volunteer     roles, conditions, and the registration form
-partner       who we work with, how an engagement runs, contact
+partner       contact form, who we work with, how an engagement runs
 ```
 
 ---
@@ -108,9 +109,8 @@ gaps are the difference between a credible site and a strong one. Every location
 3. **Advisory board** — three or four credible names changes how the entire site reads. Same file.
 4. **Programme figures** — for each programme: district, dates, participant counts, delivery partner, funder,
    and the measured result. `tools/pages/evidence.html` and `tools/pages/programmes.html`.
-5. **Contact reality** — confirm the domain and that the four mailboxes exist:
-   `partnerships@`, `method@`, `hello@` (`tools/pages/partner.html`) and `volunteer@`
-   (`tools/pages/volunteer.html`). Add a registered address and phone.
+5. **Contact reality** — confirm `info@jointorchbearer.com` is live and monitored; it is the only address
+   on the site. Add a registered address and phone.
 
 **Important:**
 

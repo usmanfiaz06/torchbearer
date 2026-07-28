@@ -17,7 +17,7 @@ import re
 
 # Public origin — used for canonical URLs, og:url and sitemap.xml.
 # Change this when the production domain is confirmed.
-SITE_URL = "https://torchbearer.org"
+SITE_URL = "https://jointorchbearer.com"
 
 ORG = {
     "name": "Torchbearer",
@@ -38,9 +38,7 @@ ORG = {
         "Saudi Vision 2030", "Saudi Green Initiative", "Circular economy",
     ],
     "contact": [
-        ("partnerships@torchbearer.org", "Partnerships"),
-        ("volunteer@torchbearer.org", "Volunteering"),
-        ("method@torchbearer.org", "Method and evidence"),
+        ("info@jointorchbearer.com", "General enquiries"),
     ],
 }
 
