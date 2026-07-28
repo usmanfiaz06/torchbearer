@@ -11,6 +11,7 @@ No dependencies, no toolchain. The generated .html files are committed, so the
 site can be served as-is from any static host.
 """
 
+import hashlib
 import json
 import os
 import re
@@ -79,6 +80,18 @@ PAGES = {
 }
 
 NAV = ["about", "capabilities", "programmes", "evidence", "alignment", "method", "insight", "volunteer"]
+
+def asset(rel):
+    """Root-absolute asset URL with a content hash.
+
+    The hash is what makes long-lived caching safe: edit the file and every page
+    points at a new URL, so a returning visitor can never be served fresh HTML
+    against a stale stylesheet.
+    """
+    full = os.path.join(ROOT, rel)
+    digest = hashlib.sha256(open(full, "rb").read()).hexdigest()[:8]
+    return "/%s?v=%s" % (rel.replace(os.sep, "/"), digest)
+
 
 def esc(t):
     """Escape for an HTML attribute."""
@@ -210,8 +223,8 @@ SHELL = """<!DOCTYPE html>
 <script type="application/ld+json">
 {graph}
 </script>
-<link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="{css_fonts}">
+<link rel="stylesheet" href="{css_main}">
 </head>
 <body>
 
@@ -291,7 +304,7 @@ SHELL = """<!DOCTYPE html>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="{js_main}"></script>
 </body>
 </html>
 """
@@ -316,6 +329,9 @@ def build():
             title=esc(title), desc=esc(desc), body=body,
             canonical=SITE_URL.rstrip("/") + to_url(slug),
             ogimg=og_image(slug),
+            css_fonts=asset("assets/css/fonts.css"),
+            css_main=asset("assets/css/main.css"),
+            js_main=asset("assets/js/main.js"),
             ogalt=esc("%s — %s" % (ORG["name"], title.split(" — ")[0])),
             graph=graph(slug, title, desc),
             navlinks="\n".join(navlinks), menulinks="\n".join(menulinks),
