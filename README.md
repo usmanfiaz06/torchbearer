@@ -89,7 +89,7 @@ evidence      the evidence standard, four rules, live programme record, verifica
 alignment     SDG targets × Vision 2030 × Saudi Green Initiative — the dual mapping table
 method        the five stages in full, and what we publish for every programme
 insight       article index
-insight/*     six sourced articles — every figure cited and linked
+insight/*     eleven sourced articles — every figure cited and linked
 volunteer     roles, conditions, and the registration form
 partner       contact form, who we work with, how an engagement runs
 ```
