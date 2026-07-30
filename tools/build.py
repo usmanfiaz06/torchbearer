@@ -76,6 +76,18 @@ PAGES = {
     "insight/disclosure-2030": (None, "The programmes you fund now get reported under tomorrow's rules — Torchbearer",
         "Six years of Saudi regulatory sequencing, ISSB-aligned standards in development, and no confirmed mandatory "
         "date. What a social programme designed today must carry to remain reportable under assurance."),
+    "insight/gender-gap": (None, "Two countries, opposite directions — Torchbearer",
+        "Saudi Arabia roughly doubled female labour force participation in under a decade. Pakistan finished last "
+        "of 148 economies on gender parity. What transfers between them."),
+    "insight/capital-gap": (None, "One market broke records. The other lost nine-tenths of its funding. — Torchbearer",
+        "Saudi venture funding reached $860m in H1 2025 alone. Pakistani startup funding fell about 90% from its "
+        "peak. Why capital follows institutional confidence rather than need."),
+    "insight/access-to-finance": (None, "Thirteen per cent — Torchbearer",
+        "The share of Pakistani women with a financial account, against 34% of men. Why income alone does not close "
+        "the gap, and what it caps in any livelihoods programme."),
+    "insight/social-pillar": (None, "The S in ESG is the one nobody can prove — Torchbearer",
+        "Environmental reporting has a common unit and social reporting has none, so it defaults to activity "
+        "proxies. What makes a social outcome individually defensible instead."),
     "insight/reuse-rate": (None, "Reusables only reduce waste if people keep using them — Torchbearer",
         "Life-cycle evidence favours reusable menstrual products on nearly every impact — except when airfreighted. "
         "Why waste displacement should be modelled on observed reuse, not rated lifespan."),
