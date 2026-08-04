@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Torchbearer — pitch deck
+   16:9 slides at 1280x720, sharing the website's tokens and typography.
+   ========================================================================== */
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+img{display:block;max-width:100%}
+
+:root{
+  --ink:#0d0d0d;
+  --deep:#0f1720;
+  --paper:#f0efec;
+  --paper-2:#e6e4df;
+  --white:#fff;
+  --amber:#f2a81d;
+  --taupe:#c69c6d;
+  --grey:#767676;
+  --grey-2:#a5a5a5;
+  --line:#00000018;
+  --line-dark:#ffffff24;
+  --f-display:"Inter Tight","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-body:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+body{
+  background:#5a5a5a;
+  font-family:var(--f-body);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+
+/* --- slide shell ---------------------------------------------------------- */
+.slide{
+  position:relative;
+  width:1280px;height:720px;
+  margin:0 auto 26px;
+  padding:64px 76px;
+  background:var(--paper);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  break-after:page;page-break-after:always;
+}
+.slide:last-child{break-after:auto;page-break-after:auto;margin-bottom:0}
+.slide--ink{background:var(--ink);color:#fff}
+.slide--deep{background:var(--deep);color:#fff}
+.slide--white{background:var(--white)}
+
+/* slide furniture */
+.sn{
+  position:absolute;right:40px;bottom:30px;
+  font-family:var(--f-display);font-size:11px;font-weight:600;
+  letter-spacing:.16em;color:#00000038;
+}
+.slide--ink .sn,.slide--deep .sn{color:#ffffff40}
+.mark{
+  position:absolute;left:76px;bottom:30px;
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--f-display);font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:#00000045;
+}
+.slide--ink .mark,.slide--deep .mark{color:#ffffff4d}
+.mark img{height:16px;width:auto}
+
+/* --- type ----------------------------------------------------------------- */
+.eyebrow{
+  font-family:var(--f-display);font-size:12px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--grey);
+  margin:0 0 22px;
+}
+.slide--ink .eyebrow,.slide--deep .eyebrow{color:var(--amber)}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.035em;margin:0}
+h1{font-size:76px;line-height:.94}
+h2{font-size:52px;line-height:.98}
+h3{font-size:30px;line-height:1.05;letter-spacing:-.028em}
+.lede{font-size:20px;line-height:1.5;max-width:44ch;margin:22px 0 0;color:#2b2b2b}
+.slide--ink .lede,.slide--deep .lede{color:#ffffffcc}
+p{margin:0}
+.small{font-size:15px;line-height:1.55;color:#3a3a3a}
+.slide--ink .small,.slide--deep .small{color:#ffffffb3}
+.tiny{font-size:12px;line-height:1.5;color:var(--grey)}
+.slide--ink .tiny,.slide--deep .tiny{color:#ffffff80}
+.amber{color:var(--amber)}
+strong{font-weight:600}
+em{font-style:italic}
+
+/* --- layout helpers ------------------------------------------------------- */
+.body{flex:1;display:flex;flex-direction:column;justify-content:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:38px;align-items:start}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;align-items:start}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+.slide--ink .rule,.slide--deep .rule{background:var(--line-dark)}
+
+/* --- stat blocks ---------------------------------------------------------- */
+.stat{border-top:2px solid var(--ink);padding-top:14px}
+.slide--ink .stat,.slide--deep .stat{border-top-color:var(--amber)}
+.stat b{display:block;font-family:var(--f-display);font-weight:600;font-size:46px;letter-spacing:-.045em;line-height:1}
+.stat span{display:block;font-size:13px;line-height:1.45;color:var(--grey);margin-top:10px}
+.slide--ink .stat span,.slide--deep .stat span{color:#ffffff8c}
+.stat--sm b{font-size:34px}
+
+/* --- numbered list -------------------------------------------------------- */
+.num{counter-reset:n;display:grid;gap:0}
+.num > div{
+  counter-increment:n;display:grid;grid-template-columns:44px 1fr;gap:4px 20px;
+  padding:13px 0;border-top:1px solid var(--line);align-items:start;
+}
+.slide--ink .num > div,.slide--deep .num > div{border-top-color:var(--line-dark)}
+.num > div::before{
+  content:"0" counter(n);font-family:var(--f-display);font-weight:600;
+  font-size:13px;letter-spacing:.1em;color:var(--amber);padding-top:3px;
+}
+.num h4{font-family:var(--f-display);font-weight:600;font-size:19px;letter-spacing:-.02em;margin:0 0 5px;grid-column:2}
+/* the ::before counter occupies column 1, so both text nodes belong in column 2 */
+.num > div p{grid-column:2}
+.num p{font-size:14px;line-height:1.5;color:#3d3d3d}
+.slide--ink .num p,.slide--deep .num p{color:#ffffffa8}
+
+/* --- bullets -------------------------------------------------------------- */
+ul{list-style:none;margin:0;padding:0}
+ul li{position:relative;padding-left:20px;margin-bottom:11px;font-size:15px;line-height:1.5;color:#333}
+.slide--ink ul li,.slide--deep ul li{color:#ffffffbf}
+ul li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:1px;background:var(--amber)}
+
+/* --- cards ---------------------------------------------------------------- */
+.card{background:var(--white);border:1px solid #00000012;padding:24px;height:100%}
+.slide--ink .card,.slide--deep .card{background:#ffffff0d;border-color:var(--line-dark)}
+.card h4{font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:-.022em;margin:0 0 10px}
+.card p{font-size:14px;line-height:1.5;color:#444}
+.slide--ink .card p,.slide--deep .card p{color:#ffffffa8}
+.card .tag{
+  font-family:var(--f-display);font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--amber);display:block;margin-bottom:12px;
+}
+
+/* --- bar chart ------------------------------------------------------------ */
+.chart{display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:190px 1fr 92px;gap:16px;align-items:center}
+.bar .k{font-size:14px;color:#3a3a3a}
+.slide--ink .bar .k,.slide--deep .bar .k{color:#ffffffbf}
+.bar .t{background:#00000012;height:20px;position:relative;overflow:hidden}
+.slide--ink .bar .t,.slide--deep .bar .t{background:#ffffff1a}
+.bar .f{position:absolute;inset:0 auto 0 0;background:var(--amber);border-radius:0 3px 3px 0}
+.bar--muted .f{background:#b9b5ac}
+.slide--ink .bar--muted .f,.slide--deep .bar--muted .f{background:#ffffff59}
+.bar .v{font-family:var(--f-display);font-weight:600;font-size:15px;text-align:right}
+
+/* --- table ---------------------------------------------------------------- */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{
+  text-align:left;font-family:var(--f-display);font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--grey);
+  padding:0 14px 11px 0;border-bottom:1px solid var(--line);
+}
+td{padding:13px 14px 13px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}
+td:first-child{font-family:var(--f-display);font-weight:600;white-space:nowrap}
+.slide--ink th,.slide--ink td,.slide--deep th,.slide--deep td{border-bottom-color:var(--line-dark)}
+.slide--ink td,.slide--deep td{color:#ffffffbf}
+.slide--ink td:first-child,.slide--deep td:first-child{color:#fff}
+.hi{color:var(--amber)}
+
+/* --- pill / chip ---------------------------------------------------------- */
+.chip{
+  display:inline-block;background:var(--amber);color:var(--ink);
+  font-family:var(--f-display);font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;
+}
+.chip--ghost{background:transparent;color:var(--amber);border:1px solid var(--amber)}
+
+/* --- cover ---------------------------------------------------------------- */
+.cover{justify-content:space-between}
+.cover__top{display:flex;align-items:center;justify-content:space-between}
+.cover__logo{display:flex;align-items:center;gap:14px}
+.cover__logo img{height:44px;width:auto}
+.cover__logo b{font-family:var(--f-display);font-weight:700;font-size:27px;letter-spacing:-.03em;line-height:1}
+.cover__logo small{display:block;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--grey-2);margin-top:5px}
+.cover h1{font-size:88px}
+.cover__foot{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+
+/* --- founder -------------------------------------------------------------- */
+.founder{display:grid;grid-template-columns:300px 1fr;gap:54px;align-items:center}
+.founder__img{width:300px;height:340px;object-fit:cover;background:#2a2a2a}
+.founder__meta{font-size:13px;color:var(--grey);margin-top:10px}
+.slide--ink .founder__meta{color:#ffffff8c}
+
+/* --- fill marker for content the founder must supply ---------------------- */
+.tofill{
+  border-left:2px solid var(--amber);padding-left:14px;
+  font-size:13px;line-height:1.5;color:#8a6a12;background:#f2a81d14;
+  padding-block:8px;
+}
+.slide--ink .tofill,.slide--deep .tofill{color:var(--amber);background:#f2a81d14}
+
+/* --- print ---------------------------------------------------------------- */
+@page{size:1280px 720px;margin:0}
+@media print{
+  body{background:#fff}
+  .slide{margin:0;box-shadow:none}
+}
