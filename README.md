@@ -174,6 +174,23 @@ rather than implying certainty; do not "tidy" those hedges away.
 Charts are plain HTML bars, no library. Colour must encode something — a single series takes one hue, and any
 second colour needs a stated meaning in the caption.
 
+## Pitch deck
+
+`deck/` holds the Misk Launchpad deck: 18 slides of HTML at 1280x720, using the site's tokens, self-hosted
+typefaces and brand marks. It is excluded from the web deploy via `.vercelignore`.
+
+```bash
+python3 -m http.server 8901 &
+node deck/render.mjs http://127.0.0.1:8901
+```
+
+The renderer fails on a broken image and warns when content overflows a slide frame, which is the failure mode
+that silently crops a PDF.
+
+Photography is the real programme imagery from `assets/img/`, cropped into plates under `deck/img/`. Every data
+slide carries a visible source line. Amber `TO COMPLETE` blocks mark the two places that still need real
+information: programme figures, and the founder biography.
+
 ## Design system
 
 Cloned from the supplied reference: alternating near-black / off-white full-bleed bands, oversized tight-tracked
