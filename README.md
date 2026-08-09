@@ -116,10 +116,10 @@ gaps are the difference between a credible site and a strong one. Every location
 
 **Important:**
 
-6. **Photography.** Everything currently on the site is Unsplash stock, shot in Pakistan and Saudi Arabia and
-   labelled on the site as representative rather than as our own programmes. Real operational photography —
-   production, training, fieldwork, faces of people working rather than receiving — is the single biggest visual
-   upgrade available. Replace the files in `assets/img/photos/`; references live in `tools/pages/`.
+6. **Photography.** Our own programme photography now carries the home page field rail, five media bands and
+   five share cards. The rest of the site is still Unsplash stock, shot in Pakistan and Saudi Arabia. More
+   operational photography — production, distribution, follow-up visits, faces of people working rather than
+   receiving — is still the biggest visual upgrade available. See *Programme photography* below.
 7. **Arabic.** A properly written, RTL Arabic version is one of the fastest credibility signals available in
    the Gulf market, and its absence is noticed. Not machine translation.
 8. **Capability statement PDF** — a downloadable version of the method framework, linked from `method.html`.
@@ -130,6 +130,27 @@ gaps are the difference between a credible site and a strong one. Every location
    `form-action` and `connect-src` in the `vercel.json` CSP, which currently allows `'self'` only.
 
 ---
+
+## Programme photography
+
+Our own photographs live in `assets/img/` as the untouched originals and are cropped into web plates under
+`assets/img/field/`:
+
+```bash
+python3 tools/img/field.py
+```
+
+Cropping happens there rather than in CSS because `object-fit` centres blindly, and a centred crop of a 4:3
+phone photograph cuts the facilitator out of the frame she is standing in. Each plate names its own bias and
+zoom in the `PLATES` map. Rails need 3:4 portraits (`-p` suffix), media bands need 16:9.
+
+**The credit convention carries meaning and must be kept.** A band showing our own work carries
+`<div class="mband__cred">Torchbearer programme photography, Pakistan</div>`; representative photography carries
+nothing. The home page rail states the same split in its standfirst. Do not put the credit on an image we did
+not take at a session we ran — the site's entire argument is that its claims are checkable, and this is one of
+them. The training-cohort photograph on `/capabilities` is deliberately uncredited for that reason.
+
+Originals are excluded from the deploy in `.vercelignore`, so only the cropped plates ship.
 
 ## Share cards and structured data
 

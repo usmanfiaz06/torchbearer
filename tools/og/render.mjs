@@ -15,15 +15,15 @@ const OUT = 'assets/img/og';
 
 // slug: [eyebrow, title (| = line break), background photo id]
 const CARDS = {
-  index:        ['Sustainability · Inclusion · Impact', 'Where mandates|meet reality',      'photo-1514558427911-8e293bebf18c'],
-  about:        ['About',        'A social enterprise|built around delivery',               'photo-1651135135875-a6d458a9462d'],
+  index:        ['Sustainability · Inclusion · Impact', 'Where mandates|meet reality',      'field/session-women'],
+  about:        ['About',        'A social enterprise|built around delivery',               'field/village'],
   capabilities: ['Capabilities', 'What we are|built to do',                                 'photo-1606023760910-5577d0dbe7b5'],
-  programmes:   ['Programmes',   'Maahwari, and the|work around it',                        'photo-1698992985938-32e7cff274a3'],
-  evidence:     ['Evidence',     'Evidence,|on the record',                                 'photo-1645891697649-6548872ce502'],
+  programmes:   ['Programmes',   'Maahwari, and the|work around it',                        'field/classroom'],
+  evidence:     ['Evidence',     'Evidence,|on the record',                                 'field/worksheets'],
   alignment:    ['Alignment',    'One programme,|two frameworks',                           'photo-1716571349499-0b83f5dbb7a2'],
   method:       ['Method',       'Scope. Design. Deliver.|Measure. Verify.',                'photo-1698993082050-19ca94c62fb8'],
   insight:      ['Insight',      'Field notes|&amp; method papers',                         'photo-1565456796917-ba75922b081f'],
-  volunteer:    ['Volunteer',    'Volunteer|with us',                                       'photo-1778864875183-9a89ea0ac26f'],
+  volunteer:    ['Volunteer',    'Volunteer|with us',                                       'field/literacy-training'],
   'insight/third-sector':    ['Sector analysis · Saudi Arabia', "Saudi Arabia's third sector|grew ninefold", 'photo-1694018359679-49465b4c0d61'],
   'insight/disclosure-2030': ['Outlook · Saudi Arabia', 'Reported under|tomorrow\u2019s rules',        'photo-1716571349499-0b83f5dbb7a2'],
   'insight/flood-period-poverty': ['Climate & women\u2019s health', 'A flood does not|create period poverty', 'photo-1664868035693-7d3cba76826b'],

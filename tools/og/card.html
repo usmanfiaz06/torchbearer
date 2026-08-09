@@ -69,7 +69,7 @@
   if (q.get('tag')) document.getElementById('tag').textContent = q.get('tag');
   if (q.get('domain')) document.getElementById('domain').textContent = q.get('domain');
   var img = q.get('img');
-  if (img) document.getElementById('bg').src = '/assets/img/photos/' + img + '.jpg';
+  if (img) document.getElementById('bg').src = '/assets/img/' + (img.indexOf('/') < 0 ? 'photos/' : '') + img + '.jpg';
   else document.getElementById('bg').remove();
 </script>
 </body>
