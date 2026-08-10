@@ -16,7 +16,7 @@ import json
 import os
 import re
 
-# Public origin — used for canonical URLs, og:url and sitemap.xml.
+# Public origin, used for canonical URLs, og:url and sitemap.xml.
 # Change this when the production domain is confirmed.
 SITE_URL = "https://jointorchbearer.com"
 
@@ -49,66 +49,66 @@ PAGES_DIR = os.path.join(ROOT, "tools", "pages")
 # slug: (nav label or None to hide, <title>, meta description)
 PAGES = {
     "index": (None,
-              "Torchbearer — Delivery, design and verification for climate and social programmes",
+              "Torchbearer | Delivery, design and verification for climate and social programmes",
               "Torchbearer designs, delivers and verifies climate and social programmes in the environments that are "
-              "hardest to reach — and reports outcomes institutions can put their name to."),
-    "about": ("About", "About — Torchbearer",
+              "hardest to reach, and reports outcomes institutions can put their name to."),
+    "about": ("About", "About | Torchbearer",
               "Who Torchbearer is, how we are governed, and the principles we hold ourselves to."),
-    "capabilities": ("Capabilities", "Capabilities — Torchbearer",
+    "capabilities": ("Capabilities", "Capabilities | Torchbearer",
                      "Programme design, field delivery, measurement and verification, and advisory for institutions "
                      "running their own social and environmental programmes."),
-    "programmes": ("Programmes", "Programmes — Torchbearer",
-                   "Maahwari and our climate resilience programmes — what they do, how they are delivered, and what "
+    "programmes": ("Programmes", "Programmes | Torchbearer",
+                   "Maahwari and our climate resilience programmes: what they do, how they are delivered, and what "
                    "we measure."),
-    "evidence": ("Evidence", "Evidence — Torchbearer",
+    "evidence": ("Evidence", "Evidence | Torchbearer",
                  "Our evidence standard, what we publish for every programme, and the current programme record."),
-    "alignment": ("Alignment", "Alignment — Torchbearer",
+    "alignment": ("Alignment", "Alignment | Torchbearer",
                   "Every programme mapped to named Sustainable Development Goal targets, Saudi Vision 2030 and the "
                   "Saudi Green Initiative."),
-    "method": ("Method", "Method — Torchbearer",
-               "The Torchbearer framework: Scope, Design, Deliver, Measure, Verify — and the standards attached to "
+    "method": ("Method", "Method | Torchbearer",
+               "The Torchbearer framework: Scope, Design, Deliver, Measure, Verify, and the standards attached to "
                "each stage."),
-    "insight": ("Insight", "Insight — Torchbearer",
+    "insight": ("Insight", "Insight | Torchbearer",
                 "Field notes, method papers and programme data from Torchbearer."),
-    "insight/third-sector": (None, "Saudi Arabia's third sector grew ninefold. Its measurement did not. — Torchbearer",
+    "insight/third-sector": (None, "Saudi Arabia's third sector grew ninefold. Its measurement did not. | Torchbearer",
         "The Kingdom passed its 2030 volunteering target six years early and grew the non-profit sector from roughly "
         "SAR 8bn to SAR 73bn. Why the regulator's shift to professionalisation is a measurement problem."),
-    "insight/disclosure-2030": (None, "The programmes you fund now get reported under tomorrow's rules — Torchbearer",
+    "insight/disclosure-2030": (None, "The programmes you fund now get reported under tomorrow's rules | Torchbearer",
         "Six years of Saudi regulatory sequencing, ISSB-aligned standards in development, and no confirmed mandatory "
         "date. What a social programme designed today must carry to remain reportable under assurance."),
-    "insight/flood-period-poverty": (None, "A flood does not create period poverty — Torchbearer",
+    "insight/flood-period-poverty": (None, "A flood does not create period poverty | Torchbearer",
         "It removes the water, privacy and drying space that an already fragile practice depended on. What the "
         "2022 Pakistan floods showed about menstrual health in displacement, and why the product choice inverts."),
-    "insight/gender-gap": (None, "Two countries, opposite directions — Torchbearer",
+    "insight/gender-gap": (None, "Two countries, opposite directions | Torchbearer",
         "Saudi Arabia roughly doubled female labour force participation in under a decade. Pakistan finished last "
         "of 148 economies on gender parity. What transfers between them."),
-    "insight/capital-gap": (None, "One market broke records. The other lost nine-tenths of its funding. — Torchbearer",
+    "insight/capital-gap": (None, "One market broke records. The other lost nine-tenths of its funding. | Torchbearer",
         "Saudi venture funding reached $860m in H1 2025 alone. Pakistani startup funding fell about 90% from its "
         "peak. Why capital follows institutional confidence rather than need."),
-    "insight/access-to-finance": (None, "Thirteen per cent — Torchbearer",
+    "insight/access-to-finance": (None, "Thirteen per cent | Torchbearer",
         "The share of Pakistani women with a financial account, against 34% of men. Why income alone does not close "
         "the gap, and what it caps in any livelihoods programme."),
-    "insight/social-pillar": (None, "The S in ESG is the one nobody can prove — Torchbearer",
+    "insight/social-pillar": (None, "The S in ESG is the one nobody can prove | Torchbearer",
         "Environmental reporting has a common unit and social reporting has none, so it defaults to activity "
         "proxies. What makes a social outcome individually defensible instead."),
-    "insight/reuse-rate": (None, "Reusables only reduce waste if people keep using them — Torchbearer",
-        "Life-cycle evidence favours reusable menstrual products on nearly every impact — except when airfreighted. "
+    "insight/reuse-rate": (None, "Reusables only reduce waste if people keep using them | Torchbearer",
+        "Life-cycle evidence favours reusable menstrual products on nearly every impact, except when airfreighted. "
         "Why waste displacement should be modelled on observed reuse, not rated lifespan."),
-    "insight/impact-numbers": (None, "Why most impact numbers do not survive an audit — Torchbearer",
+    "insight/impact-numbers": (None, "Why most impact numbers do not survive an audit | Torchbearer",
         "No baseline, attrition absorbed into the result, attribution without a comparison, and reach reported in "
         "place of outcome. Four failure modes and the four questions that expose them."),
-    "insight/school-days": (None, "The school days nobody counts — Torchbearer",
+    "insight/school-days": (None, "The school days nobody counts | Torchbearer",
         "In 25,305 women surveyed in rural Sindh, 61.9% used old cloth and 12.6% used nothing at all. Cost was the "
         "barrier for 48.7%. What that means for how menstrual health programmes should be designed."),
-    "insight/thirty-days": (None, "What a flood response looks like thirty days in — Torchbearer",
+    "insight/thirty-days": (None, "What a flood response looks like thirty days in | Torchbearer",
         "33 million people affected by Pakistan's 2022 floods, 8.2 million of them women of reproductive age. The "
         "fourth week decides the outcome, and it falls in the gap between response and programming."),
-    "volunteer": ("Volunteer", "Volunteer with us — Torchbearer",
-                  "Volunteer with Torchbearer in Pakistan, Saudi Arabia or remotely — session delivery, data "
+    "volunteer": ("Volunteer", "Volunteer with us | Torchbearer",
+                  "Volunteer with Torchbearer in Pakistan, Saudi Arabia or remotely: session delivery, data "
                   "collection, translation, community liaison and professional-skills roles."),
-    "partner": (None, "Partner with us — Torchbearer",
+    "partner": (None, "Partner with us | Torchbearer",
                 "How Torchbearer works with institutions, funds, corporates and government entities."),
-    "404": (None, "Page not found — Torchbearer",
+    "404": (None, "Page not found | Torchbearer",
             "The page you were looking for does not exist."),
 }
 
@@ -191,7 +191,7 @@ def graph(slug, title, desc):
                            "name": PAGES[parent][0] or parent.title(),
                            "item": base + to_url(parent)})
         crumbs.append({"@type": "ListItem", "position": len(crumbs) + 1,
-                       "name": PAGES[slug][0] or title.split(" — ")[0], "item": page})
+                       "name": PAGES[slug][0] or title.split(" | ")[0], "item": page})
         nodes.append({
             "@type": "BreadcrumbList",
             "@id": page + "#breadcrumb",
@@ -270,7 +270,7 @@ SHELL = """<!DOCTYPE html>
 
 <header class="nav">
   <div class="wrap nav__in">
-    <a class="nav__brand" href="index.html" aria-label="Torchbearer — home">
+    <a class="nav__brand" href="index.html" aria-label="Torchbearer home">
       <img src="assets/img/mark-dark.png" alt="">
       <span class="nav__word">Torchbearer<small>Sustainability · Inclusion · Impact</small></span>
     </a>
@@ -370,7 +370,7 @@ def build():
             css_fonts=asset("assets/css/fonts.css"),
             css_main=asset("assets/css/main.css"),
             js_main=asset("assets/js/main.js"),
-            ogalt=esc("%s — %s" % (ORG["name"], title.split(" — ")[0])),
+            ogalt=esc("%s: %s" % (ORG["name"], title.split(" | ")[0])),
             graph=graph(slug, title, desc),
             navlinks="\n".join(navlinks), menulinks="\n".join(menulinks),
         ))
@@ -380,7 +380,7 @@ def build():
         written.append(slug + ".html")
     print("built %d pages: %s" % (len(written), ", ".join(written)))
 
-    # sitemap — every page except the 404
+    # sitemap: every page except the 404
     urls = [SITE_URL.rstrip("/") + to_url(s) for s in PAGES if s != "404"]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

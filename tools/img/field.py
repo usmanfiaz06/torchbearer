@@ -3,7 +3,7 @@ Crop the programme photographs in assets/img/ into web plates under assets/img/f
 
 Sources are phone photographs at 4:3 (and one panorama). The site uses them at three
 shapes: 3:4 portrait in the drag rails, 16:9 in the media bands, and 3:2 in cards.
-Cropping is done here rather than with CSS so the subject survives the crop — object-fit
+Cropping is done here rather than with CSS so the subject survives the crop. object-fit
 centres blindly, which cuts the presenter out of the frame she is standing in.
 
     python3 tools/img/field.py

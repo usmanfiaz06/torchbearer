@@ -55,7 +55,7 @@ for (const [slug, [eyebrow, title, img]] of Object.entries(CARDS)) {
     return { ok: el.complete && el.naturalWidth > 0, ratio: el.naturalWidth / el.naturalHeight };
   });
   if (!bg.ok) throw new Error(`background image failed to load for ${slug}`);
-  if (bg.ratio < 1.3) console.warn(`  ! ${slug}: source is ${bg.ratio.toFixed(2)}:1 — portrait sources crop badly at 1200x630`);
+  if (bg.ratio < 1.3) console.warn(`  ! ${slug}: source is ${bg.ratio.toFixed(2)}:1, portrait sources crop badly at 1200x630`);
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(250);
   await page.screenshot({ path: `${OUT}/${slug.replace('/', '-')}.jpg`, type: 'jpeg', quality: 86 });

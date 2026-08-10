@@ -1,4 +1,4 @@
-/* Torchbearer — interaction layer */
+/* Torchbearer interaction layer */
 (function () {
   'use strict';
 
@@ -111,7 +111,7 @@
     if (!cv) return;
     var ctx = cv.getContext('2d');
 
-    // soft density blobs — an abstraction of the landmasses, not a survey map
+    // soft density blobs, an abstraction of the landmasses, not a survey map
     var blobs = [
       [0.17, 0.30, 0.14], [0.25, 0.62, 0.10], [0.46, 0.26, 0.10],
       [0.51, 0.52, 0.12], [0.65, 0.31, 0.16], [0.80, 0.72, 0.07]
@@ -176,7 +176,7 @@
 
   /* ---------- volunteer form ---------- */
   /* No backend on a static site: compose a prefilled message and hand it to the
-     visitor's mail client. Swap for a real endpoint when one exists — see README. */
+     visitor's mail client. Swap for a real endpoint when one exists, see README. */
   function volunteerForm() {
     var form = $('[data-mailform]');
     if (!form) return;
@@ -192,7 +192,7 @@
       });
       var name = (form.querySelector('[name=name]') || {}).value || '';
       window.location.href = 'mailto:' + to +
-        '?subject=' + encodeURIComponent('Volunteer registration' + (name ? ' — ' + name : '')) +
+        '?subject=' + encodeURIComponent('Volunteer registration' + (name ? ': ' + name : '')) +
         '&body=' + encodeURIComponent(lines.join('\n'));
     });
   }
