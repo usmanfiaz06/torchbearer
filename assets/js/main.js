@@ -82,11 +82,23 @@
     function pad(n) { return n < 10 ? '0' + n : '' + n; }
     function go(d) { i = (i + d + items.length) % items.length; draw(); }
 
+    /* Opt-in autoplay via data-auto="ms". Stops for good on the first interaction,
+       so it never fights someone who is reading. */
+    var timer = null;
+    var auto = parseInt(root.getAttribute('data-auto'), 10);
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function start() { if (auto && !still && !timer) timer = setInterval(function () { go(1); }, auto); }
+
     $$('[data-go]', root).forEach(function (b) {
-      b.addEventListener('click', function () { go(parseInt(b.getAttribute('data-go'), 10)); });
+      b.addEventListener('click', function () { stop(); auto = 0; go(parseInt(b.getAttribute('data-go'), 10)); });
     });
-    dots.forEach(function (d, n) { d.addEventListener('click', function () { i = n; draw(); }); });
+    dots.forEach(function (d, n) { d.addEventListener('click', function () { stop(); auto = 0; i = n; draw(); }); });
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
     draw();
+    start();
   }
 
   /* ---------- reveal on scroll ---------- */
@@ -197,11 +209,41 @@
     });
   }
 
+  /* ---------- SDG mapping cards ----------
+     Markup ships open so the mapping reads without JS. Collapsing is switched on
+     here by marking the container, then the first card is opened. */
+  function sdgCards(root) {
+    var cards = $$('.sdg', root);
+    if (!cards.length) return;
+    root.classList.add('is-js');
+
+    function open(card, on) {
+      card.classList.toggle('is-on', on);
+      var hd = card.querySelector('.sdg__hd');
+      if (hd) hd.setAttribute('aria-expanded', on ? 'true' : 'false');
+    }
+
+    cards.forEach(function (card, i) {
+      open(card, i === 0);
+      var hd = card.querySelector('.sdg__hd');
+      if (!hd) return;
+      hd.addEventListener('click', function () {
+        var wasOn = card.classList.contains('is-on');
+        cards.forEach(function (c) { open(c, false); });
+        open(card, !wasOn);
+      });
+    });
+
+    var hint = document.querySelector('[data-sdghint]');
+    if (hint) hint.hidden = false;
+  }
+
   /* ---------- year + init ---------- */
   function boot() {
     $$('[data-year]').forEach(function (e) { e.textContent = new Date().getFullYear(); });
     nav(); rails(); reveal(); dotmap(); volunteerForm();
     $$('[data-cycler]').forEach(cycler);
+    $$('[data-sdg]').forEach(sdgCards);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);

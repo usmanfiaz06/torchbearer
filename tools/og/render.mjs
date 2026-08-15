@@ -26,6 +26,7 @@ const CARDS = {
   volunteer:    ['Volunteer',    'Volunteer|with us',                                       'field/literacy-training'],
   'insight/third-sector':    ['Sector analysis · Saudi Arabia', "Saudi Arabia's third sector|grew ninefold", 'photo-1694018359679-49465b4c0d61'],
   'insight/disclosure-2030': ['Outlook · Saudi Arabia', 'Reported under|tomorrow\u2019s rules',        'photo-1716571349499-0b83f5dbb7a2'],
+  'insight/women-in-ai-asia': ['Women & technology · Asia', 'The best number|and the widest gap', 'field/literacy-training'],
   'insight/flood-period-poverty': ['Climate & women\u2019s health', 'A flood does not|create period poverty', 'photo-1664868035693-7d3cba76826b'],
   'insight/gender-gap':        ['Women & gender', 'Two countries,|opposite directions',        'photo-1633279305915-3760f40ae70d'],
   'insight/capital-gap':       ['Investment', 'One market broke records.|The other lost 90%.',   'photo-1783261289456-1215b34c52e1'],

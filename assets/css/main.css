@@ -255,15 +255,34 @@ body{
 .orbit{position:relative;aspect-ratio:1;max-width:520px;margin-inline:auto;width:100%}
 .orbit svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .orbit__disc{
-  position:absolute;left:12%;top:12%;width:76%;height:76%;border-radius:50%;
+  position:absolute;left:11%;top:11%;width:70%;height:70%;border-radius:50%;
   overflow:hidden;background:var(--paper-2);
 }
 .orbit__disc img{width:100%;height:100%;object-fit:cover;transition:opacity .5s var(--ease)}
-.orbit__chip{
-  position:absolute;width:64px;height:64px;border-radius:50%;overflow:hidden;
-  right:6%;bottom:12%;border:4px solid var(--paper);
+/* The five inactive targets ride the arc; the active one is the big disc, and its
+   place on the ring collapses to an amber marker so the position stays legible. */
+.orbit__ring{position:absolute;inset:0}
+.orbit__pip{
+  --sz:clamp(42px,6.4vw,58px);
+  position:absolute;width:var(--sz);height:var(--sz);border-radius:50%;padding:0;
+  transform:translate(-50%,-50%);overflow:hidden;
+  border:3px solid var(--paper);background:var(--paper-2);
+  transition:transform .55s var(--ease),width .45s var(--ease),height .45s var(--ease),
+             border-color .35s var(--ease),box-shadow .35s var(--ease);
 }
-.orbit__chip img{width:100%;height:100%;object-fit:cover}
+.orbit__pip img{width:100%;height:100%;object-fit:cover;transition:opacity .4s var(--ease),transform .8s var(--ease)}
+.orbit__pip:hover{transform:translate(-50%,-50%) scale(1.14);box-shadow:0 10px 26px #00000024}
+.orbit__pip:hover img{transform:scale(1.09)}
+.orbit__pip:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.orbit__pip.is-on{
+  --sz:clamp(13px,1.5vw,17px);
+  background:var(--amber);border-color:var(--paper);
+}
+.orbit__pip.is-on img{opacity:0}
+.orbit__pip.is-on:hover{transform:translate(-50%,-50%) scale(1.2);box-shadow:none}
+@media (prefers-reduced-motion:reduce){
+  .orbit__pip,.orbit__pip img{transition:none}
+}
 
 /* --- editorial cards ------------------------------------------------------ */
 .ed__head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:start;margin-bottom:clamp(40px,5vw,72px)}
@@ -454,6 +473,88 @@ body{
 .stat b{display:block;font-family:var(--f-display);font-weight:600;font-size:clamp(2rem,3.6vw,3.2rem);letter-spacing:-.04em;line-height:1}
 .stat span{display:block;font-size:.82rem;color:var(--grey);margin-top:10px;max-width:26ch;line-height:1.5}.band--ink .stat span,
 .band--deep .stat span{color:#ffffff8c}
+
+/* SDG mapping cards.
+   Replaces a four-column table that could not survive a phone. Each card carries the
+   official goal colour in --g. Bodies are open by default and only collapsible once
+   main.js has marked the container, so the mapping is fully readable without JS. */
+.sdgs{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.4vw,18px);align-items:start}
+.sdg{
+  position:relative;background:#ffffff0a;border:1px solid var(--line-dark);
+  transition:background .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease);
+}
+.sdg::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--g);
+  transform:scaleY(0);transform-origin:top;transition:transform .5s var(--ease);
+}
+.sdg:hover{background:#ffffff12;border-color:#ffffff3d}
+.sdg.is-on{background:#ffffff12;border-color:#ffffff42}
+.sdg.is-on::before,.sdg:hover::before{transform:scaleY(1)}
+.sdg__hd{
+  width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:clamp(14px,1.6vw,22px);
+  align-items:start;text-align:left;padding:clamp(18px,2vw,26px);color:inherit;
+}
+.sdg__n{
+  flex:0 0 auto;width:74px;min-height:74px;background:var(--g);color:#fff;
+  display:flex;flex-direction:column;justify-content:center;gap:3px;padding:9px 10px;
+  transition:transform .45s var(--ease);
+}
+.sdg:hover .sdg__n,.sdg.is-on .sdg__n{transform:translateY(-2px)}
+.sdg__n b{font-family:var(--f-display);font-size:1.55rem;font-weight:700;letter-spacing:-.04em;line-height:.9}
+.sdg__n i{font-style:normal;font-family:var(--f-display);font-size:.5rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;line-height:1.15;opacity:.95}
+.sdg__tg{
+  display:block;font-family:var(--f-display);font-size:.62rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--g);margin-bottom:9px;
+}
+.sdg__ttl{
+  display:block;font-family:var(--f-display);font-size:clamp(.98rem,1.25vw,1.14rem);
+  font-weight:600;letter-spacing:-.02em;line-height:1.25;color:#fff;
+}
+.sdg__ic{
+  width:30px;height:30px;border-radius:50%;border:1px solid var(--line-dark);
+  display:grid;place-items:center;flex:0 0 auto;margin-top:2px;
+  transition:transform .45s var(--ease),background .35s var(--ease),border-color .35s var(--ease);
+}
+.sdg__ic svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:1.8}
+.sdg:hover .sdg__ic{background:var(--g);border-color:var(--g)}
+.sdg.is-on .sdg__ic{transform:rotate(180deg);background:var(--g);border-color:var(--g)}
+.sdg__wrap{display:block}
+/* Padding lives on the rows, not on .sdg__body. Body padding would set a floor on the
+   collapsed grid track and leave a sliver of the panel showing when the card is shut. */
+.sdg__body{--pad:clamp(18px,2vw,26px);padding:0}
+.sdg__row{
+  display:grid;grid-template-columns:1fr;gap:4px;
+  padding:13px 0;margin-left:calc(var(--pad) + 74px + clamp(14px,1.6vw,22px));margin-right:var(--pad);
+  border-top:1px solid var(--line-dark);
+}
+.sdg__row:last-child{padding-bottom:calc(13px + var(--pad))}
+.sdg__row span{
+  font-family:var(--f-display);font-size:.6rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:#ffffff73;
+}
+.sdg__row p{font-size:.92rem;line-height:1.5;color:#ffffffdb}
+.sdghint{
+  font-family:var(--f-display);font-size:.66rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:#ffffff73;margin-top:clamp(20px,2.4vw,30px);
+}
+/* collapsed state, applied only once JS is running */
+.sdgs.is-js .sdg__wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.sdgs.is-js .sdg.is-on .sdg__wrap{grid-template-rows:1fr}
+.sdgs.is-js .sdg__wrap > .sdg__body{overflow:hidden;min-height:0}
+@media (prefers-reduced-motion:reduce){
+  .sdgs.is-js .sdg__wrap{transition:none}
+  .sdg,.sdg__n,.sdg__ic,.sdg::before{transition:none}
+}
+@media (max-width:900px){
+  .sdgs{grid-template-columns:1fr}
+  .sdg__row{margin-left:var(--pad)}
+}
+@media (max-width:560px){
+  .sdg__hd{grid-template-columns:auto 1fr;gap:14px}
+  .sdg__ic{grid-column:2;justify-self:end;margin-top:10px}
+  .sdg__n{width:60px;min-height:60px}
+  .sdg__n b{font-size:1.25rem}
+}
 
 /* data table */
 .tbl{width:100%;border-collapse:collapse;font-size:.9rem}

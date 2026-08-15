@@ -76,6 +76,10 @@ PAGES = {
     "insight/disclosure-2030": (None, "The programmes you fund now get reported under tomorrow's rules | Torchbearer",
         "Six years of Saudi regulatory sequencing, ISSB-aligned standards in development, and no confirmed mandatory "
         "date. What a social programme designed today must carry to remain reportable under assurance."),
+    "insight/women-in-ai-asia": (None, "The best number in the world, and the widest gap | Torchbearer",
+        "Indian women lead the world on AI skill penetration and Saudi Arabia has the highest female share "
+        "of AI talent in the index. South Asia also has the widest digital gender gap on earth. What "
+        "connects them is not being measured."),
     "insight/flood-period-poverty": (None, "A flood does not create period poverty | Torchbearer",
         "It removes the water, privacy and drying space that an already fragile practice depended on. What the "
         "2022 Pakistan floods showed about menstrual health in displacement, and why the product choice inverts."),
