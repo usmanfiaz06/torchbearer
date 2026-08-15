@@ -474,6 +474,177 @@ body{
 .stat span{display:block;font-size:.82rem;color:var(--grey);margin-top:10px;max-width:26ch;line-height:1.5}.band--ink .stat span,
 .band--deep .stat span{color:#ffffff8c}
 
+/* --- capabilities page ---------------------------------------------------- */
+/* Five capabilities that were five identical prose blocks. Each now carries its own
+   device: a deliverables grid, a photograph, a process chain, a brief list, a pair of
+   reasons. The outlined numeral is the thread running through all of them. */
+.capidx{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
+.capidx__i{
+  display:block;padding:22px 20px 22px 0;border-bottom:1px solid var(--line);
+  transition:background .35s var(--ease),padding-left .35s var(--ease);
+}
+.capidx__i b{
+  display:block;font-family:var(--f-display);font-size:.7rem;font-weight:600;
+  letter-spacing:.14em;color:var(--amber);margin-bottom:9px;
+}
+.capidx__i span{
+  display:block;font-family:var(--f-display);font-size:.95rem;font-weight:600;
+  letter-spacing:-.02em;line-height:1.2;max-width:14ch;
+}
+.capidx__i:hover{background:#0000000a;padding-left:14px}
+
+.caphead{
+  display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(20px,3.4vw,56px);align-items:start;
+  margin-bottom:clamp(40px,5vw,72px);padding-top:clamp(6px,1vw,14px);
+}
+.caphead__no{
+  font-family:var(--f-display);font-weight:700;line-height:.8;
+  font-size:clamp(3.4rem,7vw,6.4rem);letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1.5px var(--amber);
+}
+.caphead .lead{padding-top:.5em}
+
+.capgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,64px);align-items:start}
+.minihd{
+  font-family:var(--f-display);font-size:.66rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--grey);
+  padding-bottom:14px;margin-bottom:22px;border-bottom:1px solid var(--line);
+}.band--ink .minihd,
+.band--deep .minihd{color:var(--grey-2);border-color:var(--line-dark)}
+
+.ticks{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.ticks li{position:relative;padding-left:30px;font-size:.95rem;line-height:1.6}
+.ticks li::before{
+  content:"";position:absolute;left:2px;top:.52em;width:11px;height:6px;
+  border-left:1.5px solid var(--amber);border-bottom:1.5px solid var(--amber);
+  transform:rotate(-45deg);
+}
+
+.deliv{display:grid;gap:12px}
+.deliv__i{
+  display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+  padding:18px 20px;border:1px solid var(--line);background:#00000005;
+  transition:border-color .35s var(--ease),transform .35s var(--ease),background .35s var(--ease);
+}
+.deliv__i:hover{border-color:#00000038;transform:translateX(4px);background:#0000000a}
+.deliv__i b{font-family:var(--f-display);font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--amber);padding-top:.2em}
+.deliv__i p{font-size:.93rem;line-height:1.55}
+
+.callout{
+  margin-top:clamp(36px,4.5vw,64px);border-left:3px solid var(--amber);
+  padding:clamp(20px,2.4vw,30px) clamp(22px,2.6vw,34px);background:#00000006;
+}
+.callout p{
+  font-family:var(--f-display);font-size:clamp(1.05rem,1.7vw,1.5rem);font-weight:600;
+  letter-spacing:-.025em;line-height:1.28;max-width:52ch;
+}.band--ink .callout,
+.band--deep .callout{background:#ffffff0d}
+
+.capsplit{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(28px,4vw,72px);align-items:start}
+.capsplit--flip{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.capshot{position:sticky;top:100px}
+.capshot img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.capshot figcaption{
+  margin-top:16px;font-size:.84rem;line-height:1.5;color:#ffffff8c;
+  padding-left:14px;border-left:2px solid var(--amber);max-width:34ch;
+}
+
+.chain{
+  list-style:none;padding:0;margin:0 0 clamp(44px,5vw,76px);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.8vw,26px);
+}
+.chain__s{position:relative;padding-top:26px;border-top:1px solid var(--line)}
+.chain__s::before{
+  content:"";position:absolute;top:-4.5px;left:0;width:9px;height:9px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--amber);
+}
+.chain__s:last-child::before{background:var(--amber)}
+.chain__s b{font-family:var(--f-display);font-size:.68rem;font-weight:600;letter-spacing:.14em;color:var(--amber)}
+.chain__s h4{
+  font-family:var(--f-display);font-size:clamp(1.05rem,1.7vw,1.4rem);font-weight:600;
+  letter-spacing:-.028em;line-height:1.1;margin:10px 0 10px;
+}
+.chain__s p{font-size:.9rem;line-height:1.55;color:var(--grey);max-width:24ch}
+
+.panel{border:1px solid var(--line);padding:clamp(24px,2.8vw,36px)}
+.panel .minihd{margin-bottom:20px}
+.panel--accent{border-color:#00000030;background:#00000008;box-shadow:inset 3px 0 0 var(--amber)}
+
+.briefs{list-style:none;padding:0;margin:0;counter-reset:b;display:grid}
+.briefs li{
+  counter-increment:b;position:relative;padding:18px 0 18px 46px;
+  border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.55;
+  transition:padding-left .35s var(--ease);
+}
+.briefs li:first-child{border-top:1px solid var(--line)}
+.briefs li::before{
+  content:counter(b,decimal-leading-zero);position:absolute;left:0;top:19px;
+  font-family:var(--f-display);font-size:.7rem;font-weight:600;letter-spacing:.1em;color:var(--amber);
+}
+.briefs li:hover{padding-left:54px}
+.drop::first-letter{
+  float:left;font-family:var(--f-display);font-weight:700;font-size:3.4em;
+  line-height:.78;padding:.06em .12em 0 0;color:var(--amber);
+}
+
+.capsub{
+  font-family:var(--f-display);font-size:.7rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--grey-2);margin-bottom:clamp(18px,2vw,26px);
+}
+.twoup{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px)}
+.reason{
+  padding:clamp(26px,3vw,42px);border:1px solid var(--line-dark);
+  transition:background .4s var(--ease),border-color .4s var(--ease);
+}
+.reason:hover{background:#ffffff0f;border-color:#ffffff42}
+.reason span{
+  display:block;font-family:var(--f-display);font-size:.66rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:18px;
+}
+.reason h3{
+  font-family:var(--f-display);font-size:clamp(1.15rem,2.1vw,1.8rem);font-weight:600;
+  letter-spacing:-.03em;line-height:1.16;
+}
+.terms{display:flex;flex-wrap:wrap;gap:10px}
+.term{
+  border:1px solid var(--line-dark);border-radius:999px;padding:.75em 1.3em;
+  font-family:var(--f-display);font-size:.76rem;font-weight:600;letter-spacing:-.01em;
+}
+.pullbig{
+  margin-top:clamp(40px,5vw,72px);max-width:22ch;
+  font-family:var(--f-display);font-weight:700;letter-spacing:-.035em;line-height:1.02;
+  font-size:clamp(1.7rem,3.6vw,3.2rem);
+}
+
+.nots{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+.not{position:relative;padding:clamp(24px,2.8vw,36px);background:var(--white);border:1px solid var(--line)}
+.not::before{
+  content:"";position:absolute;left:clamp(24px,2.8vw,36px);top:0;width:26px;height:2px;background:var(--amber);
+}
+.not h4{
+  font-family:var(--f-display);font-size:clamp(1rem,1.5vw,1.22rem);font-weight:600;
+  letter-spacing:-.025em;line-height:1.15;margin:22px 0 12px;text-decoration:line-through;
+  text-decoration-color:#00000038;text-decoration-thickness:1.5px;
+}
+.not p{font-size:.9rem;line-height:1.6;color:var(--grey)}
+
+@media (max-width:1000px){
+  .capidx{grid-template-columns:repeat(2,1fr);column-gap:20px}
+  .caphead{grid-template-columns:auto 1fr;row-gap:18px}
+  .caphead .lead{grid-column:1/-1;padding-top:0}
+  .capgrid,.capsplit,.capsplit--flip,.twoup,.nots{grid-template-columns:1fr}
+  .chain{grid-template-columns:repeat(2,1fr)}
+  .capshot{position:static}
+  .capshot img{aspect-ratio:16/10}
+  .capshot figcaption{color:#ffffff8c}
+}
+@media (max-width:620px){
+  .capidx{grid-template-columns:1fr}
+  .chain{grid-template-columns:1fr}
+  .caphead__no{font-size:2.8rem}
+}
+
 /* SDG mapping cards.
    Replaces a four-column table that could not survive a phone. Each card carries the
    official goal colour in --g. Bodies are open by default and only collapsible once
