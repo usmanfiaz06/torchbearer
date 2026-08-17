@@ -4,6 +4,7 @@ README.md
 Torchbearers-whiteBG.png
 .gitignore
 deck/
+funding/
 
 # Source photographs. tools/img/field.py crops these into assets/img/field/,
 # which is what the site actually loads.
