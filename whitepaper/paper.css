@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Torchbearer white paper
+   A4 portrait (794 x 1123 at 96dpi), one .page per printed page.
+   Shares the website's tokens; extends them with gradient fields and the
+   circle motif lifted from the mark.
+   ========================================================================== */
+
+@import url(../assets/css/fonts.css);
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+img,svg{display:block;max-width:100%}
+p,h1,h2,h3,h4,figure,blockquote,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+
+:root{
+  --ink:#0d0d0d;
+  --deep:#0f1720;
+  --paper:#f0efec;
+  --paper-2:#e6e4df;
+  --white:#fff;
+  --amber:#f2a81d;
+  --amber-2:#f7c766;
+  --amber-pale:#fbe7bd;
+  --taupe:#c69c6d;
+  --grey:#767676;
+  --grey-2:#a5a5a5;
+  --line:#0000001c;
+  --line-dark:#ffffff26;
+  --f-display:"Inter Tight","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-body:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mx:58px;            /* page side margin */
+}
+
+@page{size:210mm 297mm;margin:0}
+
+body{
+  background:#3d3d3d;
+  font-family:var(--f-body);
+  color:var(--ink);
+  font-size:10.4px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  font-feature-settings:"ss01","cv11";
+}
+
+/* --- page shell ----------------------------------------------------------- */
+.page{
+  position:relative;
+  width:794px;height:1123px;
+  margin:0 auto 28px;
+  background:var(--paper);
+  overflow:hidden;
+  break-after:page;page-break-after:always;
+}
+.page:last-child{break-after:auto;page-break-after:auto;margin-bottom:0}
+.page--white{background:var(--white)}
+.page--ink{background:var(--ink);color:#fff}
+.page--deep{background:var(--deep);color:#fff}
+.pad{position:absolute;inset:0;padding:56px var(--mx) 64px;display:flex;flex-direction:column}
+
+/* running furniture */
+.run{
+  position:absolute;left:var(--mx);right:var(--mx);bottom:26px;z-index:6;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--f-display);font-size:7.6px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:#00000059;
+}
+.run b{font-weight:600;color:#000000a6}
+.run .n{font-size:8.5px;letter-spacing:.08em;color:#000000a6}
+.page--ink .run,.page--deep .run,.on-img .run{color:#ffffff73}
+.page--ink .run b,.page--deep .run b,.on-img .run b,
+.page--ink .run .n,.page--deep .run .n,.on-img .run .n{color:#ffffffc7}
+
+/* --- type ----------------------------------------------------------------- */
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:600;letter-spacing:-.04em;line-height:.92}
+.mega{font-size:96px;line-height:.86;letter-spacing:-.055em;font-weight:500}
+.h1{font-size:64px;line-height:.9;letter-spacing:-.05em;font-weight:500}
+.h2{font-size:40px;line-height:.95;letter-spacing:-.045em;font-weight:500}
+.h3{font-size:19px;line-height:1.12;letter-spacing:-.025em;font-weight:600}
+.h4{font-size:12.5px;line-height:1.25;letter-spacing:-.01em;font-weight:600}
+.kick{
+  font-family:var(--f-display);font-size:8px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--grey);
+}
+.page--ink .kick,.page--deep .kick,.on-img .kick{color:var(--amber)}
+.lede{font-family:var(--f-display);font-size:15.5px;line-height:1.42;letter-spacing:-.012em;color:#1c1c1c;font-weight:400}
+.page--ink .lede,.page--deep .lede,.on-img .lede{color:#ffffffde}
+.body p{font-size:10.4px;line-height:1.62;color:#2b2b2b}
+.body p+p{margin-top:9px}
+.page--ink .body p,.page--deep .body p{color:#ffffffb8}
+.body strong{color:var(--ink);font-weight:600}
+.page--ink .body strong,.page--deep .body strong{color:#fff}
+.small{font-size:8.6px;line-height:1.55;color:var(--grey)}
+.page--ink .small,.page--deep .small{color:#ffffff85}
+.amber{color:var(--amber)}
+.num{font-family:var(--f-display);font-weight:500;letter-spacing:-.05em;line-height:.85;font-variant-numeric:lining-nums tabular-nums}
+.x{font-family:var(--f-display);font-size:18px;font-weight:300;line-height:1}
+sup.fn{font-size:6.6px;font-weight:600;color:var(--amber);margin-left:1px;vertical-align:super;line-height:0}
+.src{
+  font-size:7.4px;line-height:1.5;color:#00000070;
+  border-top:1px solid var(--line);padding-top:7px;
+}
+.page--ink .src,.page--deep .src,.on-img .src{color:#ffffff80;border-top-color:var(--line-dark)}
+
+/* --- layout helpers ------------------------------------------------------- */
+.row{display:flex;gap:28px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.grow{flex:1;min-height:0}
+.end{margin-top:auto}
+.rule{height:1px;background:var(--line);border:0}
+.page--ink .rule,.page--deep .rule{background:var(--line-dark)}
+
+/* --- imagery -------------------------------------------------------------- */
+.bleed{position:absolute;inset:0}
+.bleed img,.ph img{width:100%;height:100%;object-fit:cover}
+.ph{position:relative;overflow:hidden;background:var(--paper-2)}
+.ph figcaption{
+  position:absolute;left:10px;bottom:8px;
+  font-family:var(--f-display);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:#ffffffc0;
+}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,#0d0d0d00 30%,#0d0d0dd9 100%)}
+.shade--top{background:linear-gradient(180deg,#0d0d0dcc 0%,#0d0d0d00 45%,#0d0d0d00 60%,#0d0d0de6 100%)}
+.duo{filter:grayscale(1) contrast(1.05)}
+
+/* --- gradient fields & circles (from the mark) ---------------------------- */
+.field{background:linear-gradient(90deg,var(--paper) 0%,var(--amber-pale) 38%,var(--amber) 100%)}
+.field--v{background:linear-gradient(180deg,var(--amber-pale) 0%,var(--amber) 100%)}
+.field--ink{background:linear-gradient(90deg,#0d0d0d 0%,#2a2114 55%,#c98a14 100%);color:#fff}
+.orb{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--amber-2) 0%,var(--amber) 45%,#d98f0c 100%)}
+.orb--soft{background:radial-gradient(circle at 70% 30%,#fbe7bd 0%,#f2a81d 70%)}
+.orb--line{background:none;border:1px solid #0000002e}
+.orb--taupe{background:radial-gradient(circle at 30% 30%,#dcc1a0 0%,var(--taupe) 70%)}
+
+/* --- stat blocks ---------------------------------------------------------- */
+.stat .v{font-family:var(--f-display);font-weight:500;letter-spacing:-.055em;line-height:.85;font-size:46px}
+.stat .v small{font-size:.42em;letter-spacing:-.02em;margin-left:2px;font-weight:500}
+.stat .l{font-family:var(--f-display);font-size:11px;font-weight:600;letter-spacing:-.01em;margin:0 0 8px}
+.stat p{font-size:8.8px;line-height:1.5;color:#3a3a3a;max-width:30ch;margin-top:9px}
+.page--ink .stat p,.page--deep .stat p,.field--ink .stat p{color:#ffffffa8}
+
+/* numbered list, reference-style */
+.nlist li{display:grid;grid-template-columns:34px 1fr;gap:6px;padding:12px 0;border-top:1px solid var(--line)}
+.nlist li:last-child{border-bottom:1px solid var(--line)}
+.nlist .i{font-family:var(--f-display);font-size:11px;font-weight:500;color:var(--grey);padding-top:1px}
+.nlist h4{font-size:12.5px;font-weight:600;letter-spacing:-.015em;margin-bottom:4px;line-height:1.2}
+.nlist p{font-size:9.3px;line-height:1.55;color:#3a3a3a}
+.page--ink .nlist li,.page--deep .nlist li{border-color:var(--line-dark)}
+.page--ink .nlist p,.page--deep .nlist p{color:#ffffffab}
+
+/* pull quote */
+.pull{font-family:var(--f-display);font-weight:400;font-size:24px;line-height:1.16;letter-spacing:-.03em}
+.pull::before{content:"\201C";display:block;font-size:54px;line-height:.6;color:var(--amber);margin-bottom:4px;font-weight:500}
+.cite{font-family:var(--f-display);font-size:8px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-top:12px}
+
+/* chip */
+.chip{display:inline-block;border:1px solid currentColor;border-radius:99px;padding:2px 9px;font-family:var(--f-display);font-size:8px;font-weight:600;letter-spacing:.06em}
+
+/* charts */
+.chart text{font-family:var(--f-display)}
