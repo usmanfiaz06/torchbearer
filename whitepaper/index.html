@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Designing financial systems for agency, resilience and productive participation · Torchbearer</title>
+<link rel="stylesheet" href="paper.css">
+<style>
+/* page-specific compositions live here; shared system is in paper.css */
+
+/* 01 cover */
+.cover{background:#e9a34a}
+.cover .bleed img{object-position:38% 100%}
+.cover .wash{position:absolute;inset:0;background:linear-gradient(180deg,#f3b25bf2 0%,#f0a95280 34%,#0d0d0d00 55%,#0d0d0d00 72%,#0d0d0dd9 100%)}
+.cover .top{position:absolute;left:var(--mx);right:var(--mx);top:48px;display:flex;justify-content:space-between;align-items:flex-start}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:-.01em}
+.brand img{height:26px;width:auto}
+.cover .meta{text-align:right;font-family:var(--f-display);font-size:8px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;line-height:1.7}
+.cover h1{position:absolute;left:var(--mx);right:70px;top:150px;font-size:61px;line-height:.94;letter-spacing:-.052em;font-weight:500;color:var(--ink)}
+.cover h1 em{font-style:normal;color:#fff}
+.cover .foot{position:absolute;left:var(--mx);right:var(--mx);bottom:46px;color:#fff;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end}
+.cover .foot p{font-family:var(--f-display);font-size:13px;line-height:1.4;letter-spacing:-.01em;color:#ffffffe0}
+.cover .foot .kick{color:var(--amber);margin-bottom:10px}
+.cover .tag{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
+.cover .tag span{border:1px solid #ffffff6b;border-radius:99px;padding:4px 11px;font-family:var(--f-display);font-size:8.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+
+/* 02 summary */
+.sum-head{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:end;margin-top:14px}
+.band-stats{margin:30px calc(var(--mx) * -1) 0;padding:26px var(--mx) 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.band-stats .stat{border-left:1px solid #0000002a;padding-left:14px}
+.band-stats .stat:nth-child(n+3){border-left-color:#ffffff6e}
+.band-stats .stat:nth-child(n+3) .v,.band-stats .stat:nth-child(n+3) .l{color:var(--ink)}
+.findings{display:grid;grid-template-columns:1.35fr .65fr;gap:34px;margin-top:28px}
+.about-rt{background:var(--ink);color:#fff;padding:20px 20px 22px;border-radius:2px;position:relative;overflow:hidden}
+.about-rt p{font-size:9px;line-height:1.55;color:#ffffffb3}
+.about-rt p+p{margin-top:8px}
+.about-rt h4{font-size:15px;line-height:1.1;margin:10px 0 12px;font-weight:500;letter-spacing:-.03em}
+.about-rt .orb{width:110px;height:110px;right:-52px;bottom:-52px;opacity:.9}
+.about-rt > *:not(.orb){position:relative}
+
+/* 03 rails */
+.rails-photo{position:absolute;left:0;right:0;top:0;height:470px}
+.rails-photo .shade{background:linear-gradient(180deg,#0d0d0d33 0%,#0d0d0d00 30%,#0d0d0d00 55%,#0d0d0d 100%)}
+.rails-title{position:absolute;left:var(--mx);right:var(--mx);top:300px}
+.rails-body{position:absolute;left:var(--mx);right:var(--mx);top:500px;bottom:200px;display:grid;grid-template-columns:.95fr 1.05fr;gap:36px}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.tri .stat .v{font-size:36px}
+.tri .stat{border-top:1px solid var(--line-dark);padding-top:12px}
+
+.rail-line{position:absolute;left:var(--mx);right:var(--mx);bottom:64px}
+.rl{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--line-dark)}
+.rl div{padding:12px 10px 0 0;position:relative}
+.rl div::before{content:"";position:absolute;left:0;top:-4px;width:7px;height:7px;border-radius:50%;background:var(--amber)}
+.rl b{font-family:var(--f-display);font-size:15px;font-weight:500;letter-spacing:-.03em;color:#fff;display:block;margin-bottom:3px}
+.rl p{font-size:8.2px;line-height:1.45;color:#ffffff99}
+/* 04 averages */
+.ladder .lrow{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;padding:8px 0}
+.ladder .lab{font-family:var(--f-display);font-size:10px;font-weight:500;letter-spacing:-.005em;line-height:1.2}
+.ladder .bar{height:16px;background:var(--paper-2);border-radius:99px;position:relative;overflow:hidden}
+.ladder .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:var(--ink)}
+.ladder .bar i.a{background:linear-gradient(90deg,var(--amber-pale),var(--amber))}
+.ladder .val{font-family:var(--f-display);font-size:12px;font-weight:600;text-align:right;letter-spacing:-.02em}
+.cliff{position:relative}
+.cliff .note{position:absolute;right:58px;top:118px;width:150px;font-family:var(--f-display);font-size:9px;line-height:1.35;color:var(--grey);border-left:1px solid var(--amber);padding-left:8px}
+.ems{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:center}
+.legend li{display:grid;grid-template-columns:10px 1fr 22px;gap:7px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line);font-size:8.8px;line-height:1.25}
+.legend li b{font-family:var(--f-display);font-weight:600;text-align:right}
+.legend i{width:10px;height:10px;border-radius:50%;display:block}
+
+/* 05 agency, 06 resilience, 07 participation: section openers */
+.sec-no{font-family:var(--f-display);font-size:9px;font-weight:600;letter-spacing:.24em;text-transform:uppercase}
+.big-word{font-size:112px;line-height:.82;letter-spacing:-.065em;font-weight:500;font-family:var(--f-display)}
+.agency-photo{position:absolute;right:0;top:0;width:300px;height:600px}
+.youth{display:flex;align-items:flex-end;gap:14px;height:120px;margin-top:12px}
+.youth .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;height:100%}
+.youth .col i{display:block;background:var(--paper-2);border-radius:3px 3px 0 0}
+.youth .col.hi i{background:var(--amber)}
+.youth .col span{font-family:var(--f-display);font-size:9px;color:var(--grey);margin-top:5px;text-align:center}
+.youth .col b{font-family:var(--f-display);font-size:15px;font-weight:600;letter-spacing:-.03em;text-align:center;margin-bottom:4px}
+
+.res-field{position:absolute;left:0;right:0;top:0;height:330px}
+.rung{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:6px;position:relative}
+.rung .step{padding:14px 14px 16px;border-left:1px solid var(--line);position:relative}
+.rung .step:first-child{border-left:0}
+.rung .step h4{font-size:12px;margin:8px 0 5px;line-height:1.15}
+.rung .step p{font-size:8.6px;line-height:1.5;color:#3a3a3a}
+.rung .step .lvl{font-family:var(--f-display);font-size:8px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
+.rung .gap{background:repeating-linear-gradient(135deg,#f2a81d22 0 6px,#f2a81d00 6px 12px);outline:1.5px dashed var(--amber);outline-offset:-1px}
+.rung .gap .lvl{color:#b07400}
+.steps-svg{margin-top:4px}
+
+.res-strip{position:absolute;left:0;right:0;bottom:0;height:178px;background:var(--ink);color:#fff;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:28px var(--mx) 0}
+.res-strip .stat{border-left:1px solid var(--line-dark);padding-left:14px}
+.res-strip .stat .v{color:var(--amber);font-size:40px}
+.res-strip .stat p{color:#ffffffa8}
+.part-photo{position:absolute;left:0;right:0;top:0;height:400px}
+.part-photo .shade{background:linear-gradient(180deg,#0d0d0d00 40%,#0d0d0d 100%)}
+.part-main{position:absolute;left:var(--mx);right:var(--mx);top:250px;bottom:64px;display:flex;flex-direction:column}
+.case{border:1px solid var(--line-dark);border-radius:2px;padding:16px 18px;margin-top:16px;position:relative}
+.case .kick{color:var(--amber)}
+.case .row{gap:22px;margin-top:10px}
+.case .stat .v{font-size:34px;color:#fff}
+
+/* 08 operating system */
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cols3 .h4{margin:10px 0 6px;font-size:13.5px;letter-spacing:-.02em}
+.cols3 p{font-size:9.2px;line-height:1.56;color:#333}
+.cols3 .i{font-family:var(--f-display);font-size:30px;font-weight:500;letter-spacing:-.05em;color:var(--amber);line-height:1}
+.world{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:290px 1fr;background:var(--ink);color:#fff;height:330px}
+.world .body p{color:#ffffffb8}
+.world .txt{padding:26px var(--mx) 24px 30px;display:flex;flex-direction:column}
+
+/* 09 moves */
+.moves{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}
+.move{padding:13px 0 13px;border-top:1px solid var(--line);display:grid;grid-template-columns:46px 1fr;gap:4px}
+.move .n{font-family:var(--f-display);font-size:30px;line-height:.9;font-weight:500;letter-spacing:-.05em;color:var(--amber)}
+.move h4{font-size:13.5px;line-height:1.15;letter-spacing:-.022em;margin-bottom:5px}
+.move p{font-size:9px;line-height:1.52;color:#333}
+.move .who{margin-top:7px;display:flex;gap:5px;flex-wrap:wrap}
+.move .who span{font-family:var(--f-display);font-size:7.2px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid #00000033;border-radius:99px;padding:2px 7px;color:#444}
+
+/* 10 scorecard */
+.score{width:100%;border-collapse:collapse;font-family:var(--f-display)}
+.score th{font-size:7.6px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#ffffff73;text-align:left;padding:0 0 8px;border-bottom:1px solid var(--line-dark)}
+.score td{padding:9px 0;border-bottom:1px solid var(--line-dark);font-size:10.5px;vertical-align:middle}
+.score td.ind{font-weight:500;letter-spacing:-.01em;padding-right:12px;width:200px}
+.score td.ind small{display:block;font-family:var(--f-body);font-size:7.6px;color:#ffffff73;margin-top:2px;font-weight:400}
+.score td.now{font-size:17px;font-weight:500;letter-spacing:-.03em;width:62px}
+.score td.tgt{font-size:17px;font-weight:500;letter-spacing:-.03em;color:var(--amber);width:62px}
+.score td.tgt sup{font-size:7px;color:#ffffff8a;letter-spacing:.06em;vertical-align:top;margin-left:2px}
+.track{position:relative;height:8px;background:#ffffff1a;border-radius:99px}
+.track i{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:#fff}
+.track b{position:absolute;top:-4px;width:2px;height:16px;background:var(--amber)}
+.road{display:grid;grid-template-columns:repeat(5,1fr);margin-top:20px;border-top:1px solid var(--line-dark)}
+.road div{padding:12px 12px 0 0;position:relative}
+.road div::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--amber)}
+.road b{font-family:var(--f-display);font-size:16px;font-weight:500;letter-spacing:-.03em;display:block;margin:4px 0 4px}
+.road p{font-size:8.4px;line-height:1.48;color:#ffffffa8}
+
+/* 11 back */
+.srcs{columns:2;column-gap:26px;font-size:7.5px;line-height:1.5;color:#444}
+.srcs li{break-inside:avoid;margin-bottom:5px;padding-left:16px;position:relative}
+.srcs li b{position:absolute;left:0;font-family:var(--f-display);color:var(--amber);font-weight:600}
+.back-ink{position:absolute;left:0;right:0;bottom:0;height:400px;background:var(--ink);color:#fff}
+</style>
+</head>
+<body>
+
+<!-- ======================================================= 01 COVER -->
+<section class="page cover on-img">
+  <div class="bleed"><img src="img/dusk.jpg" alt=""></div>
+  <div class="wash"></div>
+  <div class="top">
+    <div class="brand"><img src="../assets/img/mark-dark.png" alt=""><span>Torchbearer</span></div>
+    <div class="meta">White paper<br>November 2026<br>Riyadh</div>
+  </div>
+  <h1>Designing financial systems for <em>agency</em>, <em>resilience</em> and <em>productive participation</em></h1>
+  <div class="foot">
+    <div>
+      <p class="kick">Findings from the Torchbearer roundtable</p>
+      <p>What Saudi Arabia's next phase of financial inclusion asks of regulators, banks and builders, after access has largely been won.</p>
+    </div>
+    <div class="tag"><span>Riyadh</span><span>10 October 2026</span></div>
+  </div>
+</section>
+
+<!-- ======================================================= 02 SUMMARY -->
+<section class="page page--white">
+  <div class="pad">
+    <p class="kick">Executive summary</p>
+    <div class="sum-head">
+      <h2 class="h1">The short version</h2>
+      <p class="lede">In thirteen years Saudi Arabia has put a bank account in the hands of four in five adults and moved most of its shopping off cash. That race is close to won. The harder one has started.</p>
+    </div>
+
+    <div class="band-stats field">
+      <div class="stat"><p class="l">Adults with an account</p><div class="v">79<small>%</small></div><p>Up from 46% in 2011. For women, from 15% to 74%.<sup class="fn">1</sup></p></div>
+      <div class="stat"><p class="l">Saved in an account</p><div class="v">37<small>%</small></div><p>Fewer than half of account holders saved formally in the past year.<sup class="fn">1</sup></p></div>
+      <div class="stat"><p class="l">Own savings first</p><div class="v">22<small>%</small></div><p>Family and friends are the first call for 38%. Own savings come second.<sup class="fn">1</sup></p></div>
+      <div class="stat"><p class="l">SME share of bank lending</p><div class="v">11.5<small>%</small></div><p>Rising fast, against a 2030 target of 20%.<sup class="fn">5</sup></p></div>
+    </div>
+
+    <div class="findings">
+      <div>
+        <p class="body" style="margin-bottom:8px"><span style="font-size:10.4px;line-height:1.62;color:#2b2b2b">The Kingdom has built some of the best financial plumbing in the world. What it has not yet built, at the same standard, is the experience of using it. On 10 October, Torchbearer brought bankers, fintech builders, product leads, an educator and investors into one room in Riyadh to ask what comes after access. Their answer, and the data, point the same way.</span></p>
+        <ol class="nlist">
+          <li><span class="i">01</span><div><h4>Access is no longer the bottleneck. Use is.</h4><p>Accounts and digital payments are near universal. Saving, planning and borrowing well are not. The gap between holding an account and being helped by one is where the next decade's work sits.</p></div></li>
+          <li><span class="i">02</span><div><h4>There is a missing rung on the credit ladder.</h4><p>Buying a phone in four instalments takes seconds. Borrowing a small sum of cash in an emergency, at a fair price, is still hard. People fill the gap with family, asset sales and expensive lenders.</p></div></li>
+          <li><span class="i">03</span><div><h4>Productive credit is the multiplier.</h4><p>Only 9% of adults borrowed to start or run a business. Data from point of sale terminals, e-invoicing and open banking can now price that risk. One bank's pilot suggests it works.</p></div></li>
+          <li><span class="i">04</span><div><h4>Rules are being read as ceilings.</h4><p>SAMA issues guidelines. Too often institutions turn them into the slowest possible process and call it compliance. The cost lands on the customer.</p></div></li>
+          <li><span class="i">05</span><div><h4>The youngest users are slipping.</h4><p>Account ownership among 15 to 24 year olds fell from 71% to 65% between 2021 and 2024. Financial habits form early. So does exclusion.</p></div></li>
+        </ol>
+      </div>
+      <aside>
+        <div class="about-rt">
+          <div class="orb"></div>
+          <p class="kick">About the roundtable</p>
+          <h4>Designing financial systems for agency, resilience and productive participation</h4>
+          <p>Convened by Torchbearer in Riyadh on 10 October 2026. Participants came from retail and SME banking, digital banking, fintech, digital government services, energy and community education.</p>
+          <p>The discussion was recorded with consent and held under the Chatham House Rule. Remarks are unattributed and lightly edited for clarity.</p>
+          <p>This paper draws on that conversation and on public data from the World Bank, SAMA, GASTAT and the United Nations. The analysis and recommendations are Torchbearer's own.</p>
+        </div>
+        <div style="margin-top:22px">
+          <p class="kick" style="margin-bottom:10px">Inside</p>
+          <ol class="small" style="line-height:2.05;color:#333;font-family:var(--f-display);font-size:9px">
+            <li><b style="color:var(--amber);margin-right:8px">03</b>The rails are built</li>
+            <li><b style="color:var(--amber);margin-right:8px">04</b>What the averages hide</li>
+            <li><b style="color:var(--amber);margin-right:8px">05</b>Agency</li>
+            <li><b style="color:var(--amber);margin-right:8px">06</b>Resilience</li>
+            <li><b style="color:var(--amber);margin-right:8px">07</b>Productive participation</li>
+            <li><b style="color:var(--amber);margin-right:8px">08</b>The operating system</li>
+            <li><b style="color:var(--amber);margin-right:8px">09</b>Six moves to 2030</li>
+            <li><b style="color:var(--amber);margin-right:8px">10</b>The scorecard</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <div class="run"><span><b>Torchbearer</b> · White paper</span><span class="n">02</span></div>
+</section>
+
+<!-- ======================================================= 03 RAILS -->
+<section class="page page--ink">
+  <figure class="rails-photo"><img src="img/aerial.jpg" alt="Riyadh from above, with the Kingdom Centre on the skyline" style="width:100%;height:100%;object-fit:cover"><div class="shade"></div></figure>
+  <div class="rails-title">
+    <p class="kick" style="color:var(--amber);margin-bottom:14px">Part one · Where the Kingdom stands</p>
+    <h2 class="mega" style="color:#fff">The rails<br>are built.</h2>
+  </div>
+  <div class="rails-body">
+    <div class="body">
+      <p class="lede" style="margin-bottom:14px;font-size:15.5px;line-height:1.42;color:#ffffffde">Few countries have moved this far, this fast. The plumbing is now world class.</p>
+      <p>In 2011 fewer than half of Saudi adults had an account, and only 15% of women did. By 2024 the figure was 79% overall and 74% for women, one of the fastest closings of a gender gap the Global Findex has recorded.<sup class="fn">1</sup> Electronic payments made up 79% of retail transactions in 2024, beating a target that was not due until 2030.<sup class="fn">2</sup></p>
+      <p>Behind those numbers sits the infrastructure: mada, instant payments through SARIE, an open banking framework that now covers payment initiation,<sup class="fn">11</sup> three licensed digital banks and a wallet that signed up a million users in 21 days.<sup class="fn">12</sup> Company registration links the tax, labour and social insurance authorities in a single flow. Visiting investors, one participant said, simply do not expect it.</p>
+      <div class="tri">
+        <div class="stat"><div class="v amber">6<small>th</small></div><p>UN E-Government Development Index 2024, up 25 places.<sup class="fn">3</sup></p></div>
+        <div class="stat"><div class="v amber">371</div><p>Fintechs operating by August 2026, against 525 targeted by 2030.<sup class="fn">4</sup></p></div>
+        <div class="stat"><div class="v amber">79<small>%</small></div><p>Retail payments made electronically in 2024.<sup class="fn">2</sup></p></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <p class="kick" style="color:#ffffff8c">Figure 1</p>
+      <p class="h3" style="margin:6px 0 4px;color:#fff">The fastest gap to close</p>
+      <p class="small" style="margin-bottom:8px">Adults with an account at a financial institution, Saudi Arabia, %</p>
+      <svg class="chart" viewBox="0 0 330 250" width="100%">
+        <g stroke="#ffffff1f" stroke-width="1">
+          <line x1="30" y1="20" x2="320" y2="20"/><line x1="30" y1="70" x2="320" y2="70"/><line x1="30" y1="120" x2="320" y2="120"/><line x1="30" y1="170" x2="320" y2="170"/><line x1="30" y1="220" x2="320" y2="220"/>
+        </g>
+        <g font-size="8" fill="#ffffff73" text-anchor="end">
+          <text x="24" y="23">100</text><text x="24" y="73">75</text><text x="24" y="123">50</text><text x="24" y="173">25</text><text x="24" y="223">0</text>
+        </g>
+        <g font-size="8" fill="#ffffff8c" text-anchor="middle">
+          <text x="40" y="238">2011</text><text x="128" y="238">2014</text><text x="157" y="238" opacity="0">.</text><text x="196" y="238">2017</text><text x="256" y="238">2021</text><text x="310" y="238">2024</text>
+        </g>
+        <!-- x: 2011=40, 2014=128, 2017=196, 2021=256, 2024=310 ; y = 220 - v*2 -->
+        <polyline fill="none" stroke="#ffffff8c" stroke-width="2" points="40,74.6 128,69.4 196,59 256,56.6 310,56.4"/>
+        <polyline fill="none" stroke="#f2a81d" stroke-width="3" points="40,189.6 128,97.8 196,103.6 256,93 310,73"/>
+        <g fill="#f2a81d"><circle cx="40" cy="189.6" r="3.5"/><circle cx="310" cy="73" r="4.5"/></g>
+        <g fill="#fff"><circle cx="40" cy="74.6" r="3"/><circle cx="310" cy="56.4" r="3.5"/></g>
+        <text x="48" y="186" font-size="10" font-weight="600" fill="#f2a81d">15</text>
+        <text x="48" y="70" font-size="10" font-weight="600" fill="#fff">73</text>
+        <text x="300" y="47" font-size="10" font-weight="600" fill="#fff" text-anchor="end">Men 82</text>
+        <text x="306" y="96" font-size="10" font-weight="600" fill="#f2a81d" text-anchor="end">Women 74</text>
+      </svg>
+      <p class="src" style="margin-top:10px">Source: World Bank, Global Findex Database 2025 (survey year 2024). Adults aged 15 and over.</p>
+    </div>
+  </div>
+  <div class="rail-line">
+    <p class="kick" style="color:#ffffff8c;margin-bottom:12px">How the rails were laid</p>
+    <div class="rl">
+      <div><b>2016</b><p>Vision 2030 sets the course</p></div>
+      <div><b>2018</b><p>Financial Sector Development Program launched</p></div>
+      <div><b>2021</b><p>SARIE instant payments go live</p></div>
+      <div><b>2022</b><p>Open banking, account information</p></div>
+      <div><b>2024</b><p>Payment initiation framework; first digital bank opens</p></div>
+      <div><b>2025</b><p>BNPL leaders licensed as finance companies</p></div>
+    </div>
+  </div>
+  <div class="run"><span><b>Part one</b> · The rails are built</span><span class="n">03</span></div>
+</section>
+
+<!-- ======================================================= 04 AVERAGES -->
+<section class="page">
+  <div class="pad">
+    <p class="kick">Part one · Continued</p>
+    <div class="g2" style="margin-top:12px;align-items:end">
+      <h2 class="h1">What the averages hide</h2>
+      <p class="lede">An account is a door. The numbers below show how many people walk through it, and how few go much further.</p>
+    </div>
+
+    <div class="cliff" style="margin-top:26px">
+      <p class="kick" style="margin-bottom:4px">Figure 2 · The participation cliff</p>
+      <p class="small" style="margin-bottom:12px">Share of Saudi adults who did each in the past year, %</p>
+      <div class="ladder">
+        <div class="lrow"><span class="lab">Has an account</span><span class="bar"><i style="width:78.8%"></i></span><span class="val">79</span></div>
+        <div class="lrow"><span class="lab">Made or received a digital payment</span><span class="bar"><i style="width:75.7%"></i></span><span class="val">76</span></div>
+        <div class="lrow"><span class="lab">Saved in an account</span><span class="bar"><i class="a" style="width:37.4%"></i></span><span class="val">37</span></div>
+        <div class="lrow"><span class="lab">Borrowed from a formal lender</span><span class="bar"><i class="a" style="width:30.1%"></i></span><span class="val">30</span></div>
+        <div class="lrow"><span class="lab">Borrowed from family or friends</span><span class="bar"><i class="a" style="width:30.4%"></i></span><span class="val">30</span></div>
+        <div class="lrow"><span class="lab">Saved for old age</span><span class="bar"><i class="a" style="width:12.8%"></i></span><span class="val">13</span></div>
+        <div class="lrow"><span class="lab">Borrowed to start or run a business</span><span class="bar"><i class="a" style="width:8.8%"></i></span><span class="val">9</span></div>
+      </div>
+      <p class="note">Below this line, participation halves. Family still lends as often as the entire formal system.</p>
+    </div>
+
+    <div class="g2" style="margin-top:44px;gap:40px">
+      <div>
+        <p class="kick" style="margin-bottom:4px">Figure 3 · When something goes wrong</p>
+        <p class="small" style="margin-bottom:14px">Main source of emergency money within 30 days, % of adults</p>
+        <div class="ems">
+          <svg viewBox="0 0 200 200" width="150">
+            <!-- r=70, C=439.82 ; segments in order -->
+            <g fill="none" stroke-width="34" transform="rotate(-90 100 100)">
+              <circle cx="100" cy="100" r="70" stroke="#0d0d0d" stroke-dasharray="167.1 439.8" stroke-dashoffset="0"/>
+              <circle cx="100" cy="100" r="70" stroke="#f2a81d" stroke-dasharray="98.5 439.8" stroke-dashoffset="-167.1"/>
+              <circle cx="100" cy="100" r="70" stroke="#c69c6d" stroke-dasharray="75.2 439.8" stroke-dashoffset="-265.6"/>
+              <circle cx="100" cy="100" r="70" stroke="#e8653a" stroke-dasharray="44 439.8" stroke-dashoffset="-340.8"/>
+              <circle cx="100" cy="100" r="70" stroke="#8a8a8a" stroke-dasharray="26.8 439.8" stroke-dashoffset="-384.8"/>
+              <circle cx="100" cy="100" r="70" stroke="#d6d3cc" stroke-dasharray="28.2 439.8" stroke-dashoffset="-411.6"/>
+            </g>
+            <text x="100" y="98" text-anchor="middle" font-family="Inter Tight" font-size="30" font-weight="600" letter-spacing="-1.5">38%</text>
+            <text x="100" y="116" text-anchor="middle" font-family="Inter Tight" font-size="8.5" fill="#767676">turn to family first</text>
+          </svg>
+          <ul class="legend">
+            <li><i style="background:#0d0d0d"></i>Family or friends<b>38</b></li>
+            <li><i style="background:#f2a81d"></i>Own savings<b>22</b></li>
+            <li><i style="background:#c69c6d"></i>Work more<b>17</b></li>
+            <li><i style="background:#e8653a"></i>Sell something<b>10</b></li>
+            <li><i style="background:#8a8a8a"></i>A formal loan<b>6</b></li>
+            <li><i style="background:#d6d3cc"></i>Other or none<b>6</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="body">
+        <p class="h3" style="margin-bottom:10px">Resilience is borrowed from relatives</p>
+        <p>Almost every Saudi adult says they could find emergency money within a month. Ask where it would come from and the picture changes. Family comes first. Selling an asset has more than tripled as a first resort, from 3% in 2021 to 10% in 2024. A formal loan is the main answer for just 6%.<sup class="fn">1</sup></p>
+        <p>Ask how long a household could last if its main income stopped, and 41% say a month or less.<sup class="fn">1</sup> The national household savings rate sits near 6%, against a 2030 goal of 10%.<sup class="fn">6</sup></p>
+        <p><strong>None of this shows up in an account-ownership statistic.</strong> That is the point. The headline measure of inclusion has done its job and is now hiding the next problem.</p>
+      </div>
+    </div>
+    <p class="src end">Source: World Bank, Global Findex Database 2025 (survey year 2024), Saudi Arabia. Figures rounded. Savings rate: Financial Sector Development Program.</p>
+  </div>
+  <div class="run"><span><b>Part one</b> · What the averages hide</span><span class="n">04</span></div>
+</section>
+
+<!-- ======================================================= 05 AGENCY -->
+<section class="page page--white">
+  <figure class="agency-photo ph"><img src="img/work.jpg" alt="A woman working at a café table in Riyadh"></figure>
+  <div class="orb orb--soft" style="width:120px;height:120px;left:436px;top:478px"></div>
+  <div class="pad" style="padding-right:350px">
+    <p class="sec-no amber">Part two · 01</p>
+    <h2 class="big-word" style="margin-top:20px">Agency</h2>
+    <p class="lede" style="margin-top:22px;max-width:30ch">Choice is not the same as control. A customer with twelve options and no map has neither.</p>
+    <ol class="nlist" style="margin-top:34px">
+      <li><span class="i">01</span><div><h4>Understand</h4><p>Can I tell what this product is, what it costs in total, and what happens if I miss a payment?</p></div></li>
+      <li><span class="i">02</span><div><h4>Choose</h4><p>Can I compare it with the alternatives, in plain language, before I commit?</p></div></li>
+      <li><span class="i">03</span><div><h4>Act</h4><p>Can I do the everyday things, like paying a bill or putting money aside, in a few steps and without help?</p></div></li>
+    </ol>
+  </div>
+  <div style="position:absolute;left:var(--mx);right:var(--mx);top:640px;bottom:64px;display:grid;grid-template-columns:1fr 1fr;gap:34px">
+    <div class="body">
+      <p>Agency means a person can understand what is on offer, choose what fits and act on it without a guide. On that measure, the Kingdom's apps are generous and confusing in equal parts.</p>
+      <p>Participants described banking apps that try to be everything at once. Every provider wants to be the super app, so a simple task gets buried under features nobody asked for. One banker who has built products in two markets put it plainly: <strong>person to person transfers are easy, but paying a bill means getting lost.</strong></p>
+      <p>The deeper issue is method. Several participants said products reach the market without testing on the people meant to use them. Journeys are designed around the institution's processes and the regulator's checklist, then handed to the customer. Nobody asks whether a first-time borrower can tell a microloan from an instalment plan.</p>
+      <p>The cost of that falls hardest on those with least margin for error: new earners, the elderly, residents who do not read Arabic, and the young.</p>
+    </div>
+    <div>
+      <blockquote class="pull" style="font-size:21px">Governance is there for the people. It is the implementation that has to be seamless, or they will not use it.</blockquote>
+      <p class="cite">Roundtable participant</p>
+      <div style="margin-top:22px;border-top:1px solid var(--line);padding-top:12px">
+        <p class="kick">Figure 4 · Starting late</p>
+        <p class="small">Account ownership, ages 15 to 24, %</p>
+        <div class="youth">
+          <div class="col"><b>54</b><i style="height:54%"></i><span>2017</span></div>
+          <div class="col"><b>71</b><i style="height:71%"></i><span>2021</span></div>
+          <div class="col hi"><b>65</b><i style="height:65%"></i><span>2024</span></div>
+          <div class="col" style="flex:2.2;justify-content:center"><p style="font-size:8.8px;line-height:1.5;color:#3a3a3a">The only group to go backwards. An educator at the table runs a school of 4,000 families and could not find a way for a child to pay for a school meal without cash.<sup class="fn">1</sup></p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="run"><span><b>Part two</b> · Agency</span><span class="n">05</span></div>
+</section>
+
+<!-- ======================================================= 06 RESILIENCE -->
+<section class="page">
+  <div class="res-field field--v"></div>
+  <div class="orb orb--line" style="width:360px;height:360px;right:-120px;top:-110px;border-color:#0000001f"></div>
+  <div class="orb orb--line" style="width:240px;height:240px;right:-60px;top:-50px;border-color:#0000001f"></div>
+  <div class="pad">
+    <p class="sec-no">Part two · 02</p>
+    <h2 class="big-word" style="margin-top:20px">Resilience</h2>
+    <p class="lede" style="margin-top:20px;max-width:36ch">You can buy a phone in four instalments in under a minute. Try borrowing the cash for a car repair.</p>
+
+    <div style="margin-top:54px">
+      <p class="kick" style="margin-bottom:4px">Figure 5 · The credit ladder, and its missing rung</p>
+      <p class="small" style="margin-bottom:6px">How a typical salaried resident can borrow today</p>
+      <div class="rung">
+        <div class="step"><span class="lvl">Rung 1 · Abundant</span><h4>Buy now, pay later</h4><p>Instant, at checkout, tied to a purchase. Licensed and growing, with Tamara and Tabby now under SAMA finance licences.<sup class="fn">9</sup></p></div>
+        <div class="step gap"><span class="lvl">Rung 2 · Missing</span><h4>Small emergency cash</h4><p>A few thousand riyals, today, at a fair price, without a salary transfer or a branch visit. This is the need. Supply is thin and costly.</p></div>
+        <div class="step"><span class="lvl">Rung 3 · Established</span><h4>Salary-backed personal finance</h4><p>Around SAR 470 billion in bank consumer loans. Fast for the salaried, closed to most others.<sup class="fn">8</sup></p></div>
+        <div class="step"><span class="lvl">Rung 4 · Deep</span><h4>Home finance</h4><p>About SAR 712 billion in retail mortgages, the largest single block of household debt.<sup class="fn">8</sup></p></div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-top:28px;gap:36px">
+      <div class="body">
+        <p>The table kept returning to one product that barely exists. Consumer credit tied to a purchase is everywhere. Cash credit for an emergency is not. <strong>"Everyone needs money at any time,"</strong> as one participant said. When it is not available at a fair price, people improvise.</p>
+        <p>Some turn to microfinance apps. SAMA has licensed eleven consumer microfinance companies, the latest in April 2026.<sup class="fn">9</sup> Participants cited annual costs approaching 28% and loan sizes up to SAR 30,000, with little advertising and so little awareness of who is lending on what terms. They also described borrowers in remote areas who take a loan and disappear, and lenders who respond by pricing everyone as if they might.</p>
+        <p>That is the trap. Without data on thin-file customers, risk is priced high. Priced high, the product attracts the riskiest borrowers. The good ones go back to family.</p>
+      </div>
+      <div>
+        <div style="background:var(--white);padding:18px 18px 16px;border-radius:2px">
+          <p class="kick">What a resilient system looks like</p>
+          <ol class="nlist" style="margin-top:8px">
+            <li><span class="i">a</span><div><h4>A buffer by default</h4><p>An automatic share of salary swept into a separate, sharia-compliant savings pot, opted out of rather than into.</p></div></li>
+            <li><span class="i">b</span><div><h4>A fair emergency product</h4><p>Small, fast, capped in total cost, and reported to the credit bureau so that repaying builds a history.</p></div></li>
+            <li><span class="i">c</span><div><h4>A clear price</h4><p>One annual cost figure, shown the same way by every lender, BNPL included.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="res-strip">
+    <div class="stat"><div class="v">41<small>%</small></div><p>could last a month or less if their main income stopped.<sup class="fn">1</sup></p></div>
+    <div class="stat"><div class="v">6<small>%</small></div><p>household savings rate, against a 2030 goal of 10%.<sup class="fn">6</sup></p></div>
+    <div class="stat"><div class="v">3<small>×</small></div><p>rise in selling assets as the first answer to an emergency, 2021 to 2024.<sup class="fn">1</sup></p></div>
+    <div class="stat"><div class="v">11</div><p>licensed consumer microfinance companies as of April 2026.<sup class="fn">9</sup></p></div>
+  </div>
+  <div class="run on-img"><span><b>Part two</b> · Resilience</span><span class="n">06</span></div>
+</section>
+
+<!-- ======================================================= 07 PARTICIPATION -->
+<section class="page page--ink">
+  <figure class="part-photo"><img src="img/tap.jpg" alt="A customer pays by phone at a contactless terminal" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%"><div class="shade"></div></figure>
+  <div class="part-main">
+    <p class="sec-no amber">Part two · 03</p>
+    <h2 style="font-size:84px;line-height:.86;letter-spacing:-.06em;font-weight:500;margin-top:14px">Productive participation</h2>
+    <div class="g2" style="margin-top:22px;gap:30px">
+    <p class="lede">Credit that buys things is useful. Credit that builds things compounds.</p>
+    <div class="body">
+      <p>Only 9% of Saudi adults borrowed to start or run a business in 2024.<sup class="fn">1</sup> Lending to small firms is climbing quickly, from 9.4% of bank portfolios in 2024 to about 11.5% in 2025, but the 2030 goal is 20% and the remaining gap is estimated at more than SAR 300 billion.<sup class="fn">5</sup> Meanwhile women's labour force participation has roughly doubled since 2017, to 34.5%.<sup class="fn">7</sup> A generation of new earners and founders is arriving faster than credit designed for them.</p>
+    </div>
+    </div>
+
+    <div class="g2" style="gap:24px;margin-top:6px;align-items:stretch"><div class="case">
+      <p class="kick">From the room · An AI underwriting pilot</p>
+      <p style="font-size:9.6px;line-height:1.55;color:#ffffffc2;margin-top:6px">A large Saudi bank's merchant business ran a machine learning credit model alongside its usual process. Many of the merchants it scored had previously been flagged as poor risks. The model is not yet allowed to decide alone: people still sign off, and will until it has proved itself.</p>
+      <div class="row">
+        <div class="stat"><div class="v">5,000</div><p>small merchants scored by the model</p></div>
+        <div class="stat"><div class="v amber">1.5<small>%</small></div><p>fell 30 to 60 days behind on repayment</p></div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:14px">
+      <div class="body">
+        <p class="h4" style="color:#fff;margin-bottom:5px">The identity problem</p>
+        <p style="font-size:9.3px">The same bank described merchants who hold two or three trade names. When one is reported for fraud, they apply again under the next. Linking every licence to the person behind it is a data problem the state has largely solved already.</p>
+      </div>
+      <div class="body">
+        <p class="h4" style="color:#fff;margin-bottom:5px">The data is already there</p>
+        <p style="font-size:9.3px">Point of sale flows, ZATCA e-invoices and open banking can show how a small business actually trades. That is a better basis for a loan than collateral it does not have.</p>
+      </div>
+    </div></div>
+
+    <div class="end">
+      <p class="kick" style="color:#ffffff8c;margin-bottom:6px">Figure 6 · SME share of bank lending, %</p>
+      <svg class="chart" viewBox="0 0 400 100" width="100%">
+        <!-- x: 2024=20, 2025=90, 2030=380 ; y = 86 - v*3.6 -->
+        <line x1="20" y1="86" x2="390" y2="86" stroke="#ffffff33"/>
+        <line x1="20" y1="14" x2="390" y2="14" stroke="#f2a81d" stroke-dasharray="3 3" stroke-width="1"/>
+        <text x="390" y="10" text-anchor="end" font-size="8" fill="#f2a81d" font-weight="600">2030 target 20%</text>
+        <polyline points="20,52.2 90,44.6" fill="none" stroke="#fff" stroke-width="3"/>
+        <polyline points="90,44.6 380,14" fill="none" stroke="#ffffff59" stroke-width="2" stroke-dasharray="4 4"/>
+        <circle cx="20" cy="52.2" r="3.5" fill="#fff"/><circle cx="90" cy="44.6" r="4.5" fill="#f2a81d"/>
+        <text x="20" y="44" font-size="9" fill="#fff" font-weight="600">9.4</text>
+        <text x="90" y="36" font-size="9" fill="#f2a81d" font-weight="600" text-anchor="middle">11.5</text>
+        <g font-size="8" fill="#ffffff8c"><text x="20" y="96">2024</text><text x="84" y="96">2025</text><text x="368" y="96">2030</text></g>
+        <text x="235" y="62" font-size="8" fill="#ffffffa6" text-anchor="middle">At the 2025 pace of about two points a year, the target is reached on time</text>
+      </svg>
+    </div>
+  </div>
+  <div class="run"><span><b>Part two</b> · Productive participation</span><span class="n">07</span></div>
+</section>
+
+<!-- ======================================================= 08 OPERATING SYSTEM -->
+<section class="page page--white">
+  <div class="pad">
+    <p class="kick">Part three · The operating system</p>
+    <div class="g2" style="margin-top:12px;align-items:end">
+      <h2 class="h1">Rules are a floor, not a ceiling</h2>
+      <p class="lede">The constraint is rarely the regulation itself. It is how institutions choose to read it.</p>
+    </div>
+
+    <div class="cols3" style="margin-top:28px">
+      <div>
+        <span class="i">01</span>
+        <h4 class="h4">The licence is the moat</h4>
+        <p>Getting licensed by SAMA takes time, capital and many rounds of review. Participants described founders reworking their business model mid-application. The result is a quiet consolidation: licensed players become the backbone, renting their rails to others as banking as a service. That lowers the cost of entry for new ideas. It also concentrates risk and bargaining power in a few hands.</p>
+      </div>
+      <div>
+        <span class="i">02</span>
+        <h4 class="h4">Bank habits in fintech clothes</h4>
+        <p>Many fintech teams are staffed from banks and bring bank instincts with them: sequential sign-offs, long approval chains and a reluctance to define a process the regulator has not spelled out. One participant, used to working in Pakistan, found the process burden here heavier than at home. Another, sixteen years in the Kingdom, pointed to training. Both were describing the same gap in confidence.</p>
+      </div>
+      <div>
+        <span class="i">03</span>
+        <h4 class="h4">Rules move faster than workflows</h4>
+        <p>By the time a new journey is designed, approved and built, a new circular may have changed the brief. Firms that treat compliance as a one-off sign-off are always behind. Firms that treat it as a design input, with modular processes and someone who owns regulatory change, keep up. Participants also flagged a basic gap in the CRM and workflow systems that would make this possible.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:30px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1.3fr 1fr;gap:34px;align-items:center">
+      <blockquote class="pull">SAMA will give you the guidelines. It is you who has to define the process, instead of setting a bar and saying you cannot go beyond it.</blockquote>
+      <div class="body">
+        <p class="cite" style="margin:0 0 8px">Roundtable participant</p>
+        <p>This was the sharpest point of agreement in the room. Regulators set the minimum. Customers judge institutions on everything above it. Where a guideline is silent, the default should be the customer's interest, documented, rather than the most cautious reading anyone can imagine.</p>
+      </div>
+    </div>
+
+    <div class="world">
+      <figure class="ph" style="height:100%"><img src="img/library.jpg" alt="King Fahd National Library, Riyadh, lit at night"></figure>
+      <div class="txt">
+        <p class="kick">From Saudi to the world</p>
+        <h3 class="h2" style="margin:12px 0 14px;font-size:32px">A buyer of technology, or a maker of it?</h3>
+        <div class="body"><p>A Saudi team at a regional bootcamp said the most common reaction they met was surprise that the product was built in Riyadh. The Kingdom is still seen as a buyer of technology. Participants argued that the fastest way to change that is to solve hard local problems well, then export them. The pieces exist. Tahaluf, the Riyadh joint venture with Informa, now runs Money20/20 Middle East, LEAP and Black Hat MEA and has taken LEAP to Hong Kong.<sup class="fn">13</sup> Inclusion products proven in this market, at this pace of regulatory change, would travel.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="run" style="color:#ffffff73"><span><b style="color:#ffffffc7">Part three</b> · The operating system</span><span class="n" style="color:#ffffffc7">08</span></div>
+</section>
+
+<!-- ======================================================= 09 MOVES -->
+<section class="page">
+  <div class="orb" style="width:210px;height:210px;right:-70px;top:-60px"></div>
+  <div class="pad">
+    <p class="kick">Part four · Recommendations</p>
+    <h2 class="h1" style="margin-top:12px;max-width:11ch">Six moves for the next four years</h2>
+    <p class="lede" style="margin-top:16px;max-width:52ch">Each is practical inside the current regulatory framework. None needs a new institution. Together they move the measure of success from how many people are in the system to how well it serves them.</p>
+
+    <div class="moves" style="margin-top:26px">
+      <div class="move"><span class="n">01</span><div><h4>Measure use, not ownership</h4><p>Publish an annual financial health index alongside the inclusion figures: formal saving, emergency cover, productive borrowing and arrears, broken down by gender, age, income and nationality. What gets reported gets fixed.</p><div class="who"><span>SAMA</span><span>FSDP</span><span>GASTAT</span></div></div></div>
+      <div class="move"><span class="n">02</span><div><h4>Build the missing rung</h4><p>Define a standard small-ticket emergency product: fast, sharia-compliant, with a capped total cost and positive reporting to SIMAH. Pair it with salary sweeps into savings, so the buffer exists before the emergency does.</p><div class="who"><span>SAMA</span><span>Banks</span><span>Finance companies</span></div></div></div>
+      <div class="move"><span class="n">03</span><div><h4>Lend against cash flow</h4><p>Make point of sale, e-invoice and open banking data usable for SME underwriting with customer consent. Link every commercial registration to its beneficial owner so a bad actor cannot simply change names.</p><div class="who"><span>Banks</span><span>ZATCA</span><span>Ministry of Commerce</span></div></div></div>
+      <div class="move"><span class="n">04</span><div><h4>Govern the algorithms early</h4><p>Encourage AI credit models, with rules that travel with them: human sign-off until performance is proven, monitoring for bias against thin-file and female borrowers, and an explanation the customer can read.</p><div class="who"><span>SAMA</span><span>SDAIA</span><span>Banks</span></div></div></div>
+      <div class="move"><span class="n">05</span><div><h4>Test journeys on real people</h4><p>Before launch, test core tasks with customers who are new, older, non-Arabic speaking or under 25. Publish the time and the number of steps it takes to pay a bill, top up, or understand a loan's full cost.</p><div class="who"><span>Banks</span><span>Fintechs</span><span>Digital banks</span></div></div></div>
+      <div class="move"><span class="n">06</span><div><h4>Start at twelve</h4><p>Supervised youth accounts and cards that schools, canteens and parents can use. Financial literacy taught through the games children already play. Reverse the fall in youth account ownership by 2028.</p><div class="who"><span>Ministry of Education</span><span>Banks</span><span>Schools</span></div></div></div>
+    </div>
+
+  </div>
+  <figure class="ph" style="position:absolute;left:0;right:0;bottom:0;height:290px;margin:0"><img src="img/street.jpg" alt="A residential street in Riyadh with the skyline beyond" style="object-position:50% 70%"><div class="shade" style="background:linear-gradient(180deg,#0d0d0d26 0%,#0d0d0dcc 100%)"></div>
+    <div style="position:absolute;left:var(--mx);right:var(--mx);bottom:66px;color:#fff;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:end">
+      <span class="x amber" style="font-size:34px">×</span>
+      <p style="font-family:var(--f-display);font-size:21px;line-height:1.18;letter-spacing:-.03em;color:#ffffffd9;max-width:32ch">One principle runs through all six. <strong style="color:#fff;font-weight:600">Design for the customer with least margin for error, and the system works for everyone else.</strong></p>
+    </div>
+  </figure>
+  <div class="run on-img"><span><b>Part four</b> · Recommendations</span><span class="n">09</span></div>
+</section>
+
+<!-- ======================================================= 10 SCORECARD -->
+<section class="page page--deep">
+  <div class="orb orb--soft" style="width:300px;height:300px;left:-120px;bottom:-140px;opacity:.95"></div>
+  <div class="pad">
+    <p class="kick">Part four · Continued</p>
+    <div class="g2" style="margin-top:12px;align-items:end">
+      <h2 class="h1" style="color:#fff">The scorecard to 2030</h2>
+      <p class="lede">Ten indicators that would tell us whether access is turning into agency, resilience and productive participation.</p>
+    </div>
+
+    <table class="score" style="margin-top:28px">
+      <thead><tr><th>Indicator</th><th>Latest</th><th>2030</th><th style="padding-left:16px">Distance travelled</th></tr></thead>
+      <tbody>
+        <tr><td class="ind">Adults with an account<small>Findex 2024</small></td><td class="now">79%</td><td class="tgt">90%<sup>TB</sup></td><td style="padding-left:16px"><div class="track"><i style="width:87.8%"></i><b style="left:100%"></b></div></td></tr>
+        <tr><td class="ind">Women with an account<small>Findex 2024</small></td><td class="now">74%</td><td class="tgt">90%<sup>TB</sup></td><td style="padding-left:16px"><div class="track"><i style="width:81.7%"></i><b style="left:100%"></b></div></td></tr>
+        <tr><td class="ind">Ages 15 to 24 with an account<small>Findex 2024</small></td><td class="now">65%</td><td class="tgt">85%<sup>TB</sup></td><td style="padding-left:16px"><div class="track"><i style="width:76.5%"></i><b style="left:100%"></b></div></td></tr>
+        <tr><td class="ind">Adults saving in an account<small>Findex 2024</small></td><td class="now">37%</td><td class="tgt">55%<sup>TB</sup></td><td style="padding-left:16px"><div class="track"><i style="width:68%"></i><b style="left:100%"></b></div></td></tr>
+        <tr><td class="ind">Emergency money mainly from own savings<small>Findex 2024</small></td><td class="now">22%</td><td class="tgt">40%<sup>TB</sup></td><td style="padding-left:16px"><div class="track"><i style="width:56%"></i><b style="left:100%"></b></div></td></tr>
+        <tr><td class="ind">Household savings rate<small>FSDP baseline</small></td><td class="now">6%</td><td class="tgt">10%<sup>OFF</sup></td><td style="padding-left:16px"><div class="track"><i style="width:60%"></i><b style="left:100%"></b></div></td></tr>
+        <tr><td class="ind">Adults borrowing to start or run a business<small>Findex 2024</small></td><td class="now">9%</td><td class="tgt">15%<sup>TB</sup></td><td style="padding-left:16px"><div class="track"><i style="width:59%"></i><b style="left:100%"></b></div></td></tr>
+        <tr><td class="ind">SME share of bank lending<small>SAMA, 2025</small></td><td class="now">11.5%</td><td class="tgt">20%<sup>OFF</sup></td><td style="padding-left:16px"><div class="track"><i style="width:57.5%"></i><b style="left:100%"></b></div></td></tr>
+        <tr><td class="ind">Active fintech companies<small>SAMA, August 2026</small></td><td class="now">371</td><td class="tgt">525<sup>OFF</sup></td><td style="padding-left:16px"><div class="track"><i style="width:70.7%"></i><b style="left:100%"></b></div></td></tr>
+        <tr><td class="ind">Time to pay a bill in a new app<small>Not yet measured</small></td><td class="now">n/a</td><td class="tgt">&lt;60s<sup>TB</sup></td><td style="padding-left:16px"><div class="track" style="background:repeating-linear-gradient(90deg,#ffffff26 0 4px,transparent 4px 8px)"></div></td></tr>
+      </tbody>
+    </table>
+    <p class="small" style="margin-top:8px"><b style="color:var(--amber)">OFF</b> official national target. <b style="color:var(--amber)">TB</b> level proposed by Torchbearer as a reasonable stretch for 2030. Bars show the latest value as a share of the 2030 level.</p>
+
+    <div class="road">
+      <div><b>2026</b><p>Agree the financial health index and its first baseline.</p></div>
+      <div><b>2027</b><p>Emergency product standard issued. First journey tests published.</p></div>
+      <div><b>2028</b><p>Youth account decline reversed. Cash-flow lending at scale.</p></div>
+      <div><b>2029</b><p>AI credit models move to full decisioning where proven.</p></div>
+      <div><b>2030</b><p>Saving, not just holding, becomes the headline measure.</p></div>
+    </div>
+  </div>
+  <div class="run"><span><b>Part four</b> · The scorecard</span><span class="n">10</span></div>
+</section>
+
+<!-- ======================================================= 11 BACK -->
+<section class="page page--white">
+  <div class="pad" style="bottom:300px">
+    <div class="g2" style="gap:36px">
+      <div>
+        <p class="kick">Method</p>
+        <div class="body" style="margin-top:10px">
+          <p>This paper combines three sources. The first is the Torchbearer roundtable held in Riyadh on 10 October 2026, recorded with participants' consent, transcribed and analysed for recurring themes. The second is public data, principally the World Bank Global Findex Database 2025, SAMA releases and statistical bulletins, GASTAT labour force surveys and the UN E-Government Survey. The third is Torchbearer's own experience designing and verifying programmes in Saudi Arabia and Pakistan.</p>
+          <p>Quotations are unattributed under the Chatham House Rule and lightly edited for clarity. Figures cited from the discussion, such as loan pricing and pilot results, are participants' accounts and have not been independently audited. Targets marked as Torchbearer proposals are our own judgement.</p>
+        </div>
+      </div>
+      <div>
+        <p class="kick">Sources</p>
+        <ol class="srcs" style="margin-top:10px">
+          <li><b>1</b>World Bank, Global Findex Database 2025, survey year 2024, Saudi Arabia indicators.</li>
+          <li><b>2</b>SAMA, electronic payments as a share of retail payments, 2024 (released April 2025).</li>
+          <li><b>3</b>UN DESA, E-Government Survey 2024.</li>
+          <li><b>4</b>Fintech Saudi, 301 fintechs (May 2026); SAMA Governor, 371 (August 2026); National Fintech Strategy target of 525.</li>
+          <li><b>5</b>SAMA data via Ministry of Investment and ZCG Arabia, SME credit 2024 to 2025.</li>
+          <li><b>6</b>Financial Sector Development Program, household savings target.</li>
+          <li><b>7</b>GASTAT, Labour Force Survey, Q4 2025.</li>
+          <li><b>8</b>SAMA Monthly Statistical Bulletin, Q2 2025.</li>
+          <li><b>9</b>SAMA licensing announcements, 2025 to 2026, including Tak Mal for Financing (April 2026).</li>
+          <li><b>10</b>SAMA, personal remittances, 2025.</li>
+          <li><b>11</b>SAMA, Open Banking Framework, releases one (2022) and two (2024).</li>
+          <li><b>12</b>SAMA and company announcements: STC Bank, D360 Bank, Vision Bank, barq.</li>
+          <li><b>13</b>Tahaluf, event portfolio, 2025 to 2026.</li>
+        </ol>
+      </div>
+    </div>
+    <div style="margin-top:22px;padding:16px 18px;background:var(--paper);border-left:3px solid var(--amber)">
+      <p style="font-size:9.4px;line-height:1.55;color:#333"><strong style="color:var(--ink)">A note on who is counted.</strong> Expatriate workers sent a record SAR 165.5 billion home in 2025.<sup class="fn">10</sup> They are among the heaviest users of Saudi payment rails and among the least served by its savings and credit products. Any serious inclusion measure should report them separately.</p>
+    </div>
+  </div>
+
+  <figure class="ph" style="position:absolute;left:0;right:0;top:420px;height:303px;margin:0"><img src="img/diriyah.jpg" alt="Mud-brick architecture in Diriyah reflected in a pool" style="object-position:50% 45%"><figcaption>Diriyah, Riyadh</figcaption></figure>
+  <div class="back-ink">
+    <div class="orb" style="width:260px;height:260px;right:-80px;top:-90px"></div>
+    <div style="position:absolute;left:var(--mx);right:var(--mx);top:50px;bottom:84px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px">
+      <div>
+        <div class="brand" style="color:#fff"><img src="../assets/img/mark-light.png" alt=""><span style="font-size:14px">Torchbearer</span></div>
+        <p style="font-family:var(--f-display);font-size:22px;line-height:1.12;letter-spacing:-.03em;margin-top:22px;max-width:22ch">We design, deliver and verify programmes that change how people live, work and manage money.</p>
+        <p class="small" style="margin-top:14px;max-width:46ch">Torchbearer is a social enterprise working in Saudi Arabia and Pakistan. Verification is our discipline: we measure what a programme actually changed, not how many people it reached. This paper is the first in a series on financial health in the Kingdom.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:flex-end">
+        <p class="kick">Continue the conversation</p>
+        <p style="font-family:var(--f-display);font-size:15px;margin-top:10px;letter-spacing:-.01em">jointorchbearer.com</p>
+        <p class="small" style="margin-top:16px">With thanks to everyone who gave their time and candour on 10 October. © Torchbearer 2026. Photography via Unsplash.</p>
+      </div>
+    </div>
+  </div>
+  <div class="run on-img" style="color:#ffffff73"><span><b style="color:#ffffffc7">Torchbearer</b> · White paper</span><span class="n" style="color:#ffffffc7">11</span></div>
+</section>
+
+</body>
+</html>

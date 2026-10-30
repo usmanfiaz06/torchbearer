@@ -8,3 +8,4 @@ deck/
 # Source photographs. tools/img/field.py crops these into assets/img/field/,
 # which is what the site actually loads.
 assets/img/WhatsApp*
+whitepaper/
