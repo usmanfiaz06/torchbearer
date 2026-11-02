@@ -137,6 +137,58 @@
 .road b{font-family:var(--f-display);font-size:16px;font-weight:500;letter-spacing:-.03em;display:block;margin:4px 0 4px}
 .road p{font-size:8.4px;line-height:1.48;color:#ffffffa8}
 
+
+/* 03 the room */
+.room-photos{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:1fr 1fr;gap:8px;height:300px;margin-top:22px}
+.room-photos .ph:first-child{grid-row:1 / span 2}
+.slot{background:repeating-linear-gradient(135deg,#e6e4df 0 8px,#ecebe7 8px 16px);display:flex;align-items:flex-start;padding:10px;font-family:var(--f-display);font-size:7.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#00000066}
+.aims{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:22px}
+.aims div{border-top:2px solid var(--ink);padding-top:10px}
+.aims b{font-family:var(--f-display);font-size:12.5px;font-weight:600;letter-spacing:-.015em;display:block;margin:6px 0 5px;line-height:1.2}
+.aims p{font-size:9px;line-height:1.52;color:#333}
+.voices{position:absolute;left:0;right:0;bottom:0;height:300px;background:var(--ink);color:#fff;padding:34px var(--mx) 0;display:grid;grid-template-columns:1.25fr 1fr;gap:36px}
+.voices .q{font-family:var(--f-display);font-weight:400;letter-spacing:-.03em;line-height:1.12}
+.voices .who{font-family:var(--f-display);font-size:8px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-top:10px;line-height:1.6}
+.voices .who span{display:block;color:#ffffff73;letter-spacing:.1em}
+
+/* 12 next */
+.series li{display:grid;grid-template-columns:52px 1fr 120px;gap:10px;padding:13px 0;border-top:1px solid var(--line);align-items:start}
+.series li:last-child{border-bottom:1px solid var(--line)}
+.series .no{font-family:var(--f-display);font-size:26px;font-weight:500;letter-spacing:-.05em;line-height:.9;color:var(--amber)}
+.series h4{font-size:14px;letter-spacing:-.022em;line-height:1.15;margin-bottom:4px}
+.series p{font-size:9px;line-height:1.5;color:#333}
+.series .when{font-family:var(--f-display);font-size:8px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);text-align:right;padding-top:3px}
+.series li.lead{background:linear-gradient(90deg,var(--amber-pale),#fbe7bd00);margin:0 calc(var(--mx) * -1);padding-left:var(--mx);padding-right:var(--mx)}
+.asks{position:absolute;left:0;right:0;bottom:0;height:470px;background:var(--deep);color:#fff;padding:40px var(--mx) 0}
+.qs{display:grid;grid-template-columns:1fr 1fr;column-gap:30px;margin-top:20px}
+.qs li{display:grid;grid-template-columns:28px 1fr;padding:11px 0;border-top:1px solid var(--line-dark);font-family:var(--f-display);font-size:13px;line-height:1.28;letter-spacing:-.018em;color:#ffffffe6}
+.qs li b{color:var(--amber);font-weight:500;font-size:11px;padding-top:2px}
+
+/* 13 credits */
+.names{display:grid;grid-template-columns:repeat(3,1fr);gap:0 20px;margin-top:14px}
+.names div{padding:10px 0;border-top:1px solid var(--line)}
+.names b{font-family:var(--f-display);font-size:14px;font-weight:500;letter-spacing:-.025em;display:block}
+.names span{font-size:8.4px;color:var(--grey)}
+.host{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:20px}
+.host > div{padding:18px 20px;min-height:128px;display:flex;flex-direction:column}
+.host .role{font-family:var(--f-display);font-size:7.6px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.host .nm{font-family:var(--f-display);font-size:24px;font-weight:500;letter-spacing:-.04em;line-height:1;margin-top:auto}
+.host .org{font-size:9px;margin-top:6px}
+
+/* 14 back cover */
+.bc-top{position:absolute;left:0;right:0;top:0;height:250px}
+.bc{position:absolute;left:var(--mx);right:var(--mx);top:280px;bottom:64px;display:flex;flex-direction:column}
+.bc-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;margin-top:22px}
+.offer li{display:grid;grid-template-columns:24px 1fr;padding:8px 0;border-top:1px solid var(--line-dark)}
+.offer li b{font-family:var(--f-display);font-size:10px;color:var(--amber);font-weight:600;padding-top:1px}
+.offer h4{font-size:11.5px;letter-spacing:-.015em;margin-bottom:2px;line-height:1.2}
+.offer p{font-size:8.5px;line-height:1.48;color:#ffffffa3}
+.facts dt{font-family:var(--f-display);font-size:7.6px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-top:14px}
+.facts dt:first-child{margin-top:0}
+.facts dd{margin:4px 0 0;font-size:9.2px;line-height:1.5;color:#ffffffc7}
+.cta{margin-top:auto;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;background:var(--amber);color:var(--ink);padding:18px 20px}
+.cta .qr{background:#fff;padding:7px;line-height:0}
+
 /* 11 back */
 .srcs{columns:2;column-gap:26px;font-size:7.5px;line-height:1.5;color:#444}
 .srcs li{break-inside:avoid;margin-bottom:5px;padding-left:16px;position:relative}
@@ -203,20 +255,65 @@
         <div style="margin-top:22px">
           <p class="kick" style="margin-bottom:10px">Inside</p>
           <ol class="small" style="line-height:2.05;color:#333;font-family:var(--f-display);font-size:9px">
-            <li><b style="color:var(--amber);margin-right:8px">03</b>The rails are built</li>
-            <li><b style="color:var(--amber);margin-right:8px">04</b>What the averages hide</li>
-            <li><b style="color:var(--amber);margin-right:8px">05</b>Agency</li>
-            <li><b style="color:var(--amber);margin-right:8px">06</b>Resilience</li>
-            <li><b style="color:var(--amber);margin-right:8px">07</b>Productive participation</li>
-            <li><b style="color:var(--amber);margin-right:8px">08</b>The operating system</li>
-            <li><b style="color:var(--amber);margin-right:8px">09</b>Six moves to 2030</li>
-            <li><b style="color:var(--amber);margin-right:8px">10</b>The scorecard</li>
+            <li><b style="color:var(--amber);margin-right:8px">03</b>Why we convened</li>
+            <li><b style="color:var(--amber);margin-right:8px">04</b>The rails are built</li>
+            <li><b style="color:var(--amber);margin-right:8px">05</b>What the averages hide</li>
+            <li><b style="color:var(--amber);margin-right:8px">06</b>Agency</li>
+            <li><b style="color:var(--amber);margin-right:8px">07</b>Resilience</li>
+            <li><b style="color:var(--amber);margin-right:8px">08</b>Productive participation</li>
+            <li><b style="color:var(--amber);margin-right:8px">09</b>The operating system</li>
+            <li><b style="color:var(--amber);margin-right:8px">10</b>Six moves to 2030</li>
+            <li><b style="color:var(--amber);margin-right:8px">11</b>The scorecard</li>
+            <li><b style="color:var(--amber);margin-right:8px">12</b>What comes next</li>
           </ol>
         </div>
       </aside>
     </div>
   </div>
   <div class="run"><span><b>Torchbearer</b> · White paper</span><span class="n">02</span></div>
+</section>
+
+<!-- ======================================================= 03 THE ROOM -->
+<section class="page">
+  <div class="pad">
+    <p class="kick">Why we convened</p>
+    <div class="g2" style="margin-top:12px;align-items:end">
+      <h2 class="h1">A small room, on purpose</h2>
+      <p class="lede">Riyadh is not short of financial conferences. It is short of rooms where a banker, a founder and a teacher can disagree in specifics.</p>
+    </div>
+    <div class="g2" style="margin-top:24px;gap:34px">
+      <div class="body">
+        <p>Large forums are good at announcements and poor at candour. With thirty people in a hall, the useful detail gets lost. With a handful around one table, it surfaces: the screen where a customer gives up, the rule nobody has questioned, the loan that does not exist.</p>
+        <p>So on 10 October 2026 Torchbearer and Siraj brought a small group of practitioners together in Riyadh with one aim: <strong>to turn what they see every day into insight that institutions can act on.</strong> No slides, no panel, no pitch. Just one question, put to the room at the start.</p>
+      </div>
+      <div style="background:var(--white);padding:18px 20px;border-left:3px solid var(--amber)">
+        <p class="kick" style="margin-bottom:8px">The question</p>
+        <p style="font-family:var(--f-display);font-size:16.5px;line-height:1.22;letter-spacing:-.025em">Saudi Arabia has given almost everyone access to finance. What would it take for that access to give people agency, resilience and a way to build something of their own?</p>
+      </div>
+    </div>
+    <div class="aims">
+      <div><span class="kick">Aim 01</span><b>Hear from the builders</b><p>What works, what breaks and where customers get lost, from the people running the systems.</p></div>
+      <div><span class="kick">Aim 02</span><b>Test the data against experience</b><p>Find where national figures and daily reality part company, and say why.</p></div>
+      <div><span class="kick">Aim 03</span><b>Leave with moves, not minutes</b><p>Practical recommendations that a named institution could own and act on.</p></div>
+    </div>
+    <div class="room-photos">
+      <figure class="ph slot">Roundtable photograph</figure>
+      <figure class="ph slot">Roundtable photograph</figure>
+      <figure class="ph slot">Roundtable photograph</figure>
+    </div>
+  </div>
+  <div class="voices">
+    <div>
+      <p class="kick" style="color:#ffffff73;margin-bottom:14px">The global conversation</p>
+      <p class="q" style="font-size:34px">&ldquo;Access to financial services is only the <span class="amber">first step</span>.&rdquo;</p>
+      <p class="who">Queen Máxima of the Netherlands<span>UN Secretary-General's Special Advocate for Financial Health, New York, September 2024</span></p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;padding-top:24px">
+      <div><p class="q" style="font-size:15px;color:#ffffffd9">&ldquo;Are we really helping people to better save, to build a buffer in case of emergencies, or for future opportunities?&rdquo;</p><p class="who" style="margin-top:6px">Queen Máxima, same address</p></div>
+      <div><p class="q" style="font-size:15px;color:#ffffffd9">&ldquo;I came to believe that credit is a human right.&rdquo;</p><p class="who" style="margin-top:6px">Muhammad Yunus<span>Nobel Peace laureate and founder of Grameen Bank</span></p></div>
+    </div>
+  </div>
+  <div class="run on-img"><span><b>The roundtable</b> · Why we convened</span><span class="n">03</span></div>
 </section>
 
 <!-- ======================================================= 03 RAILS -->
@@ -275,7 +372,7 @@
       <div><b>2025</b><p>BNPL leaders licensed as finance companies</p></div>
     </div>
   </div>
-  <div class="run"><span><b>Part one</b> · The rails are built</span><span class="n">03</span></div>
+  <div class="run"><span><b>Part one</b> · The rails are built</span><span class="n">04</span></div>
 </section>
 
 <!-- ======================================================= 04 AVERAGES -->
@@ -339,7 +436,7 @@
     </div>
     <p class="src end">Source: World Bank, Global Findex Database 2025 (survey year 2024), Saudi Arabia. Figures rounded. Savings rate: Financial Sector Development Program.</p>
   </div>
-  <div class="run"><span><b>Part one</b> · What the averages hide</span><span class="n">04</span></div>
+  <div class="run"><span><b>Part one</b> · What the averages hide</span><span class="n">05</span></div>
 </section>
 
 <!-- ======================================================= 05 AGENCY -->
@@ -378,7 +475,7 @@
       </div>
     </div>
   </div>
-  <div class="run"><span><b>Part two</b> · Agency</span><span class="n">05</span></div>
+  <div class="run"><span><b>Part two</b> · Agency</span><span class="n">06</span></div>
 </section>
 
 <!-- ======================================================= 06 RESILIENCE -->
@@ -426,7 +523,7 @@
     <div class="stat"><div class="v">3<small>×</small></div><p>rise in selling assets as the first answer to an emergency, 2021 to 2024.<sup class="fn">1</sup></p></div>
     <div class="stat"><div class="v">11</div><p>licensed consumer microfinance companies as of April 2026.<sup class="fn">9</sup></p></div>
   </div>
-  <div class="run on-img"><span><b>Part two</b> · Resilience</span><span class="n">06</span></div>
+  <div class="run on-img"><span><b>Part two</b> · Resilience</span><span class="n">07</span></div>
 </section>
 
 <!-- ======================================================= 07 PARTICIPATION -->
@@ -479,7 +576,7 @@
       </svg>
     </div>
   </div>
-  <div class="run"><span><b>Part two</b> · Productive participation</span><span class="n">07</span></div>
+  <div class="run"><span><b>Part two</b> · Productive participation</span><span class="n">08</span></div>
 </section>
 
 <!-- ======================================================= 08 OPERATING SYSTEM -->
@@ -526,7 +623,7 @@
       </div>
     </div>
   </div>
-  <div class="run" style="color:#ffffff73"><span><b style="color:#ffffffc7">Part three</b> · The operating system</span><span class="n" style="color:#ffffffc7">08</span></div>
+  <div class="run" style="color:#ffffff73"><span><b style="color:#ffffffc7">Part three</b> · The operating system</span><span class="n" style="color:#ffffffc7">09</span></div>
 </section>
 
 <!-- ======================================================= 09 MOVES -->
@@ -553,7 +650,7 @@
       <p style="font-family:var(--f-display);font-size:21px;line-height:1.18;letter-spacing:-.03em;color:#ffffffd9;max-width:32ch">One principle runs through all six. <strong style="color:#fff;font-weight:600">Design for the customer with least margin for error, and the system works for everyone else.</strong></p>
     </div>
   </figure>
-  <div class="run on-img"><span><b>Part four</b> · Recommendations</span><span class="n">09</span></div>
+  <div class="run on-img"><span><b>Part four</b> · Recommendations</span><span class="n">10</span></div>
 </section>
 
 <!-- ======================================================= 10 SCORECARD -->
@@ -591,23 +688,74 @@
       <div><b>2030</b><p>Saving, not just holding, becomes the headline measure.</p></div>
     </div>
   </div>
-  <div class="run"><span><b>Part four</b> · The scorecard</span><span class="n">10</span></div>
+  <div class="run"><span><b>Part four</b> · The scorecard</span><span class="n">11</span></div>
 </section>
 
-<!-- ======================================================= 11 BACK -->
+<!-- ======================================================= 12 NEXT -->
 <section class="page page--white">
-  <div class="pad" style="bottom:300px">
-    <div class="g2" style="gap:36px">
+  <div class="orb orb--soft" style="width:180px;height:180px;right:-60px;top:-60px"></div>
+  <div class="pad">
+    <p class="kick">What comes next</p>
+    <div class="g2" style="margin-top:12px;align-items:end">
+      <h2 class="h1">Where this goes next</h2>
+      <p class="lede">This paper is the first in a series. Each will follow the same method: a room of practitioners, the best public data, and recommendations someone can own.</p>
+    </div>
+    <ol class="series" style="margin-top:22px">
+      <li class="lead"><span class="no">02</span><div><h4>Credit that builds: financing Saudi SMEs</h4><p>Cash-flow lending from point of sale, e-invoice and open banking data. Merchant identity. What it really takes to reach 20% of bank lending by 2030, and to make that lending productive.</p></div><span class="when">Next roundtable<br>Early 2027</span></li>
+      <li><span class="no">03</span><div><h4>Starting at twelve</h4><p>Youth accounts, school payments and financial capability, and why ownership among the young is falling.</p></div><span class="when">2027</span></li>
+      <li><span class="no">04</span><div><h4>The algorithm in the loop</h4><p>AI in credit decisions: what to automate, what to explain, and who answers when it is wrong.</p></div><span class="when">2027</span></li>
+      <li><span class="no">05</span><div><h4>Counted separately</h4><p>The financial health of the Kingdom's expatriate workforce, the heaviest users of its payment rails.</p></div><span class="when">2027</span></li>
+    </ol>
+  </div>
+  <div class="asks">
+    <p class="kick" style="color:var(--amber)">Join the conversation</p>
+    <h3 class="h2" style="margin-top:10px;color:#fff;max-width:20ch">Six questions we could not settle in one afternoon</h3>
+    <ol class="qs">
+      <li><b>01</b>Your customers all have accounts. How many could last a month without income? Do you know?</li>
+      <li><b>02</b>What is a fair price for SAR 3,000 needed today, and who in the Kingdom offers it?</li>
+      <li><b>03</b>Which of your processes exist because SAMA requires them, and which because nobody has asked?</li>
+      <li><b>04</b>If two years of card terminal data show a merchant trading steadily, why is collateral still the first question?</li>
+      <li><b>05</b>How does a fourteen year old pay for lunch at school without cash?</li>
+      <li><b>06</b>If account ownership were banned as a headline, what would you report instead?</li>
+    </ol>
+    <p style="margin-top:18px;font-family:var(--f-display);font-size:12px;color:#ffffffc7">Send us your answer at <b style="color:#fff;font-weight:600">info@jointorchbearer.com</b>. The sharpest replies will set the agenda for the next room.</p>
+  </div>
+  <div class="run on-img"><span><b>What comes next</b></span><span class="n">12</span></div>
+</section>
+
+<!-- ======================================================= 13 CREDITS -->
+<section class="page">
+  <div class="pad">
+    <p class="kick">With thanks</p>
+    <h2 class="h2" style="margin-top:10px">The people in the room</h2>
+    <div class="host">
+      <div style="background:var(--ink);color:#fff"><span class="role amber">Co-host</span><span class="nm">Abdul Qadir Sultan</span><span class="org" style="color:#ffffffa8">Founder, Siraj. With our thanks for co-hosting the roundtable and opening the room.</span></div>
+      <div class="field"><span class="role">Convened by Torchbearer</span><span class="nm">Aimen Rafiq Abbasi</span><span class="org" style="color:#333">Founder, Torchbearer</span></div>
+    </div>
+    <p class="kick" style="margin-top:22px">Participants</p>
+    <div class="names">
+      <div><b>Alla Kwieder</b></div>
+      <div><b>Alhanouf Aloufi</b></div>
+      <div><b>Stephanie Jowers</b></div>
+      <div><b>Syed Missam Abbas</b></div>
+      <div><b>Usman Fiaz</b></div>
+      <div><span style="font-size:8.4px;line-height:1.5;display:block;color:var(--grey)">Under the Chatham House Rule, no remark in this paper is attributed to any individual.</span></div>
+    </div>
+
+    <div class="g2" style="gap:30px;margin-top:28px">
       <div>
         <p class="kick">Method</p>
-        <div class="body" style="margin-top:10px">
-          <p>This paper combines three sources. The first is the Torchbearer roundtable held in Riyadh on 10 October 2026, recorded with participants' consent, transcribed and analysed for recurring themes. The second is public data, principally the World Bank Global Findex Database 2025, SAMA releases and statistical bulletins, GASTAT labour force surveys and the UN E-Government Survey. The third is Torchbearer's own experience designing and verifying programmes in Saudi Arabia and Pakistan.</p>
-          <p>Quotations are unattributed under the Chatham House Rule and lightly edited for clarity. Figures cited from the discussion, such as loan pricing and pilot results, are participants' accounts and have not been independently audited. Targets marked as Torchbearer proposals are our own judgement.</p>
+        <div class="body" style="margin-top:8px">
+          <p>This paper combines three sources: the roundtable itself, recorded with consent, transcribed and analysed for recurring themes; public data, principally the World Bank Global Findex Database 2025, SAMA releases, GASTAT labour force surveys and the UN E-Government Survey; and Torchbearer's own experience designing and verifying programmes in Saudi Arabia and Pakistan.</p>
+          <p>Quotations from the room are lightly edited for clarity. Figures cited from the discussion, such as loan pricing and pilot results, are participants' accounts and have not been audited. Targets marked as Torchbearer proposals are our own judgement.</p>
+        </div>
+        <div style="margin-top:14px;padding:12px 14px;background:var(--white);border-left:3px solid var(--amber)">
+          <p style="font-size:8.8px;line-height:1.5;color:#333"><strong style="color:var(--ink)">A note on who is counted.</strong> Expatriate workers sent a record SAR 165.5 billion home in 2025.<sup class="fn">10</sup> They are among the heaviest users of Saudi payment rails and the least served by its savings and credit products. Any serious inclusion measure should report them separately.</p>
         </div>
       </div>
       <div>
         <p class="kick">Sources</p>
-        <ol class="srcs" style="margin-top:10px">
+        <ol class="srcs" style="margin-top:8px;columns:1">
           <li><b>1</b>World Bank, Global Findex Database 2025, survey year 2024, Saudi Arabia indicators.</li>
           <li><b>2</b>SAMA, electronic payments as a share of retail payments, 2024 (released April 2025).</li>
           <li><b>3</b>UN DESA, E-Government Survey 2024.</li>
@@ -621,31 +769,59 @@
           <li><b>11</b>SAMA, Open Banking Framework, releases one (2022) and two (2024).</li>
           <li><b>12</b>SAMA and company announcements: STC Bank, D360 Bank, Vision Bank, barq.</li>
           <li><b>13</b>Tahaluf, event portfolio, 2025 to 2026.</li>
+          <li><b>14</b>Queen Máxima, keynote, Inclusive Finance for Development: 15 Years of Impact, UNSGSA, 25 September 2024. Muhammad Yunus, interview, Gulf News.</li>
         </ol>
       </div>
     </div>
-    <div style="margin-top:22px;padding:16px 18px;background:var(--paper);border-left:3px solid var(--amber)">
-      <p style="font-size:9.4px;line-height:1.55;color:#333"><strong style="color:var(--ink)">A note on who is counted.</strong> Expatriate workers sent a record SAR 165.5 billion home in 2025.<sup class="fn">10</sup> They are among the heaviest users of Saudi payment rails and among the least served by its savings and credit products. Any serious inclusion measure should report them separately.</p>
-    </div>
   </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:190px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+    <figure class="ph slot" style="margin:0">Roundtable photograph</figure>
+    <figure class="ph slot" style="margin:0">Roundtable photograph</figure>
+    <figure class="ph slot" style="margin:0">Roundtable photograph</figure>
+  </div>
+  <div class="run on-img" style="bottom:12px"><span><b>Credits</b> · Method and sources</span><span class="n">13</span></div>
+</section>
 
-  <figure class="ph" style="position:absolute;left:0;right:0;top:420px;height:303px;margin:0"><img src="img/diriyah.jpg" alt="Mud-brick architecture in Diriyah reflected in a pool" style="object-position:50% 45%"><figcaption>Diriyah, Riyadh</figcaption></figure>
-  <div class="back-ink">
-    <div class="orb" style="width:260px;height:260px;right:-80px;top:-90px"></div>
-    <div style="position:absolute;left:var(--mx);right:var(--mx);top:50px;bottom:84px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px">
+<!-- ======================================================= 14 BACK COVER -->
+<section class="page page--ink">
+  <figure class="ph bc-top" style="margin:0"><img src="img/diriyah.jpg" alt="Mud-brick architecture in Diriyah reflected in a pool" style="object-position:50% 50%"><div class="shade"></div></figure>
+  <div class="orb" style="width:150px;height:150px;right:40px;top:170px"></div>
+  <div class="bc">
+    <div class="brand" style="color:#fff"><img src="../assets/img/mark-light.png" alt=""><span style="font-size:14px">Torchbearer</span></div>
+    <h2 style="font-size:31px;line-height:1.04;letter-spacing:-.04em;font-weight:500;margin-top:16px;max-width:22ch">We help institutions turn financial access into outcomes they can prove.</h2>
+    <div class="bc-grid">
       <div>
-        <div class="brand" style="color:#fff"><img src="../assets/img/mark-light.png" alt=""><span style="font-size:14px">Torchbearer</span></div>
-        <p style="font-family:var(--f-display);font-size:22px;line-height:1.12;letter-spacing:-.03em;margin-top:22px;max-width:22ch">We design, deliver and verify programmes that change how people live, work and manage money.</p>
-        <p class="small" style="margin-top:14px;max-width:46ch">Torchbearer is a social enterprise working in Saudi Arabia and Pakistan. Verification is our discipline: we measure what a programme actually changed, not how many people it reached. This paper is the first in a series on financial health in the Kingdom.</p>
+        <p class="kick">What we can help you with</p>
+        <ol class="offer" style="margin-top:8px">
+          <li><b>01</b><div><h4>Financial capability programmes</h4><p>Designed and delivered for youth, women, small business owners and workers, through local partners.</p></div></li>
+          <li><b>02</b><div><h4>Measurement and verification</h4><p>Baselines, financial health indicators and verification packs that stand up in a board paper, a disclosure or an audit.</p></div></li>
+          <li><b>03</b><div><h4>Customer research and journey testing</h4><p>Testing products with the people they are meant for, before launch rather than after complaints.</p></div></li>
+          <li><b>04</b><div><h4>Programme design for social mandates</h4><p>Turning a bank's or corporate's social commitment into a programme with a cost per outcome you can defend.</p></div></li>
+          <li><b>05</b><div><h4>Convening and research</h4><p>Practitioner roundtables, white papers and policy briefs like this one.</p></div></li>
+        </ol>
       </div>
-      <div style="display:flex;flex-direction:column;justify-content:flex-end">
-        <p class="kick">Continue the conversation</p>
-        <p style="font-family:var(--f-display);font-size:15px;margin-top:10px;letter-spacing:-.01em">jointorchbearer.com</p>
-        <p class="small" style="margin-top:16px">With thanks to everyone who gave their time and candour on 10 October. © Torchbearer 2026. Photography via Unsplash.</p>
+      <dl class="facts">
+        <dt>Who we work with</dt><dd>Banks and fintechs. Regulators and public entities. Corporates with disclosure obligations. Funds and development finance institutions.</dd>
+        <dt>Where</dt><dd>Delivery in Saudi Arabia and Pakistan. Advisory and measurement work anywhere.</dd>
+        <dt>Why us</dt><dd>We advise because we deliver. No outcome is reported without a baseline, and every review we publish says what did not work.</dd>
+        <dt>Leadership</dt><dd>Aimen Rafiq Abbasi, Founder</dd>
+      </dl>
+    </div>
+    <div class="cta">
+      <div class="qr"><svg viewBox="0 0 29 29" width="96" height="96" shape-rendering="crispEdges"><path fill="#0d0d0d" d="M0,0H1V1H0zM1,0H2V1H1zM2,0H3V1H2zM3,0H4V1H3zM4,0H5V1H4zM5,0H6V1H5zM6,0H7V1H6zM8,0H9V1H8zM9,0H10V1H9zM10,0H11V1H10zM15,0H16V1H15zM16,0H17V1H16zM19,0H20V1H19zM20,0H21V1H20zM22,0H23V1H22zM23,0H24V1H23zM24,0H25V1H24zM25,0H26V1H25zM26,0H27V1H26zM27,0H28V1H27zM28,0H29V1H28zM0,1H1V2H0zM6,1H7V2H6zM8,1H9V2H8zM9,1H10V2H9zM12,1H13V2H12zM14,1H15V2H14zM15,1H16V2H15zM22,1H23V2H22zM28,1H29V2H28zM0,2H1V3H0zM2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM6,2H7V3H6zM11,2H12V3H11zM12,2H13V3H12zM13,2H14V3H13zM14,2H15V3H14zM15,2H16V3H15zM19,2H20V3H19zM20,2H21V3H20zM22,2H23V3H22zM24,2H25V3H24zM25,2H26V3H25zM26,2H27V3H26zM28,2H29V3H28zM0,3H1V4H0zM2,3H3V4H2zM3,3H4V4H3zM4,3H5V4H4zM6,3H7V4H6zM8,3H9V4H8zM10,3H11V4H10zM17,3H18V4H17zM18,3H19V4H18zM22,3H23V4H22zM24,3H25V4H24zM25,3H26V4H25zM26,3H27V4H26zM28,3H29V4H28zM0,4H1V5H0zM2,4H3V5H2zM3,4H4V5H3zM4,4H5V5H4zM6,4H7V5H6zM9,4H10V5H9zM10,4H11V5H10zM11,4H12V5H11zM13,4H14V5H13zM19,4H20V5H19zM22,4H23V5H22zM24,4H25V5H24zM25,4H26V5H25zM26,4H27V5H26zM28,4H29V5H28zM0,5H1V6H0zM6,5H7V6H6zM10,5H11V6H10zM14,5H15V6H14zM16,5H17V6H16zM17,5H18V6H17zM18,5H19V6H18zM19,5H20V6H19zM22,5H23V6H22zM28,5H29V6H28zM0,6H1V7H0zM1,6H2V7H1zM2,6H3V7H2zM3,6H4V7H3zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM12,6H13V7H12zM14,6H15V7H14zM16,6H17V7H16zM18,6H19V7H18zM20,6H21V7H20zM22,6H23V7H22zM23,6H24V7H23zM24,6H25V7H24zM25,6H26V7H25zM26,6H27V7H26zM27,6H28V7H27zM28,6H29V7H28zM8,7H9V8H8zM9,7H10V8H9zM10,7H11V8H10zM11,7H12V8H11zM12,7H13V8H12zM13,7H14V8H13zM14,7H15V8H14zM16,7H17V8H16zM17,7H18V8H17zM19,7H20V8H19zM20,7H21V8H20zM0,8H1V9H0zM2,8H3V9H2zM3,8H4V9H3zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM9,8H10V9H9zM10,8H11V9H10zM11,8H12V9H11zM13,8H14V9H13zM14,8H15V9H14zM17,8H18V9H17zM18,8H19V9H18zM19,8H20V9H19zM20,8H21V9H20zM22,8H23V9H22zM25,8H26V9H25zM27,8H28V9H27zM28,8H29V9H28zM0,9H1V10H0zM4,9H5V10H4zM7,9H8V10H7zM8,9H9V10H8zM11,9H12V10H11zM12,9H13V10H12zM16,9H17V10H16zM18,9H19V10H18zM19,9H20V10H19zM20,9H21V10H20zM22,9H23V10H22zM23,9H24V10H23zM24,9H25V10H24zM28,9H29V10H28zM3,10H4V11H3zM6,10H7V11H6zM7,10H8V11H7zM10,10H11V11H10zM11,10H12V11H11zM14,10H15V11H14zM21,10H22V11H21zM23,10H24V11H23zM24,10H25V11H24zM26,10H27V11H26zM27,10H28V11H27zM3,11H4V12H3zM4,11H5V12H4zM10,11H11V12H10zM11,11H12V12H11zM13,11H14V12H13zM14,11H15V12H14zM16,11H17V12H16zM18,11H19V12H18zM19,11H20V12H19zM22,11H23V12H22zM23,11H24V12H23zM24,11H25V12H24zM28,11H29V12H28zM0,12H1V13H0zM1,12H2V13H1zM2,12H3V13H2zM6,12H7V13H6zM8,12H9V13H8zM9,12H10V13H9zM12,12H13V13H12zM17,12H18V13H17zM25,12H26V13H25zM26,12H27V13H26zM1,13H2V14H1zM5,13H6V14H5zM8,13H9V14H8zM9,13H10V14H9zM10,13H11V14H10zM13,13H14V14H13zM15,13H16V14H15zM16,13H17V14H16zM19,13H20V14H19zM22,13H23V14H22zM26,13H27V14H26zM27,13H28V14H27zM28,13H29V14H28zM3,14H4V15H3zM6,14H7V15H6zM7,14H8V15H7zM8,14H9V15H8zM11,14H12V15H11zM14,14H15V15H14zM17,14H18V15H17zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM21,14H22V15H21zM23,14H24V15H23zM26,14H27V15H26zM27,14H28V15H27zM28,14H29V15H28zM0,15H1V16H0zM1,15H2V16H1zM2,15H3V16H2zM3,15H4V16H3zM4,15H5V16H4zM8,15H9V16H8zM12,15H13V16H12zM13,15H14V16H13zM16,15H17V16H16zM20,15H21V16H20zM22,15H23V16H22zM27,15H28V16H27zM2,16H3V17H2zM5,16H6V17H5zM6,16H7V17H6zM8,16H9V17H8zM9,16H10V17H9zM12,16H13V17H12zM18,16H19V17H18zM20,16H21V17H20zM21,16H22V17H21zM23,16H24V17H23zM24,16H25V17H24zM25,16H26V17H25zM27,16H28V17H27zM2,17H3V18H2zM3,17H4V18H3zM4,17H5V18H4zM7,17H8V18H7zM8,17H9V18H8zM9,17H10V18H9zM11,17H12V18H11zM13,17H14V18H13zM15,17H16V18H15zM17,17H18V18H17zM20,17H21V18H20zM21,17H22V18H21zM23,17H24V18H23zM25,17H26V18H25zM26,17H27V18H26zM27,17H28V18H27zM0,18H1V19H0zM2,18H3V19H2zM4,18H5V19H4zM5,18H6V19H5zM6,18H7V19H6zM7,18H8V19H7zM10,18H11V19H10zM11,18H12V19H11zM12,18H13V19H12zM15,18H16V19H15zM16,18H17V19H16zM21,18H22V19H21zM23,18H24V19H23zM26,18H27V19H26zM3,19H4V20H3zM4,19H5V20H4zM8,19H9V20H8zM11,19H12V20H11zM12,19H13V20H12zM17,19H18V20H17zM18,19H19V20H18zM19,19H20V20H19zM20,19H21V20H20zM22,19H23V20H22zM24,19H25V20H24zM26,19H27V20H26zM1,20H2V21H1zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM6,20H7V21H6zM7,20H8V21H7zM10,20H11V21H10zM13,20H14V21H13zM15,20H16V21H15zM16,20H17V21H16zM17,20H18V21H17zM19,20H20V21H19zM20,20H21V21H20zM21,20H22V21H21zM22,20H23V21H22zM23,20H24V21H23zM24,20H25V21H24zM25,20H26V21H25zM26,20H27V21H26zM8,21H9V22H8zM9,21H10V22H9zM11,21H12V22H11zM12,21H13V22H12zM13,21H14V22H13zM14,21H15V22H14zM16,21H17V22H16zM17,21H18V22H17zM18,21H19V22H18zM20,21H21V22H20zM24,21H25V22H24zM25,21H26V22H25zM26,21H27V22H26zM27,21H28V22H27zM28,21H29V22H28zM0,22H1V23H0zM1,22H2V23H1zM2,22H3V23H2zM3,22H4V23H3zM4,22H5V23H4zM5,22H6V23H5zM6,22H7V23H6zM8,22H9V23H8zM9,22H10V23H9zM11,22H12V23H11zM13,22H14V23H13zM16,22H17V23H16zM18,22H19V23H18zM19,22H20V23H19zM20,22H21V23H20zM22,22H23V23H22zM24,22H25V23H24zM25,22H26V23H25zM27,22H28V23H27zM0,23H1V24H0zM6,23H7V24H6zM8,23H9V24H8zM12,23H13V24H12zM15,23H16V24H15zM16,23H17V24H16zM18,23H19V24H18zM20,23H21V24H20zM24,23H25V24H24zM25,23H26V24H25zM27,23H28V24H27zM0,24H1V25H0zM2,24H3V25H2zM3,24H4V25H3zM4,24H5V25H4zM6,24H7V25H6zM9,24H10V25H9zM10,24H11V25H10zM14,24H15V25H14zM15,24H16V25H15zM16,24H17V25H16zM17,24H18V25H17zM20,24H21V25H20zM21,24H22V25H21zM22,24H23V25H22zM23,24H24V25H23zM24,24H25V25H24zM26,24H27V25H26zM27,24H28V25H27zM0,25H1V26H0zM2,25H3V26H2zM3,25H4V26H3zM4,25H5V26H4zM6,25H7V26H6zM8,25H9V26H8zM10,25H11V26H10zM13,25H14V26H13zM14,25H15V26H14zM15,25H16V26H15zM16,25H17V26H16zM20,25H21V26H20zM21,25H22V26H21zM23,25H24V26H23zM24,25H25V26H24zM25,25H26V26H25zM28,25H29V26H28zM0,26H1V27H0zM2,26H3V27H2zM3,26H4V27H3zM4,26H5V27H4zM6,26H7V27H6zM8,26H9V27H8zM10,26H11V27H10zM12,26H13V27H12zM13,26H14V27H13zM14,26H15V27H14zM16,26H17V27H16zM19,26H20V27H19zM20,26H21V27H20zM23,26H24V27H23zM26,26H27V27H26zM28,26H29V27H28zM0,27H1V28H0zM6,27H7V28H6zM9,27H10V28H9zM11,27H12V28H11zM12,27H13V28H12zM13,27H14V28H13zM14,27H15V28H14zM16,27H17V28H16zM20,27H21V28H20zM21,27H22V28H21zM25,27H26V28H25zM27,27H28V28H27zM0,28H1V29H0zM1,28H2V29H1zM2,28H3V29H2zM3,28H4V29H3zM4,28H5V29H4zM5,28H6V29H5zM6,28H7V29H6zM8,28H9V29H8zM9,28H10V29H9zM11,28H12V29H11zM12,28H13V29H12zM14,28H15V29H14zM15,28H16V29H15zM18,28H19V29H18zM19,28H20V29H19zM20,28H21V29H20zM21,28H22V29H21zM22,28H23V29H22zM23,28H24V29H23zM24,28H25V29H24zM27,28H28V29H27z" id="qr-path" fill="#ffffff" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div>
+      <div>
+        <p class="kick" style="color:var(--ink)">Next step</p>
+        <p style="font-family:var(--f-display);font-size:15px;line-height:1.2;letter-spacing:-.02em;margin-top:5px;font-weight:500">Book a scoping conversation. It costs nothing, and often ends with a recommendation rather than a proposal.</p>
+        <p style="font-size:8.6px;margin-top:6px;color:#0d0d0dcc">Scan for this paper and all our research at jointorchbearer.com/insight</p>
+      </div>
+      <div style="text-align:right;font-family:var(--f-display)">
+        <p style="font-size:7.6px;font-weight:600;letter-spacing:.18em;text-transform:uppercase">Partnerships</p>
+        <p style="font-size:13px;font-weight:600;letter-spacing:-.01em;margin-top:4px">info@jointorchbearer.com</p>
+        <p style="font-size:11px;margin-top:3px">jointorchbearer.com/partner</p>
       </div>
     </div>
+    <p class="small" style="margin-top:12px">© Torchbearer 2026. Photography via Unsplash. This paper may be shared in full with attribution.</p>
   </div>
-  <div class="run on-img" style="color:#ffffff73"><span><b style="color:#ffffffc7">Torchbearer</b> · White paper</span><span class="n" style="color:#ffffffc7">11</span></div>
 </section>
 
 </body>
