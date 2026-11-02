@@ -69,9 +69,9 @@ body{
 }
 .run b{font-weight:600;color:#000000a6}
 .run .n{font-size:8.5px;letter-spacing:.08em;color:#000000a6}
-.page--ink .run,.page--deep .run,.on-img .run{color:#ffffff73}
+.page--ink .run,.page--deep .run,.on-img .run,.run.on-img{color:#ffffff73}
 .page--ink .run b,.page--deep .run b,.on-img .run b,
-.page--ink .run .n,.page--deep .run .n,.on-img .run .n{color:#ffffffc7}
+.page--ink .run .n,.page--deep .run .n,.on-img .run .n,.run.on-img b,.run.on-img .n{color:#ffffffc7}
 
 /* --- type ----------------------------------------------------------------- */
 h1,h2,h3,h4{font-family:var(--f-display);font-weight:600;letter-spacing:-.04em;line-height:.92}
