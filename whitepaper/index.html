@@ -122,7 +122,7 @@
 /* 10 scorecard */
 .score{width:100%;border-collapse:collapse;font-family:var(--f-display)}
 .score th{font-size:7.6px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#ffffff73;text-align:left;padding:0 0 8px;border-bottom:1px solid var(--line-dark)}
-.score td{padding:9px 0;border-bottom:1px solid var(--line-dark);font-size:10.5px;vertical-align:middle}
+.score td{padding:5px 0;border-bottom:1px solid var(--line-dark);font-size:10.5px;vertical-align:middle}
 .score td.ind{font-weight:500;letter-spacing:-.01em;padding-right:12px;width:200px}
 .score td.ind small{display:block;font-family:var(--f-body);font-size:7.6px;color:#ffffff73;margin-top:2px;font-weight:400}
 .score td.now{font-size:17px;font-weight:500;letter-spacing:-.03em;width:62px}
@@ -131,7 +131,7 @@
 .track{position:relative;height:8px;background:#ffffff1a;border-radius:99px}
 .track i{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:#fff}
 .track b{position:absolute;top:-4px;width:2px;height:16px;background:var(--amber)}
-.road{display:grid;grid-template-columns:repeat(5,1fr);margin-top:20px;border-top:1px solid var(--line-dark)}
+.road{display:grid;grid-template-columns:repeat(5,1fr);margin-top:16px;border-top:1px solid var(--line-dark)}
 .road div{padding:12px 12px 0 0;position:relative}
 .road div::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--amber)}
 .road b{font-family:var(--f-display);font-size:16px;font-weight:500;letter-spacing:-.03em;display:block;margin:4px 0 4px}
@@ -655,15 +655,14 @@
 
 <!-- ======================================================= 10 SCORECARD -->
 <section class="page page--deep">
-  <div class="orb orb--soft" style="width:300px;height:300px;left:-120px;bottom:-140px;opacity:.95"></div>
-  <div class="pad">
+    <div class="pad">
     <p class="kick">Part four · Continued</p>
     <div class="g2" style="margin-top:12px;align-items:end">
       <h2 class="h1" style="color:#fff">The scorecard to 2030</h2>
       <p class="lede">Ten indicators that would tell us whether access is turning into agency, resilience and productive participation.</p>
     </div>
 
-    <table class="score" style="margin-top:28px">
+    <table class="score" style="margin-top:20px">
       <thead><tr><th>Indicator</th><th>Latest</th><th>2030</th><th style="padding-left:16px">Distance travelled</th></tr></thead>
       <tbody>
         <tr><td class="ind">Adults with an account<small>Findex 2024</small></td><td class="now">79%</td><td class="tgt">90%<sup>TB</sup></td><td style="padding-left:16px"><div class="track"><i style="width:87.8%"></i><b style="left:100%"></b></div></td></tr>
@@ -686,6 +685,26 @@
       <div><b>2028</b><p>Youth account decline reversed. Cash-flow lending at scale.</p></div>
       <div><b>2029</b><p>AI credit models move to full decisioning where proven.</p></div>
       <div><b>2030</b><p>Saving, not just holding, becomes the headline measure.</p></div>
+    </div>
+    <div style="margin-top:22px;border-top:1px solid var(--line-dark);padding-top:12px;position:relative;z-index:2">
+      <p class="kick" style="color:#ffffff8c">Method and sources</p>
+      <p style="font-size:7.6px;line-height:1.5;color:#ffffffa8;margin-top:6px;max-width:110ch">Built from the roundtable of 10 October 2026, recorded with consent and held under the Chatham House Rule, and from public data. Remarks from the room are unattributed and lightly edited; figures cited by participants have not been audited. Targets marked TB are Torchbearer's own judgement.</p>
+      <ol class="srcs" style="margin-top:8px;columns:3;column-gap:20px;color:#ffffff99;font-size:6.9px">
+          <li><b>1</b>World Bank, Global Findex Database 2025, survey year 2024, Saudi Arabia indicators.</li>
+          <li><b>2</b>SAMA, electronic payments as a share of retail payments, 2024 (released April 2025).</li>
+          <li><b>3</b>UN DESA, E-Government Survey 2024.</li>
+          <li><b>4</b>Fintech Saudi, 301 fintechs (May 2026); SAMA Governor, 371 (August 2026); National Fintech Strategy target of 525.</li>
+          <li><b>5</b>SAMA data via Ministry of Investment and ZCG Arabia, SME credit 2024 to 2025.</li>
+          <li><b>6</b>Financial Sector Development Program, household savings target.</li>
+          <li><b>7</b>GASTAT, Labour Force Survey, Q4 2025.</li>
+          <li><b>8</b>SAMA Monthly Statistical Bulletin, Q2 2025.</li>
+          <li><b>9</b>SAMA licensing announcements, 2025 to 2026, including Tak Mal for Financing (April 2026).</li>
+          <li><b>10</b>SAMA, personal remittances, 2025.</li>
+          <li><b>11</b>SAMA, Open Banking Framework, releases one (2022) and two (2024).</li>
+          <li><b>12</b>SAMA and company announcements: STC Bank, D360 Bank, Vision Bank, barq.</li>
+          <li><b>13</b>Tahaluf, event portfolio, 2025 to 2026.</li>
+          <li><b>14</b>Queen Máxima, keynote, Inclusive Finance for Development: 15 Years of Impact, UNSGSA, 25 September 2024. Muhammad Yunus, interview, Gulf News.</li>
+        </ol>
     </div>
   </div>
   <div class="run"><span><b>Part four</b> · The scorecard</span><span class="n">11</span></div>
@@ -721,64 +740,6 @@
     <p style="margin-top:18px;font-family:var(--f-display);font-size:12px;color:#ffffffc7">Send us your answer at <b style="color:#fff;font-weight:600">aimenrafiq@jointorchbearer.com</b>. The sharpest replies will set the agenda for the next room.</p>
   </div>
   <div class="run on-img"><span><b>What comes next</b></span><span class="n">12</span></div>
-</section>
-
-<!-- ======================================================= 13 CREDITS -->
-<section class="page">
-  <div class="pad">
-    <p class="kick">With thanks</p>
-    <h2 class="h2" style="margin-top:10px">The people in the room</h2>
-    <div class="host">
-      <div style="background:var(--ink);color:#fff"><span class="role amber">Co-host</span><span class="nm">Abdul Qadir Sultan</span><span class="org" style="color:#ffffffa8">Founder, Siraaj. With our thanks for co-hosting the roundtable and opening the room.</span></div>
-      <div class="field"><span class="role">Convened by Torchbearer</span><span class="nm">Aimen Rafiq Abbasi</span><span class="org" style="color:#333">Founder, Torchbearer</span></div>
-    </div>
-    <p class="kick" style="margin-top:22px">Participants</p>
-    <div class="names">
-      <div><b>Alla Kwieder</b></div>
-      <div><b>Alhanouf Aloufi</b></div>
-      <div><b>Stephanie Jowers</b></div>
-      <div><b>Syed Missam Abbas</b></div>
-      <div><b>Saud Sarwar</b></div>
-      <div><b>Usman Fiaz</b></div>
-    </div>
-    <p class="small" style="margin-top:8px">Under the Chatham House Rule, no remark in this paper is attributed to any individual.</p>
-
-    <div class="g2" style="gap:30px;margin-top:28px">
-      <div>
-        <p class="kick">Method</p>
-        <div class="body" style="margin-top:8px">
-          <p>This paper combines three sources: the roundtable itself, recorded with consent, transcribed and analysed for recurring themes; public data, principally the World Bank Global Findex Database 2025, SAMA releases, GASTAT labour force surveys and the UN E-Government Survey; and Torchbearer's own experience designing and verifying programmes in Saudi Arabia and Pakistan.</p>
-          <p>Quotations from the room are lightly edited for clarity. Figures cited from the discussion, such as loan pricing and pilot results, are participants' accounts and have not been audited. Targets marked as Torchbearer proposals are our own judgement.</p>
-        </div>
-        <div style="margin-top:14px;padding:12px 14px;background:var(--white);border-left:3px solid var(--amber)">
-          <p style="font-size:8.8px;line-height:1.5;color:#333"><strong style="color:var(--ink)">A note on who is counted.</strong> Expatriate workers sent a record SAR 165.5 billion home in 2025.<sup class="fn">10</sup> They are among the heaviest users of Saudi payment rails and the least served by its savings and credit products. Any serious inclusion measure should report them separately.</p>
-        </div>
-      </div>
-      <div>
-        <p class="kick">Sources</p>
-        <ol class="srcs" style="margin-top:8px;columns:1">
-          <li><b>1</b>World Bank, Global Findex Database 2025, survey year 2024, Saudi Arabia indicators.</li>
-          <li><b>2</b>SAMA, electronic payments as a share of retail payments, 2024 (released April 2025).</li>
-          <li><b>3</b>UN DESA, E-Government Survey 2024.</li>
-          <li><b>4</b>Fintech Saudi, 301 fintechs (May 2026); SAMA Governor, 371 (August 2026); National Fintech Strategy target of 525.</li>
-          <li><b>5</b>SAMA data via Ministry of Investment and ZCG Arabia, SME credit 2024 to 2025.</li>
-          <li><b>6</b>Financial Sector Development Program, household savings target.</li>
-          <li><b>7</b>GASTAT, Labour Force Survey, Q4 2025.</li>
-          <li><b>8</b>SAMA Monthly Statistical Bulletin, Q2 2025.</li>
-          <li><b>9</b>SAMA licensing announcements, 2025 to 2026, including Tak Mal for Financing (April 2026).</li>
-          <li><b>10</b>SAMA, personal remittances, 2025.</li>
-          <li><b>11</b>SAMA, Open Banking Framework, releases one (2022) and two (2024).</li>
-          <li><b>12</b>SAMA and company announcements: STC Bank, D360 Bank, Vision Bank, barq.</li>
-          <li><b>13</b>Tahaluf, event portfolio, 2025 to 2026.</li>
-          <li><b>14</b>Queen Máxima, keynote, Inclusive Finance for Development: 15 Years of Impact, UNSGSA, 25 September 2024. Muhammad Yunus, interview, Gulf News.</li>
-        </ol>
-      </div>
-    </div>
-  </div>
-  <div style="position:absolute;left:0;right:0;bottom:0;height:250px">
-    <figure class="ph" style="margin:0;height:100%"><img src="img/rt-screen.jpg" alt="The roundtable in session, with the title on screen" style="object-position:50% 48%"><div class="shade"></div><figcaption style="bottom:auto;top:12px;left:var(--mx)">The roundtable in session · Riyadh</figcaption></figure>
-  </div>
-  <div class="run on-img" style="bottom:12px"><span><b>Credits</b> · Method and sources</span><span class="n">13</span></div>
 </section>
 
 <!-- ======================================================= 14 BACK COVER -->
