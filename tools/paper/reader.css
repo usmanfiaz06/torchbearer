@@ -1,0 +1,45 @@
+/* Reader chrome around the A4 pages. The pages themselves come from paper.css. */
+body.is-reader{background:#2b2b2b;min-height:100vh}
+.reader{padding:84px 0 40px}
+.reader .page{zoom:var(--fit,1);margin:0 auto 22px;box-shadow:0 18px 50px #0006}
+
+.rbar{position:fixed;top:0;left:0;right:0;z-index:50;height:60px;display:flex;align-items:center;gap:18px;
+  padding:0 clamp(12px,3vw,32px);background:#0d0d0de8;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid #ffffff1a;color:#fff;font-family:var(--f-display)}
+.rbar__brand{display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-weight:600;font-size:14px}
+.rbar__brand img{height:22px;width:auto}
+.rbar__ttl{font-size:9.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#ffffff80}
+.rbar__act{margin-left:auto;display:flex;gap:8px}
+.rbtn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:999px;border:0;
+  background:var(--amber);color:var(--ink);font-family:var(--f-display);font-weight:600;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;white-space:nowrap}
+.rbtn:hover{background:#ffbe3d}
+.rbtn--ghost{background:transparent;color:#fff;border:1px solid #ffffff4d}
+.rbtn--ghost:hover{background:#ffffff14}
+
+.rend{background:var(--ink);color:#fff;padding:clamp(48px,8vw,96px) clamp(16px,4vw,40px);font-family:var(--f-body)}
+.rend__in{max-width:760px;margin:0 auto}
+.rend__k{font-family:var(--f-display);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
+.rend h2{font-family:var(--f-display);font-weight:500;font-size:clamp(34px,6vw,56px);letter-spacing:-.045em;line-height:1;margin:14px 0 16px}
+.rend__p{font-size:16px;line-height:1.6;color:#ffffffc2;max-width:58ch}
+.rend__row{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.rend__form{margin-top:40px;padding-top:28px;border-top:1px solid #ffffff1f}
+.rend__form label{display:block;font-family:var(--f-display);font-size:15px;font-weight:500;margin-bottom:12px}
+.rend__form div{display:flex;gap:8px;flex-wrap:wrap}
+.rend__form input{flex:1;min-width:220px;padding:12px 16px;border-radius:999px;border:1px solid #ffffff40;background:#ffffff0d;
+  color:#fff;font:inherit;font-size:14px}
+.rend__form input::placeholder{color:#ffffff66}
+.rend__note{font-size:12px;color:#ffffff73;margin-top:10px}
+.rend__links{margin-top:36px;font-size:13px;color:#ffffff8c}
+.rend__links a{color:#fff}
+
+@media (max-width:700px){
+  .rbar{height:auto;min-height:56px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px;row-gap:8px}
+  .rbar__ttl{display:none}
+  .rbar__act{margin-left:auto}
+  .rbtn{padding:8px 12px;font-size:9.5px}
+  .rbar__act .rbtn--ghost{display:none}
+  .reader{padding-top:72px}
+  .reader .page{margin-bottom:10px}
+}
+@media print{.rbar,.rend{display:none}.reader{padding:0}.reader .page{zoom:1;box-shadow:none;margin:0}}

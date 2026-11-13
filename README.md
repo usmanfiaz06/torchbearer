@@ -234,3 +234,14 @@ without JavaScript, and honours `prefers-reduced-motion`.
 
 The logo variants in `assets/img/` are generated from `Torchbearers-whiteBG.png` — `mark-dark.png` for light
 backgrounds, `mark-light.png` for dark.
+
+## White papers
+
+The print source for each paper lives in `whitepaper/` (not deployed). After editing it:
+
+```bash
+python3 -m http.server 8902 &
+node whitepaper/render.mjs http://127.0.0.1:8902      # A4 PDF
+cp whitepaper/Torchbearer-White-Paper-Financial-Inclusion-Riyadh-2026.pdf assets/papers/torchbearer-financial-systems-riyadh-2026.pdf
+python3 tools/paper/publish.py                       # online reader at /papers/financial-systems-riyadh
+```
