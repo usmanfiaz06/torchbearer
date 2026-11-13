@@ -437,6 +437,11 @@ body{
 /* --- inner page shells ---------------------------------------------------- */
 .phead{background:var(--white);padding-block:clamp(48px,6vw,96px) clamp(36px,4vw,64px)}
 .phead__grid{display:grid;grid-template-columns:1.3fr .85fr;gap:clamp(24px,5vw,80px);align-items:end}
+.phead--wide .d1{max-width:none;font-size:clamp(2.6rem,6.2vw,6rem)}
+.phead__row{display:grid;grid-template-columns:1fr auto;gap:clamp(24px,5vw,80px);align-items:end;margin-top:clamp(28px,3.5vw,48px)}
+.phead__row .lead{max-width:62ch}
+.phead__cta{display:flex;gap:12px;flex-wrap:wrap}
+@media (max-width:760px){.phead__row{grid-template-columns:1fr}}
 .crumb{font-family:var(--f-display);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:clamp(20px,3vw,36px)}
 .prose{max-width:68ch}
 .prose h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.3rem,2.1vw,1.8rem);letter-spacing:-.028em;margin:clamp(36px,4vw,56px) 0 14px;line-height:1.14}
