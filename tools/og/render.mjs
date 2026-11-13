@@ -24,6 +24,7 @@ const CARDS = {
   method:       ['Method',       'Scope. Design. Deliver.|Measure. Verify.',                'photo-1698993082050-19ca94c62fb8'],
   insight:      ['Insight',      'Field notes|&amp; method papers',                         'photo-1565456796917-ba75922b081f'],
   volunteer:    ['Volunteer',    'Volunteer|with us',                                       'field/literacy-training'],
+  'insight/financial-systems-riyadh': ['White paper · Saudi Arabia', 'Designing financial systems|for agency and resilience', 'photo-roundtable-riyadh'],
   'insight/third-sector':    ['Sector analysis · Saudi Arabia', "Saudi Arabia's third sector|grew ninefold", 'photo-1694018359679-49465b4c0d61'],
   'insight/disclosure-2030': ['Outlook · Saudi Arabia', 'Reported under|tomorrow\u2019s rules',        'photo-1716571349499-0b83f5dbb7a2'],
   'insight/women-in-ai-asia': ['Women & technology · Asia', 'The best number|and the widest gap', 'field/literacy-training'],

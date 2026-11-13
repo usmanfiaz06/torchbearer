@@ -70,6 +70,10 @@ PAGES = {
                "each stage."),
     "insight": ("Insight", "Insight | Torchbearer",
                 "Field notes, method papers and programme data from Torchbearer."),
+    "insight/financial-systems-riyadh": (None,
+        "Designing financial systems for agency, resilience and productive participation | Torchbearer",
+        "A Torchbearer white paper from the Riyadh roundtable of 10 October 2026: Saudi Arabia has largely won "
+        "financial access. What it takes for that access to build agency, resilience and productive participation."),
     "insight/third-sector": (None, "Saudi Arabia's third sector grew ninefold. Its measurement did not. | Torchbearer",
         "The Kingdom passed its 2030 volunteering target six years early and grew the non-profit sector from roughly "
         "SAR 8bn to SAR 73bn. Why the regulator's shift to professionalisation is a measurement problem."),
