@@ -43,3 +43,10 @@ body.is-reader{background:#2b2b2b;min-height:100vh}
   .reader .page{margin-bottom:10px}
 }
 @media print{.rbar,.rend{display:none}.reader{padding:0}.reader .page{zoom:1;box-shadow:none;margin:0}}
+
+/* embedded in the article page: just the pages */
+.is-embed body.is-reader{background:transparent;min-height:0}
+.is-embed .rbar,.is-embed .rend{display:none}
+.is-embed .reader{padding:0}
+.is-embed .reader .page{box-shadow:0 10px 30px #0000002e;margin-bottom:18px}
+.is-embed .reader .page:last-child{margin-bottom:0}

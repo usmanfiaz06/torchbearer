@@ -1,9 +1,11 @@
 /* Fit the fixed A4 pages to the screen, and hand the notify form to the mail app. */
 (function () {
   var PAGE = 794;
+  if (window.self !== window.top) document.documentElement.classList.add('is-embed');
   function fit() {
-    var w = document.documentElement.clientWidth - (window.innerWidth < 700 ? 16 : 64);
-    document.documentElement.style.setProperty('--fit', Math.min(1.15, w / PAGE).toFixed(4));
+    var embed = document.documentElement.classList.contains('is-embed');
+    var w = document.documentElement.clientWidth - (embed ? 0 : (window.innerWidth < 700 ? 16 : 64));
+    document.documentElement.style.setProperty('--fit', Math.min(embed ? 1 : 1.15, w / PAGE).toFixed(4));
   }
   fit();
   window.addEventListener('resize', fit);

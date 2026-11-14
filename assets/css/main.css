@@ -951,3 +951,33 @@ body{
   .artcard{grid-template-columns:1fr;gap:14px}
   .artcard__img{order:-1;aspect-ratio:16/9;margin-bottom:6px}
 }
+
+/* --- new-paper banner ----------------------------------------------------- */
+.promo{
+  position:fixed;left:50%;bottom:20px;z-index:60;width:min(760px,calc(100% - 24px));
+  display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:18px;
+  padding:12px 14px 12px 12px;border-radius:18px;background:var(--ink);color:#fff;
+  box-shadow:0 18px 50px #0000004d,0 0 0 1px #ffffff14 inset;
+  transform:translate(-50%,140%);opacity:0;transition:transform .55s var(--ease),opacity .4s var(--ease);
+}
+.promo.is-on{transform:translate(-50%,0);opacity:1}
+.promo__img{width:88px;height:64px;object-fit:cover;border-radius:10px}
+.promo__k{font-family:var(--f-display);font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+.promo__t{font-family:var(--f-display);font-size:1rem;font-weight:500;line-height:1.22;letter-spacing:-.02em;margin-top:4px}
+.promo__go{white-space:nowrap}
+.promo__x{width:34px;height:34px;border-radius:50%;color:#ffffffa6;font-size:1.4rem;line-height:1;display:grid;place-items:center}
+.promo__x:hover{background:#ffffff1a;color:#fff}
+@media (max-width:640px){
+  .promo{grid-template-columns:1fr auto;gap:10px 12px;bottom:12px;padding:14px 10px 14px 16px}
+  .promo__img{display:none}
+  .promo__t{font-size:.92rem}
+  .promo__go{grid-column:1;justify-self:start;padding:.7em 1.2em}
+  .promo__x{grid-column:2;grid-row:1}
+}
+@media (prefers-reduced-motion:reduce){.promo{transition:none}}
+
+/* --- white paper embedded in its article page ----------------------------- */
+.paperband{padding-block:clamp(40px,6vw,88px)}
+.paperband__head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 auto 20px;max-width:910px}
+.paperframe{display:block;width:100%;max-width:910px;height:1200px;margin:0 auto;border:0;background:transparent}
+@media (max-width:760px){.paperband .wrap{padding-inline:10px}.paperband__head{padding-inline:6px}}

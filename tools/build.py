@@ -227,7 +227,7 @@ def absolutise(html):
     """
     html = re.sub(r'(href|src)="index\.html(#[^"]*)?"',
                   lambda m: '%s="/%s"' % (m.group(1), m.group(2) or ""), html)
-    html = re.sub(r'(href|src)="(?!https?:|//|/|#|mailto:)([a-z0-9\-]+)\.html(#[^"]*)?"',
+    html = re.sub(r'(href|src)="(?!https?:|//|/|#|mailto:)([a-z0-9\-/]+)\.html(#[^"]*)?"',
                   lambda m: '%s="/%s%s"' % (m.group(1), m.group(2), m.group(3) or ""), html)
     html = re.sub(r'(href|src)="(?!https?:|//|/|#|mailto:)(assets/)',
                   lambda m: '%s="/%s' % (m.group(1), m.group(2)), html)
@@ -349,10 +349,26 @@ SHELL = """<!DOCTYPE html>
     </div>
   </div>
 </footer>
-
+{promo}
 <script src="{js_main}"></script>
 </body>
 </html>
+"""
+
+
+# Bottom banner announcing the latest paper. Hidden on the paper's own page; the
+# reader can dismiss it, and main.js remembers that for 30 days.
+NO_PROMO = {"insight/financial-systems-riyadh", "404"}
+PROMO = """
+<aside class="promo" data-promo="paper-financial-systems" aria-label="New white paper" hidden>
+  <img class="promo__img" src="assets/img/photos/photo-roundtable-riyadh.jpg" alt="">
+  <div class="promo__txt">
+    <p class="promo__k">New white paper</p>
+    <p class="promo__t">Designing financial systems for agency, resilience and productive participation</p>
+  </div>
+  <a class="pill promo__go" href="insight/financial-systems-riyadh.html#paper">Read the paper</a>
+  <button class="promo__x" type="button" aria-label="Dismiss">&times;</button>
+</aside>
 """
 
 
@@ -381,6 +397,7 @@ def build():
             ogalt=esc("%s: %s" % (ORG["name"], title.split(" | ")[0])),
             graph=graph(slug, title, desc),
             navlinks="\n".join(navlinks), menulinks="\n".join(menulinks),
+            promo="" if slug in NO_PROMO else PROMO,
         ))
         out = os.path.join(ROOT, *(slug.split("/"))) + ".html"
         os.makedirs(os.path.dirname(out), exist_ok=True)

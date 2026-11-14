@@ -238,10 +238,50 @@
     if (hint) hint.hidden = false;
   }
 
+  /* ---------- new-paper banner ---------- */
+  function promo() {
+    var el = $('[data-promo]');
+    if (!el) return;
+    var key = 'tb-promo-' + el.getAttribute('data-promo');
+    var DAY = 864e5;
+    try { if (Date.now() - (+localStorage.getItem(key) || 0) < 30 * DAY) return; } catch (e) {}
+    el.hidden = false;
+    setTimeout(function () { el.classList.add('is-on'); }, 1800);
+    el.querySelector('.promo__x').addEventListener('click', function () {
+      el.classList.remove('is-on');
+      setTimeout(function () { el.hidden = true; }, 400);
+      try { localStorage.setItem(key, String(Date.now())); } catch (e) {}
+    });
+  }
+
+  /* ---------- embedded white paper: grow the frame to fit ---------- */
+  function paperFrame() {
+    var f = $('[data-paperframe]');
+    if (!f) return;
+    var watched = null;
+    function size() {
+      try {
+        var d = f.contentDocument;
+        if (!d || !d.body) return;
+        var h = d.querySelector('.reader');
+        f.style.height = Math.ceil(h ? h.getBoundingClientRect().height : d.documentElement.scrollHeight) + 'px';
+        if (watched !== d && window.ResizeObserver) {
+          watched = d;
+          new ResizeObserver(size).observe(d.body);
+          if (d.fonts) d.fonts.ready.then(size);
+        }
+      } catch (e) {}
+    }
+    // the frame can finish loading before this runs, so measure now as well as on load
+    f.addEventListener('load', size);
+    size();
+    window.addEventListener('resize', function () { setTimeout(size, 150); });
+  }
+
   /* ---------- year + init ---------- */
   function boot() {
     $$('[data-year]').forEach(function (e) { e.textContent = new Date().getFullYear(); });
-    nav(); rails(); reveal(); dotmap(); volunteerForm();
+    nav(); rails(); reveal(); dotmap(); volunteerForm(); promo(); paperFrame();
     $$('[data-cycler]').forEach(cycler);
     $$('[data-sdg]').forEach(sdgCards);
   }
