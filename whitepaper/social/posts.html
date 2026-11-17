@@ -36,6 +36,10 @@ p,h1,h2,figure{margin:0}
 .p1 .place{position:absolute;left:84px;top:520px;z-index:3;display:flex;gap:10px}
 .p1 .place span{border:1.5px solid #0d0d0d59;border-radius:99px;padding:8px 18px;font-family:var(--fd);font-size:17px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
 
+.lock{display:flex;align-items:center;gap:22px}
+.lock__x{font-family:var(--fd);font-size:30px;font-weight:300;color:#0d0d0d99;line-height:1}
+.lock__partner{height:66px;width:auto;display:block}
+
 /* post 2: cover with a headline */
 .p2 .bg{object-position:38% 100%}
 .p2 .wash{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,#f3b25bf2 0%,#f0a95299 38%,#0d0d0d00 58%,#0d0d0d00 66%,#0d0d0de0 100%)}
@@ -50,7 +54,11 @@ p,h1,h2,figure{margin:0}
   <figure class="photo"><img src="../img/rt-room.jpg" alt=""></figure>
   <div class="wash"></div>
   <div class="top">
-    <div class="brand"><img src="../../assets/img/mark-dark.png" alt=""><span>Torchbearer</span></div>
+    <div class="lock">
+      <div class="brand"><img src="../../assets/img/mark-dark.png" alt=""><span>Torchbearer</span></div>
+      <span class="lock__x">×</span>
+      <img class="lock__partner" src="../img/siraaj-ink.png" alt="Siraaj">
+    </div>
     <div class="meta">New white paper</div>
   </div>
   <h1 class="ttl">Designing financial systems for <em>agency</em>, <em>resilience</em> and <em>productive participation</em></h1>
